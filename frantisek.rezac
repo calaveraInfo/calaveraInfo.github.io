@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="NONE,NOARCHIVE" />
+<title>František Řezáč OpenID</title>
+<link rel="openid.server" href="https://mojeid.cz/endpoint/" />
+<link rel="openid2.provider" href="https://mojeid.cz/endpoint/" />
+<link rel="openid.delegate" href="https://mojeid.cz/id/pqjyAWkBn6/" />
+<link rel="openid2.local_id" href="https://mojeid.cz/id/pqjyAWkBn6/" />
+</head>
+<body>
+František Řezáč OpenID
+</body>
+</html>
