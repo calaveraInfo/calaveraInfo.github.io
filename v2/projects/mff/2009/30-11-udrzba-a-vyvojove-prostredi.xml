@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../xsl/site/projects.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs">
+<head>
+<title>Zápis ze cvičení z 30. 11. 2009</title>
+</head>
+<body>
+
+<h1>Údržba a vývojové prostředí</h1>
+<p>Soupis bodů, nad kterými je nutné přemýšlet (= mít k nim sepsanou dokumentaci) při přípravě výše
+uvedené kapitoly projektového řízení. Seznam vznikl společnou diskuzí.
+</p>
+<ul>
+  <li>IDE, nastavení, další vývojové nástroje - sql developer</li>
+  <li>verzovací systém, systém práv, configuration items</li>
+  <li>běhové prostředí, výčet a konfigurace</li>
+  <li>podpůrné nástroje (pspad, http proxy, ...)</li>
+  <li>automatické buildy, konfigurační soubory pro automatické buildy, build (build - ant, maven)</li>
+  <li>zálohování</li>
+  <li>workflow feature trackeru</li>
+  <li>dokumentace konstrukce = kuchařky, organizace nápovědy</li>
+  <li>stránka projektu, dokumentační struktura</li>
+  <li>soupis hardwaru a práv pro přístup</li>
+  <li>human resources
+  </li>
+</ul>
+</body></html>

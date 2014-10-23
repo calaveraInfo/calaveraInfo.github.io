@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+<head>
+<title>HTML 5 XML compatibility</title>
+</head>
+<body><h1 class="title">HTML 5 XML compatibility</h1>
+<div class="perex">
+<p>They say that HTML 5 will be <a href="http://www.w3.org/TR/html5-diff/#syntax">allowed to be XML compatible</a> to silence all those who disagree with the new "everybody hates XML" philosophy. But is it really true?</p>
+</div>
+<div class="content">
+<p>Partly, yes, there is XML serialization. But HTML 5 is not designed to be XML compatible so it will not be XML compatible. There's some "impedance mismatch" examples between HTML 5 and XML described already in some discussions. I have found one example myself recently.</p>
+<p>There are those <a href="http://ejohn.org/blog/html-5-data-attributes/">data-* attributes</a> that everybody's excited about. But what about XML? Schema validator will have to have <code>anyAttribute</code> tag for every element. This means that it will allow any (even non-data) attributes in all elements. This in turn means that it will not be possible to spot any typo mistake in attribute name. What's this validation for?</p>
+<p>W3C is trying to make HTML more "human friendly". But they forgot that even machines are made by humans. And it's used by humans. So who will loose when we introduce additional complexity for machines?</p>
+<p>UPDATE: I noticed another weird fact. HTML 5 will have the same namespace as XHTML. I'm not 100% sure, but is it right to have two different schemas for one namespace?</p>
+<p>UPDATE 2: Nice <a href="http://www.ibm.com/developerworks/library/x-think45/?ca=dgr-jw22XHTML5dth-WD">summary of this topic</a> is available at IBM developer works.</p>
+</div>
+<dl> <dt>Last update</dt><dd>201007150000</dd> </dl></body>
+</html>

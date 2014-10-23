@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+<head>
+<title>Access session scoped bean in HttpSessionListener</title>
+<meta name="syntaxHighlighterBrushes" content="Java"/>
+</head>
+<body>
+<h1 class="title">Access session scoped bean in HttpSessionListener</h1>
+<div class="perex">
+<p>
+New and nice solution to common <a href="http://forum.springsource.org/showthread.php?p=222216">Spring problem</a>.
+</p>
+</div>
+
+<div class="content">
+<p>
+A year ago I encountered ugly problem with accessing a session scoped bean from HttpSessionListener
+when that session listener was called because of session timeout. A few days ago
+someone posted his solution to
+<a href="http://forum.springsource.org/showthread.php?p=280143">similar thread</a>.
+Although it's a hack, it's really clean and nice one.
+</p>
+<hr />
+<pre class="brush: java"><![CDATA[
+@Override
+public void sessionDestroyed(final HttpSessionEvent se) {
+	final HttpSession session = se.getSession();
+	final HttpServletRequest mockRequest = new MockRequest(session);
+	RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(mockRequest));
+	...
+}
+
+@SuppressWarnings("unchecked")
+public class MockRequest implements HttpServletRequest {
+	private static final String ALLOWED_METHODS = "Allowed only: getSession() and getSession(final boolean create)";
+	private final HttpSession session;
+	
+	public MockRequest(final HttpSession session) {
+		this.session = session;
+	}
+	
+	@Override
+	public HttpSession getSession() {
+		return session;
+	}
+	
+	@Override
+	public HttpSession getSession(final boolean create) {
+		return session;
+	}
+	
+	@Override
+	public String getAuthType() {
+		throw new UnsupportedOperationException(ALLOWED_METHODS);
+	}
+	
+	@Override
+	public String getContextPath() {
+		throw new UnsupportedOperationException(ALLOWED_METHODS);
+	}
+	...
+}
+
+]]>
+</pre>
+
+</div>
+<dl>
+	<dt>Last update</dt><dd>201001300000</dd>
+</dl>
+</body>
+</html>

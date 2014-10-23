@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+<head>
+<title>Syntax Highlighter testing article</title>
+</head>
+<body>
+<h1 class="title">Syntax Highlighter testing article</h1>
+<div class="perex">
+<p>
+Article for testing of
+<a href="http://alexgorbatchev.com/wiki/SyntaxHighlighter">javascript
+library for syntax highlighting</a>.
+</p>
+</div>
+
+<div class="content">
+Java highlighted code:
+<pre class="brush: java"><![CDATA[
+public String test() {
+  if (2>1) {
+    return "&";
+  }
+}
+]]>
+</pre>
+Some xml:
+<pre class="brush: xml"><![CDATA[
+    <body>
+        <a href="?xxx=yyy&aaa=bbb">&#160; Link &nbsp;</a>
+    </body>
+]]>
+</pre>
+
+</div>
+<dl>
+	<dt>Last update</dt><dd>201001200000</dd>
+</dl>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+<head>
+<title>The first blog post</title>
+</head>
+<body>
+<h1 class="title">The first blog post</h1>
+<div class="perex">
+<p>
+I've finaly found my holy grail. After years of searching for ultimate CMS I've found
+one. Or not. It depends. I've found out that best CMS is no CMS at all. These
+pages are proof of concept of an idea I had at the end of year 2009. And it
+seems to work. Read more about technologies I used for my new
+"publishing platform".
+</p>
+</div>
+
+<div class="content">
+<h3>History</h3>
+<p>
+History of my CMS efforts is very long. It started when I realized for the
+first time that when I change CMS, I loose all my data. Why? Because all the
+fancy CMS stores it's data in a fancy database schema, so although you don't
+have to be skilled engineer to install them in minutes, you have to be
+university graduate to migrate data from one to the other. Typicaly it's so time
+consuming that it's not worth it at all.
+</p>
+
+<p>
+For a few years I was driven by an idea "let's choose the ultimate CMS and use it for the
+rest of my life". After I tried tens of them I came to the conclusion that it's
+impossible. And I didn't wrote a single article. 
+</p>
+
+<p>
+There is a solution in creating a statical pages only. But after a few years
+you will end up with medieval ages looking web which you are unable to
+restructure because, again, it would take tens or hundreds of hours of
+stupid search and replace work. But it at least gives you the opportunity to
+abandon it at current working version without any additional work. And that's
+the good way.
+</p>
+
+<p>
+So I came with an idea of "filter". The point was to create the basic xhtml
+pages and add all the design and dynamic content programatically by parsing such
+file and injecting dynamic content into it. It combines the possibility to globaly change
+behavior and design in one place with possibility to abandon this CMS
+with static data being still available without any additional work.
+I tried to write a tiny framework in php, which would do just that. It
+took me another two years and in the end it was so time consuming that I gave up
+again. But at least I didn't lost the <a href="http://calavera.info/v1/">data</a>.
+The first good sign.
+</p>
+
+<h3>Present</h3>
+<p>
+I got the last (and I hope that final) idea during work on a project with heavy
+use of XSLT. I discovered great xslt function
+<i><a href="http://www.w3schools.com/xsl/func_document.asp">document()</a></i>
+(which I wasn't aware of before, to my shame). I also discovered several
+interesting facts about xslt. Firstly, it's turing complete pure functional
+programing language (funny is that when I learned lisp at the university I thought
+"nice, but I will propably never use it":-)). Secondly, all the major browsers
+are supporting it. I realized how big is the power of this technology. 
+</p>
+
+<p>
+In a month (of calendar time, in reality some 2MD) I was able to create basic
+structure of xslt templates for dynamicaly looking but static web pages. My
+solution features are:
+</p>
+
+<ul>
+<li>
+Size: 30kB of static code for everything you can see here. After first page view
+most of subsequent request returns "304 Not Modified" and only page data is
+transfered from server, which results in considerably less traffic compared
+to usual server side generated pages. 
+</li>
+
+<li>
+Independent on server side technology. Any http server is enough even
+without any programing environments.
+</li>
+
+<li>
+No absolute paths anywhere. This means that same website is fully functional
+on any uri and even offline (from disk, without any http server at all)!!!
+</li>
+
+<li>
+Several levels of gracefull degradation:
+<ul>
+<li>
+XSLT enabled, graphical browser: Nice pages with all the dynamic content.
+(You should see it now.)
+</li>
+<li>
+XSLT enabled, non graphical browser: Text only, well accessible pages with all
+the dynamic content.
+(You can see it by installing
+<a href="https://addons.mozilla.org/en-US/firefox/addon/60">Web developer toolbar</a>
+for Firefox and disabling all styles.)
+</li>
+<li>
+XSLT disabled browser: Page HTML data only, navigation throught several levels
+of links and back button.
+(You can see it by installing
+<a href="https://addons.mozilla.org/en-US/firefox/addon/722">No Script</a>
+addon for Firefox and disabling xslt transformations.)
+</li>
+</ul>
+</li>
+
+<li>
+Separation of layout and data retrieving functions. This means that
+new layout can be added by changing one import and optionaly creating thin adaptation layer.
+</li>
+</ul>
+
+<h3>Project</h3>
+<p>
+Project is not hosted anywhere now since it's too young and there is a lot
+of work to do. But the code is of course available
+<a href="http://calavera.info/v2/xsl/">here</a> and
+I also recomend you viewing source of every page here. Future plans are:
+</p>
+
+<ul>
+<li>
+Consolidation of code for a public release.
+</li>
+<li>
+Support for multilingual pages (with the support of some server
+side technology for determining user's language).
+</li>
+</ul>
+
+</div>
+<dl>
+	<dt>Last update</dt><dd>201001160000</dd>
+</dl>
+</body>
+</html>

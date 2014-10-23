@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+<head>
+<title>Subjective search engine comparison</title>
+</head>
+<body><h1 class="title">Subjective search engine comparison</h1>
+<div class="perex">
+<p>I have my pages online for more than three months now so it was very surprising for me that there is a big difference in indexing quality and search relevance between different search engines.</p>
+</div>
+<div class="content">
+<p>Clearly all the engines had the same conditions:</p>
+<ul>
+<li> Pages online more than 3 months </li>
+<li> Linked from footer of every page of several sites I made which are already well known to the search engines. </li>
+<li> Linked from my public profile on several servers. </li>
+<li> Good redirection http headers to avoid any duplicity. </li>
+<li> Good caching http headers to navigate engine what's changed often and what's not. </li>
+<li> Good robots.txt file. </li>
+<li> Basic sitemap file with tuned page importance, update time and change expectations. </li>
+<li> Sitewide RSS. </li>
+</ul>
+<p>Apart from that, I tried realy hard to get my pages to Google by using it's webmaster tools and analytics tool. What are the results?</p>
+<h3>Bing</h3>
+<p>Bing is a total loser. It indexes three pages and is in fact not worth mentioning at all.</p>
+<h3>Google</h3>
+<p>Google was a great surprise. It sucks terribly. Pages are indexed weeks(!) after link has been added to the main page. Search relevance is terrible (xsl templates had higher importance than my articles even after I disallowed it in robots.txt). Seems to ignore any additional information in sitemap, just link is scaned. Seems to sometimes ignore robots.txt without any reason. Displays links to pages with http permanent redirection. Displays links to removed pages, saying it's linked from another removed pages. Overal impression is really poor.</p>
+<h3>Yahoo</h3>
+<p>Yahoo is an undisputable winner and also a great surprise because I though it's backend is now the same as Bing's. Without any webmaster tools or analytics it is able to index new pages fast, it's search relevance is good enough and it even do XSL processing before indexing! (Google and Bing does not)</p>
+<h3>Summary</h3>
+<p>I made this survey so that I can decide which search api should I use for my site's search box. The decision is simple - it will be <a href="http://developer.yahoo.com/search/boss/">Yahoo BOSS</a>. The interesting thing is only that those other engines are so bad.</p>
+</div>
+<dl> <dt>Last update</dt><dd>201003250000</dd> </dl></body>
+</html>

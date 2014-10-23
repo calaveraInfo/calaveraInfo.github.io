@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+<head>
+<title>Java incremental compiler</title>
+</head>
+<body><h1 class="title">Java incremental compiler</h1>
+<div class="perex">
+<p>This article will be a little bit backwards. I originaly wanted to write down a simple productivity tip, but it's an opportunity to write about very important aspect of developers life. Since I don't want that tip to be lost, I will put it first and all the boring reasons for using it will come after.</p>
+</div>
+<div class="content">
+<p><strong>EDIT</strong>: I recently discovered the painfull fact that this  topic is MUCH more complicated than I could imagine. One has to  consider influence of build tools like ant or maven under different settings and runtime environment settings influence is also much bigger than I expected. Until major update is made to this article, it should be considered very inaccurate.</p>
+<h3>Incremental compiling and Java</h3>
+<p>I hope everybody knows what's incremental compiling. Suprisingly a lot  of people believe that standard Sun javac can do incremental compiling. I've heard this even from some senior developers I've met. But it's not true.</p>
+<p>To benefit from the speed of incremental compiling some other compiler must be used. If you use the Eclipse IDE, the easiest option is to use it's incremental compiler. Normally it's used in the background by the Eclipse itself to provide  compile-on-save functionality, but you can use it to replace Sun's standard javac in your ant scripts. Here's how:</p>
+<ul>
+<li> Configure ant builder in a standard way. </li>
+<li> Put <code>-Dbuild.compiler=org.eclipse.jdt.core.JDTCompilerAdapter</code> in the "Arguments" field on it's launch configuration "Main" tab. </li>
+<li> Make sure that the option "Run int the same JRE as the workspace" is chosen on the "JRE" tab. </li>
+</ul>
+<p>That's all. This simple tweak cut's compilation time for example at my current project from 20s to 7s.</p>
+<h3>Rhytm of thoughts</h3>
+<p>Why is it so important to save those few seconds? Let's write down the most important idea of this article right now.</p>
+<p><em> Every second a developer has to wait for some processing to finish has a DEVASTATING impact on his productivity. </em></p>
+<p>Why devastating, you ask? Because developers are humans too and they get bored when sitting and staring on a screen full of cryptic compiler output. You think build takes 30 seconds? No, it takes 15 minutes, a time to read two articles opened during that 30 seconds. And this is just the beginning.</p>
+<p>Very important thing in human life is rhytm. Rhytm of thoughts, rhytm of work, rhytm of speach and so on. The fact is that current computers destroy this rhytm. You feel tired after working with computer? You are lazy and slow when working with computer? This is because the machine forces you to accept it's rhytm and believe it or not, computers are still much slower than human brains. You think a one second delay is a minor inconvenience? Then ask yourself a question: "What makes the difference between genial and poor pianist?" The answer is: "Miliseconds." The difference between good song that gives you energy for the whole day and terrible song that will make you commit suicide may be a milisecond precize timing of a notes.</p>
+<p>So my rules for enjoyable java developer's life are:</p>
+<ul>
+<li> Buy a <a href="http://www.zeroturnaround.com/jrebel/">JRebel</a>. This is a must if you want to work seriously with java. </li>
+<li> Mimic the deployed file resources structure in your project and run your developement environment directly in this structure, i.e. if you change <em>anyting</em> it must be immadiately visible in your developement environment. </li>
+<li> If you for some reason can't mimic the deployment structure, use highly efficient build scripts to propagate changes automatically on save. Hence the tip in the first chapter. (The sad thing at my current project is that I can't use it at all because  <a href="http://stackoverflow.com/questions/2363168/what-may-be-the-reasons-of-eclipse-not-running-custom-ant-during-its-automatic-bu">Eclipse's auto builder settings is incredibibly buggy</a>.) </li>
+</ul>
+</div>
+<dl> <dt>Last update</dt><dd>201003240000</dd> </dl></body>
+</html>

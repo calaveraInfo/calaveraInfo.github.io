@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<gpx version="1.1" creator="TrekBuddy 0.9.96" xmlns="http://www.topografix.com/GPX/1/1" xmlns:groundspeak="http://www.groundspeak.com/cache/1/0" xmlns:au="http://geocaching.com.au/geocache/1" xmlns:nmea="http://trekbuddy.net/2009/01/gpx/nmea">
+  <wpt lat="43.216805555" lon="5.509416663">
+    <time>2010-05-19T09:15:15.079Z</time>
+    <name>Auberge de Jeunesse de La Fantasse</name>
+  </wpt>
+  <wpt lat="43.246388887" lon="5.401527777">
+    <time>2010-05-20T20:45:06.703Z</time>
+    <name>Cigale Fourmi</name>
+  </wpt>
+  <wpt lat="43.214555554" lon="5.538861111">
+    <time>2010-05-21T19:42:01.187Z</time>
+    <name>Kayak</name>
+  </wpt>
+  <wpt lat="43.224361111" lon="5.541583333">
+    <time>2010-05-21T19:43:45.019Z</time>
+    <name>Camp</name>
+  </wpt>
+</gpx>

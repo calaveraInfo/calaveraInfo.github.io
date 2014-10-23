@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+<head>
+<title>Upload in pure Javascript WebDAV file manager</title>
+</head>
+<body>
+<h1 class="title">Upload in pure Javascript WebDAV file manager</h1>
+<div class="perex">
+<p>
+I've had idea of pure javascript webdav file manager in mind for almost half a year.
+I've found out that it's already been implemented by
+<a href="http://www.webdavsystem.com/ajaxfilebrowser/home">IT Hit company</a>,
+but it's commercial and very expensive so I decided to implement it
+myself. However there have been fundamental problem with file upload. Until now.
+</p>
+</div>
+
+<div class="content">
+<p>
+Ability of Javascript to send WebDAV request is not generaly a known fact.
+But today I worked on a proof of concept of a feature
+which I think has never been published before and which I'm excited about so much
+that I want to write about it even before the whole project is available.
+</p>
+<p>
+The major drawback of IT Hit's file browser is that it has to have their proprietary,
+non-standard WebDAV server for file uploads to work.
+And I think that it shouldn't be necessary
+in the future thanks to the new
+<a href="http://www.w3.org/TR/FileAPI/">Javascript File API</a>.
+</p>
+<p>
+Because the File API is already implemented in Firefox 3.6 I've tried it today with
+this code (ugly, incomplete, browser specific, but working):
+</p>
+
+<pre class="brush: javascript"><![CDATA[
+function fileReadFinished(evt) {
+    var request = new XMLHttpRequest();
+    var url = evt.target.context.treeNode.attributes.propfind.getHref()
+            + evt.target.filename;
+    request.open('PUT', url, false);
+    request.sendAsBinary(evt.target.result);
+    evt.target.context.treeNode.reload();
+}
+
+function uploadSendClicked(button, e) {
+    var input = $('#'+this.uploadInputId);
+    var files = input[0].files;
+    for (var i = 0; i < files.length; i++) {
+	    var file = files[i];
+	    var fileReader = new FileReader();
+	    fileReader.onload = fileReadFinished;
+	    fileReader.context = this;
+	    fileReader.filename = file.name;
+	    fileReader.readAsBinaryString(file);
+    }
+}
+]]></pre>
+
+<p>
+And it worked!!! I was able to upload some image to the server
+and then view it in a browser.
+</p>
+
+<p>
+This was my last obstacle in creating thick admin client for my pages
+without any server side backend (except for standard WebDAV, which is available in
+majority of servers). Yay!
+</p>
+
+</div>
+<dl>
+	<dt>Last update</dt><dd>201002220000</dd>
+</dl>
+</body>
+</html>

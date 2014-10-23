@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+	<head>
+		<title>An alternative approach to protection against leaving a webapp without logging out</title>
+	</head>
+	<body><h1 class="title">An alternative approach to protection against leaving a webapp without logging out</h1>
+<div class="perex">
+<p>
+One of the most controversial requirements on a web application
+is to deny returning of a user after that user
+has left the domain of a web application. It is a very
+common requirement among security conscious customers because
+it prevents an abuse of a session of a user who continues
+his browsing in the same browser window without logging out.
+</p>
+</div>
+<div class="content">
+<p>
+Sadly, this requirement goes against basic principles of the web and
+browsers not only doesn't give you any means to achieve it, 
+it also actively fights against this intention. How should we deal
+with it? Very common implementation of this requirement is to
+encapsulate the application into one big html frame. This solution
+has many disadvantages so I wanted something better and I've
+got an idea recently which I would like to discuss here.
+</p>
+<p>
+While trying to avoid the frame solution, we discussed the possibility
+of a "dead man's switch" in the form of an ajax call. After some tests we
+came to the conclusion that it wasn't possible due to the increased
+load, but it led me to another idea.
+</p>
+
+<p>
+My current idea is to monitor the
+time between leaving one page of the application and requesting
+for another. If this time is
+bigger than some sane limit, it's obvious that user has visited
+something else and the application should kick him out.
+</p>
+<p>The process and techniques are as follows:</p>
+<ol>
+	<li>
+When the javascript's <code>onbeforeunload</code> event is fired on the client side,
+perform an ajax query which tells the web application that user
+is leaving a page. On the server side, store the time of this query into the
+session.
+	</li>
+	<li>
+Place a filter in front of the whole application. This filter
+compares the time of the current request with the last ajax request time stored
+in session. If the difference is bigger than some limit,
+invalidate the session for the rest of the application.
+	</li>
+</ol>
+<p>
+This is just a skeleton of the solution and won't work in many cases, but
+the implementation (at least in Java backend environment)
+is just a few lines of javascript and a very short servlet filter (which
+implements both - ajax time storing and time difference checking features), so
+it's worth at least identifying the pros and cons.
+</p>
+<h3>OnBeforeUnload support</h3>
+<p>
+The previous implementation requires the use of the browser with <code>onbeforeunload</code>
+support. It's supported in all major browsers (except for Opera AFAIK), but
+it's not a W3C standard and we don't want to rely on the non standard features, right?
+</p>
+<p>
+Luckily a slight modification will help. The filter can be modified so that
+if there is no last ajax time at all, it assumes an unsupported client and lets the
+request go through. The security is decreased, but there is a choice now
+between security and accesibility (with enough security for majority of users).
+</p>
+<h3>Synchronicity of ajax requests</h3>
+<p>
+Important fact is the order in which ajax request and next page
+request comes. It's possible to manage order by using synchronous
+ajax, but it's generally not recomended technique. However assuming
+that request shuffling is very rare, a slight modification can help again.
+</p>
+<p>
+By deleting a last ajax time after computing the transition time (so
+there will be always only one last ajax time at most), this system
+survives one pair of shuffled requests (if it's in accessible mode
+mentioned above). It's not very obvious, the picture would help, but
+I'm running out of time now, so you have to trust me:-).
+</p>
+<p>
+Using of more browser windows with the same login makes this area more tricky,
+but more sophisticated logic should help.
+</p>
+
+<h3>What you can get</h3>
+<p>
+It's simple, this way you get your security-freak customer satisfied and
+maintain important aspects of web applications working, like back and forward
+buttons, bookmarks etc. You also don't have to pay much for that by the means of
+development resources or server load. So, what do you think?
+</p>
+
+</div>
+<dl> <dt>Last update</dt> <dd>201105220000</dd> </dl></body>
+</html>

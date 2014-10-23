@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+<head>
+<title>Safe unicode characters</title>
+</head>
+<body>
+<h1 class="title">Safe unicode characters</h1>
+<div class="perex">
+<p>
+One of the downsides of unicode character set is that majority of fonts
+doesn't contain glyphs for all unicode characters (because it's obviously
+impossible) so you never know which character will be displayed correctly
+and which won't. 
+</p>
+</div>
+
+<div class="content">
+<p>
+This means that if someone uses some "special" character (for example '⚓'), he
+should check if it is
+<a href="http://stackoverflow.com/questions/1952649/is-it-safe-to-use-non-ascii-unicode-characters-like-in-web-sites/">correctly displayed</a>
+on all target platforms (which
+often means every existing platform).
+</p>
+<p>
+This is generaly not possible. I tried to find some
+"list of safe characters"
+recently and I found <a href="http://en.wikipedia.org/wiki/Wgl4">WGL4</a>. I
+think that there is enough propability that if it works on Windows,
+it will work everywhere.
+</p>
+</div>
+<dl>
+	<dt>Last update</dt><dd>201002020000</dd>
+</dl>
+</body>
+</html>

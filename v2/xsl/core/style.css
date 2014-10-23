@@ -1,0 +1,268 @@
+@CHARSET "UTF-8";
+
+body {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	color: #454545;
+	font-family: 'Sorts Mill Goudy', serif;
+}
+
+a img {
+	border: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+p {
+	text-align: justify;
+	line-height: 1.5em;
+	font-family: sans-serif;
+}
+
+div#pageContent ul,
+div#pageContent ol {
+    line-height: 1.5em;
+    font-family: sans-serif;
+}
+
+div#pageContent p a:after,
+div#pageContent ul a:after {
+	content: "▪";
+}
+div#pageContent p a:visited:after,
+div#pageContent ul a:visited:after {
+	color: #D8346E;
+}
+
+div#pageContent p a:active,
+div#pageContent ul a:active {
+	background: #EEEEEE;
+}
+div#pageContent p a:hover,
+div#pageContent ul a:hover {
+	color: #D8346E;
+}
+
+div#body {
+	padding: 0;
+	margin: 0;
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+}
+
+div.mainMenu li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	border-right: 1px solid black;
+	list-style-type: none;
+}
+
+div.mainMenu li a {
+	display: inline-block;
+	margin: 0;
+	padding-left: 8px;
+	padding-right: 120px;
+	padding-top: 35px;
+	padding-bottom: 5px;
+	color: black;
+	background: white;
+	text-transform: uppercase;
+	font-size: small;
+	font-weight: normal;
+}
+
+div.mainMenu ul {
+	border-bottom: 6px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	overflow: auto;
+	padding: 0;
+	margin: 0;
+}
+
+div.mainMenu li.selected,
+div.mainMenu li.selected a,
+div.mainMenu li.selected a:hover,
+div.mainMenu li.selected:hover {
+	color: white;
+	background: black;
+}
+
+div.mainMenu li:hover,
+div.mainMenu li a:hover {
+	color: black;
+	background: #EEEEEE;
+}
+
+div#logoImage{
+	float: left;
+	margin-top: 4px;
+	margin-left: 40px;
+	margin-bottom: 0px;
+	margin-right: 40px;
+}
+
+div#logoText{
+	font-size: xx-large;
+	margin-top: 30px;
+}
+
+div#siteHeader {
+	overflow: auto;
+}
+
+div#siteHeader,
+div.sideMenu,
+div.articleInfoBox,
+div.contentSection,
+div#footer {
+	margin-top: 16px;
+}
+
+div#siteHeader,
+div.sideMenu ul,
+div.articleInfoBox,
+div.contentSection,
+div#footer {
+	border-top: double medium black;
+	border-bottom: solid 5px black;
+}
+
+div.sideMenu {
+	float: right;
+}
+
+div.sideMenu ul {
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 16px;
+}
+
+div.sideMenu {
+	width: 180px;
+}
+
+div.sideMenu ul li a {
+	display: block;
+	font-size: small;
+}
+
+div.sideMenu ul li a:hover {
+	background: #EEEEEE;
+}
+
+div.sideMenu ul li {
+	border-top: solid 1px #EEEEEE;
+	list-style: none;
+}
+
+div#pageContent {
+	margin-right: 190px;
+	color: #555555;
+}
+
+div#mainContent {
+	overflow: auto;
+}
+
+table.galleryTable td {
+	text-align: center;
+	border: solid 1px #CCCCCC;
+	padding: 6px;
+}
+
+table.galleryTable td:hover {
+	background: #EEEEEE;
+}
+
+table.galleryTable {
+	border-spacing: 8px;
+	width: 100%;
+}
+
+ol.contentItemList {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    padding: 0;
+    margin: 0;
+    color: black;
+    font-family: 'Sorts Mill Goudy', serif;
+}
+
+div#footer {
+	text-align: center;
+	margin-top: 16px;
+	margin-bottom: 40px;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+div.articleInfoBox {
+	display: table;
+	width: 100%;
+}
+
+div.listItemHeader,
+div.listItemBody {
+	display: table-row;
+}
+
+div.listItemDate,
+div.listItemActions {
+    border-right: 1px solid #CCCCCC;
+	width: 200px;
+	font-family: 'Sorts Mill Goudy', serif;
+	font-size: large;
+}
+
+div.listItemActions,
+div.listItemContent {
+    border-top: 1px solid #CCCCCC;
+}
+
+div.listItemActions,
+div.listItemDate,
+div.listItemContent,
+div.listItemTitle {
+	padding: 5px;
+	display: table-cell;
+	vertical-align: top;
+}
+
+div.tocPlaceholder {
+	float: left;
+	width: 250px;
+	margin-right: 20px;
+	border-right: solid 1px #CCCCCC;
+	border-bottom: solid 1px #CCCCCC;
+	margin-top: 19px; /* 3px more than div.contentSection */
+}
+
+div.tocPlaceholder ul {
+	list-style-type: none;
+	padding: 0;
+	padding-left: 10px;
+}
+
+div.tocPlaceholder a:after {
+	content: "" !important;
+}
+
+.title {
+	margin-top: 20px;
+}
+
+.js-kit-comments {
+	padding-top: 20px;
+}

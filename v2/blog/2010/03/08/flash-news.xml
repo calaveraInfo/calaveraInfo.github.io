@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+<head>
+<title>Flash news</title>
+</head>
+<body><h1 class="title">Flash news</h1>
+<div class="perex">
+<p>I have so many ideas yet no time to realize them or even write about them. So there are my latest todo notes for myself.</p>
+</div>
+<div class="content">
+<h4>Comments service</h4>
+<p>I've always thought that some kind of "comments service" exists but I've never imagined something so complex and useful like <a href="http://intensedebate.com/">Intense Debate</a>, <a href="http://disqus.com/">Disqus</a> and <a href="http://js-kit.com/">JS Kit ECHO</a>. My static pages are not so static any more, everybody can leave a comment on an article. I've finally chosen JS Kit although it's payed service since I hope that those payments are guarantee that it won't go out of market.</p>
+<h4>Pure javascript image resize before upload</h4>
+<p>Thanks to <a href="http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2010-March/025395.html">my comment on Web Applications 1.0 standard</a> I was pointed out to a possibility to load image to canvas tag via File API. Why is this important? Because this enables us to do <a href="http://stackoverflow.com/questions/2369788/pure-javascript-image-handling-library-in-binary-form-not-through-dom">client side image resizing before upload</a> in pure javascript. No plugin needed. This is a major breakthrough and I can't wait to try to combine it with my <a href="../../02/22/pure-javascript-webdav-file-manager.xml">webdav lib</a>.</p>
+<h4>Many JSF workarounds</h4>
+<p>Everybody knows that JSF (&lt;2.0) sucks. We had to work with it anyway and therefore we had to come up with our custom workarounds for JSF weaknesses like <a href="https://javaserverfaces-spec-public.dev.java.net/issues/show_bug.cgi?id=480">custom required validation</a> or <a href="https://javaserverfaces-spec-public.dev.java.net/issues/show_bug.cgi?id=1">cross field validation</a> (notice the bug number). And many more. I just don't have a time to write about it because deadlines are comming and during my free time I have been busy with my website's XSL templates consolidation. And I have a personal life to:-).</p>
+<h4>MSYS Git developers</h4>
+<p>MSYS Git developers are good <a href="http://code.google.com/p/msysgit/issues/detail?id=383">example of open source arogancy</a> with their "we are not payed so we can f**k up with our users" attitude. Let me tell the whole story (which is already deleted from the issue tracker).</p>
+<p>Johannes Schindelin flaged my comment #5 as offensive. He threatened that he will delete the whole issue in case of similar comments. Then he deleted comments from some people saying that it's like shooting in your own foot. You get it? I hope he will take his mother as a hostage next time. Then he deleted comments from some people saying that they have the same problem. Then he closed the bug without any validation. And when I asked anyone for working solution he wrote that the issue wasn't bug and that it's just my problem. Well, guess what. He's right, it's not my problem any more.</p>
+<h4>Flight Gear Aviator joystick XML</h4>
+<p>Last but not least. I bought Saitek Aviator joystick for my Flight Gear installation but I didn't noticed that they sold me AV8R-03 instead of AV8R-01.  Point is that 01 is a cheap but sufficient aviation joystick but 03 is a piece of crap, currently unsupported by Flight Gear out of the box, so I'm trying to write my own controller XML. And it's not so easy as I thought, there has bean terrible casulties in my Boeing 777 during testing:-). I will publish it once it's ready.</p>
+</div>
+<dl> <dt>Last update</dt><dd>201003080000</dd> </dl></body>
+</html>

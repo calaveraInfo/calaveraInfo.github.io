@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs">
+<head>
+<meta name="weblibController" content="CalaveraBlogItem" />
+<meta name="weblibAvailableLanguage" content="en" />
+<title>Fonetické mapování azbuky na klávesnici s latinkou na linuxu</title>
+<style type="text/css">
+	table.phoneticRussianTable td {border: solid 1px black; margin: 0;}
+	table.phoneticRussianTable {border-collapse: collapse;}
+</style>
+</head>
+<body>
+
+<h1 class="weblibTitle">Fonetické mapování azbuky na klávesnici s latinkou na Linuxu</h1>
+<h1 class="weblibTitle" xml:lang="en">Phonetic mapping of Russian alphabet to Roman alphabet keyboard on Linux</h1>
+
+<p class="weblibPerex">
+Jak jsou mapována písmena azbuky, která nemají fonetický ekvivalent v latince?
+</p>
+
+<p class="weblibPerex" xml:lang="en">
+How are mapped Russian alphabet letters which do not have phonetic ekvivalent in
+Roman alphabet?
+</p>
+
+<div class="weblibContents weblibSerializeOnlyContent">
+<p>
+Nedávno jsem potřeboval ve větší míře psát na svém počítači v ruštině,
+takže jsem si v KDE (3.5.8) přidal ruské rozložení klávesnice ve variantě
+"phonetic". Tato varianta znamená, že písmena azbuky, která mají zvukový
+ekvivalent v latince jsou na ně mapována.
+Píšu všema deseti a učit se úplně nové rozložení by bylo peklo.
+Nikde na netu jsem ale nenašel přesně to mapování, které je použito v mém
+Linuxu, takže jsem si tabulku rozložení nestandardních písmen musel sestavit sám.
+Vypadá takhle:
+</p>
+</div>
+
+<div class="weblibContents weblibSerializeOnlyContent" xml:lang="en">
+<p>
+Recently I needed to write considerable amount of Russian text on my
+computer so I added Russian keyboard layout in my KDE (3.5.8) in
+"phonetic" variant. This variant means that letters of Russian alphabet
+which do have phonetic ekvivalent in Roman alphabet are mapped to them.
+I did it because I can write with all ten fingers and learning
+absolutely new layout would be difficult. But I didn't find a proper
+mapping table for my Linux instalation so I had
+to write table for non-standard letters on my own. It looks like this:
+</p>
+</div>
+
+<div class="weblibContents weblibSerializeOnlyContent weblibNoLanguageFilter">
+<table class="phoneticRussianTable">
+<tr><td>В</td><td>Ё</td><td>Ж</td><td>Х</td><td>Ч</td><td>Ш</td><td>Щ</td><td>Ъ</td><td>Ь</td><td>Э</td><td>Ю</td><td>Я</td></tr>
+<tr><td>W</td><td>3, 4</td><td>V</td><td>H</td><td>=</td><td>[</td><td>]</td><td>5, 6</td><td>X</td><td>\</td><td>~</td><td>Q</td></tr>
+</table>
+</div>
+
+</body>
+</html>

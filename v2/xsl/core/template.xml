@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<title>Title</title>
+    <script type="text/javascript" src="jquery-1.4.4/jquery-1.4.4.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<meta name="include" content="pageHeaders"/>
+	<meta name="include" content="plugins"/>
+	<link href='http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy:400,400italic&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'/>
+	<link href="feed.xml" type="application/atom+xml" rel="alternate" title="This site's feed (optional)"/>
+</head>
+<body>
+	<div class="asyncJs optional" style="display: none;">Google analytics script and others</div>
+	<div id="body">
+		<div class="mainMenu">
+			<ul id="mainMenu">
+				<li class="selected">
+					<a href="#">Blog</a>
+				</li>
+				<li>
+					<a href="#">Projects</a>
+				</li>
+				<li>
+					<a href="#">Contact</a>
+				</li>
+			</ul>
+		</div>
+		<div id="siteHeader" class="borderedBox">
+			<div id="logoImage"><img src="logo.jpg" class="headerLogoImage" alt="Logo"/></div>
+			<div id="logoText">Logo text</div>
+		</div>
+		<div id="mainContent">
+			<div class="sideMenu">
+				<ul id="sideMenu">
+					<li>
+						<a href="#">Sourceforge</a>
+					</li>
+					<li>
+						<a href="#">Linked-in</a>
+					</li>
+					<li>
+						<a href="#">Stackoverflow</a>
+					</li>
+				</ul>
+				<ul id="sideMenu2" class="optional">
+					<li>
+						<a href="#">Yacht club</a>
+					</li>
+					<li>
+						<a href="#">Golf club</a>
+					</li>
+				</ul>
+				<ul id="sideMenu3" class="optional">
+					<li class="selected">
+						<a href="#">Actual page specific menu</a>
+					</li>
+				</ul>
+				<div id="sideMenu4" class="optional">
+					Tweets
+				</div>
+			</div>
+			<div id="pageContent">
+				<div class="articleInfoBox optional"></div>
+				<div id="likes" class="optional">Likes</div>
+				<div class="tocPlaceholder">Table of contents</div>
+				<div class="mainDocument">
+					<div class="contentSection">
+						Main document
+					</div>
+				</div>
+				<div class="mainDocumentFooter optional">Main document footer</div>
+			</div>
+		</div>
+		<div id="footer">Footer</div>
+	</div>
+</body>
+</html>

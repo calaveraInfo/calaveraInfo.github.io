@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+	<head>
+		<title>How to install ATI proprietary graphics driver (fglrx) on Debian</title>
+	</head>
+	<body><h1 class="title">How to install ATI proprietary graphics driver (fglrx) on Debian</h1>
+<div class="perex">
+<p>I've fought my 5874<sup>th</sup> battle with ATI graphic card driver in Debian and I really have to finally write down some notes for myself for the next time. (Although better solution would be to finally buy NVidia).</p>
+</div>
+<div class="content">
+<p>The main problem with fglrx package is that <a href="http://wiki.debian.org/ATIProprietary">installing it</a> is only ONE PART of the process. If you want to have 3d acceleration, you'll need to <a href="http://wiki.cchtml.com/index.php/Debian_Installation_Guide">build a kernel module</a>. It's not that difficult, but if you don't even know about it, your desktop may become insanely slow during any regular system upgrade. Funny thing is that googling the symptoms of the problem ("failed to load module dri" in <code>/var/log/Xorg.0.log</code>) won't bring you even close to the solution. The important lines, that actually build the modules, are:</p>
+<pre>$ module-assistant prepare<br />$ module-assistant update<br />$ module-assistant a-i fglrx</pre>
+<p>(Are the guys at Debian wiki really thinking that 3d is so unnecessary that it deserves only a footnote without any specific instructions?)</p>
+</div>
+<dl> <dt>Last update</dt> <dd>201006240000</dd> </dl></body>
+</html>

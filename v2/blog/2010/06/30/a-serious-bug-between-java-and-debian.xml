@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+	<head>
+		<title>PermGen error</title>
+	</head>
+	<body><h1 class="title">A serious bug between Java and Debian</h1>
+<div class="perex">
+<p>After a recent upgrade of my Debian testing (squeeze) I was hit by a Sun Java bug that was so serious that the only thing I could say was "wow".</p>
+</div>
+<div class="content">
+<p>There is a <a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6342561">bug in Sun JVM</a> that is revealed by a <a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=560044">new default networking setting in Debian</a>. What is the effect of this bug? Nothing less than the total breakage of Java networking. I can't stress how serious it is (if you still don't realize it, think about Java debugging, servlet containers, JMX etc.), but according to the comments on both bugs neither of those organisations is interested in fixing it! This is really scary.</p>
+<p>As a side note I would like to point out that I lost another hour or two of my life because of this bug, since the symptoms are not giving you a smallest clue. In my case I saw this after starting Tomcat from Eclipse in debug mode:</p>
+<pre>FATAL ERROR in native method: JDWP No transports initialized</pre>
+<p>And some other useless crap. I'm becoming too old for this, I have better things to do in my life...</p>
+</div>
+<dl> <dt>Last update</dt> <dd>201006300000</dd> </dl></body>
+</html>

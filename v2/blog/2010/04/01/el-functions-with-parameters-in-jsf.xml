@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+<head>
+<title>EL functions with parameters in JSF</title>
+</head>
+<body><h1 class="title">EL functions with parameters in JSF</h1>
+<div class="perex">
+<p>We managed to get rid of one of the biggest annoyance in JSF.</p>
+</div>
+<div class="content">
+<h3>Project</h3>
+<ul>
+<li>JSF</li>
+<li>MyFaces</li>
+<li>Trinidad</li>
+<li>Spring</li>
+<li>WebFlow</li>
+</ul>
+<h3>The problem</h3>
+<p>In the <code>tr:table</code> and similar iterating components it isn't possible to print raw data with some non-trivial formatter or translator. Possible workarounds are:</p>
+<ul>
+<li> Implement formating function in the form of getter directly on the class of objects that are iterated over. (Don't you ever dare to do this, you would go to software engeneering hell for this.) </li>
+<li> Implement a JSF convertor. (This is time consuming, not intended for this use case and generally stupid.) </li>
+</ul>
+<h3>Solution</h3>
+<p>Use an alternative <a href="http://docs.jboss.org/seam/2.2.0.GA/en-US/html/elenhancements.html">JBoss EL resolver</a>. It implements a feature to call methods with parameters. Our current workflow:</p>
+<ol>
+<li> Implement a formatter as a String returning method on singleton bean in spring context. </li>
+<li> Inject this bean to page's backing bean. </li>
+<li> In the tr:table body call formatter's method with current iteration value as a parameter. </li>
+</ol>
+<h3>Installation</h3>
+<p>Download JBoss, copy <code>jboss-el.jar</code> to your project's classpath and add <code>context-param</code> to your <code>web.xml</code>:</p>
+<pre class="brush: xml"><![CDATA[
+<context-param>
+    <param-name>com.sun.faces.expressionFactory</param-name>
+    <param-value>org.jboss.el.ExpressionFactoryImpl</param-value>
+</context-param>
+]]></pre>
+<p><strong>NOTE:</strong> Param name is JSF implementation specific, so for example it's <code>org.apache.myfaces.EXPRESSION_FACTORY</code> for MyFaces!</p>
+<p>Sources:</p>
+<ul>
+<li> <a href="http://www.ilikespam.com/blog/el-function-parameters-with-jboss-el">Installation</a> </li>
+<li> <a href="http://stackoverflow.com/questions/2015544/using-jboss-el-with-websphere/2552076">Param name problem</a> </li>
+<li> <a href="http://stackoverflow.com/questions/2682196/is-it-possible-to-use-objects-as-function-paremeters-in-el-with-jboss-el-resolver">Strange documentation formulation</a> </li>
+</ul>
+</div>
+<dl> <dt>Last update</dt><dd>201004010000</dd> </dl></body>
+</html>

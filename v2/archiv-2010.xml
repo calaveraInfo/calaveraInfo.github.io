@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="xsl/site/blogArticleList.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs">
+<head>
+<title>Blog</title>
+<meta name="pageDirFromContextPath" content="" />
+<meta name="mainMenuSelected" content="menuItemBlog" />
+</head>
+<body>
+<h3 class="title">Archiv článků z roku 2010 a dříve</h3>
+<ul class="articlesList">
+<li><a href="blog/2010/04/01/el-functions-with-parameters-in-jsf.xml">EL functions with parameters in JSF</a></li>
+<li><a href="blog/2010/03/25/subjective-search-engine-comparison.xml">Subjective search engine comparison</a> </li>
+<li><a href="blog/2010/03/24/java-incremental-compiler.xml">Java incremental compiler</a> </li>
+<li><a href="blog/2010/03/23/lyon/index.xml">Lyon, Annecy, Vienne</a> </li>
+<li><a href="blog/2010/03/08/flash-news.xml">Flash news</a> </li>
+<li><a href="blog/2010/02/28/preparing-bootable-usb-stick-with-debian-squeeze-installer-in-windows.xml">Preparing bootable usb stick with debian squeeze installer in windows</a> </li>
+<li><a href="blog/2010/02/27/caching-issues-when-serving-static-files-with-servlet-container.xml">Caching issues when serving static files with servlet container</a> </li>
+<li><a href="blog/2010/02/22/pure-javascript-webdav-file-manager.xml">Pure javascript webdav file manager</a> </li>
+<li><a href="blog/2010/02/16/html-5-xml-compatibility.xml">Html 5 xml compatability</a> </li>
+<li><a href="blog/2010/02/02/safe-unicode-characters.xml">Safe unicode characters</a> </li>
+<li><a href="blog/2010/01/30/access-session-scoped-bean-in-httpsessionlistener.xml">Access session scoped bean in HttpSessionListener</a> </li>
+<li><a href="blog/2010/01/09/stranky-spusteny.xml">First blog post</a> </li>
+<li><a href="blog/2009/12/18/kyrgyzstan/index.xml">Kyrgyzstán 2009</a> </li>
+</ul></body>
+</html>

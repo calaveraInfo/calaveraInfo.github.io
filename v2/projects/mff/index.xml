@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../xsl/site/projects.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs">
+<head>
+<title>Softwarové inženýrství pro praxi</title>
+</head>
+<body><h1>Softwarové inženýrství pro praxi</h1>
+<p>Na této stránce se nacházejí informace ke cvičením předmětu <a href="https://is.cuni.cz/studium/predmety/index.php?do=predmet&amp;kod=NSWI129">NSWI129</a> specifické pro skupiny, které vyučuje František Řezáč. Pro obecné informace o cvičení navštivte prosím  <a href="http://www.profinit.eu/cz/podpora-univerzit/univerzitni-vyuka/swi129/cviceni-swi129">hlavní stránky cvičení</a>.</p>
+<h3>Komunikace</h3>
+<h4>Email</h4>
+<p>Emaily posílejte na moji adresu uvedenou na <a href="http://www.profinit.eu/cz/podpora-univerzit/univerzitni-vyuka/swi129">hlavních stránkách předmětu</a> a kdekoli v předmětu zprávy uveďte kód "SWI129" - zabráníte tím zařazení svého emailu mezi spam a email bude vyřizován prioritně. Pokud na email nedostanete odpověď do nejbližšího cvičení, urgujte prosím jeho vyřízení ústně.</p>
+<h4>Grupík</h4>
+<p>Informace do
+<a href="https://is.cuni.cz/studium/index.php">grupíku</a>
+zadávám najednou, po větších dávkách (zadávání je poměrně časově náročné). Interně však mám stále aktuální seznam splněných povinností a docházky a pokud si nebudete něčím jistí, můžete se na mě obrátit emailem nebo během cvičení.</p>
+<p>Docházkové listy (ze cvičení, kde jsem byl přítomen) jsou archivovány a pokud budete mít pocit, že údaje v grupíku nejsou správné, můžete je kdykoli reklamovat.</p>
+<h3>Semestrální práce</h3>
+<h4>Odevzdání</h4>
+<p>Semestrální práci odevzdávejte ve formátu PDF s názvem podle následující formy (bez diakritiky, vše malými písmeny): <code>YYYYMMDD-příjmení-jméno-</code><code>verze-</code><code>název práce.pdf</code>, kde YYYYMMDD je datum prvního odevzdání práce. Verze může být zapsána libovolně, ale při textovém řazení musí zachovávat časovou posloupnost odevzdání jednotlivých verzí práce.
+Pro práce, které přišly před uveřejněním tohoto pokynu a neměly ve svém názvu verzi, byla zvolena verze "0.1"
+</p>
+<h4>Dodatečné úkoly</h4>
+<p>
+V případě nestandarního průběhu plnění povinností tohoto předmětu
+je dotyčný povinnen vypracovat některý z dodatečných úkolů.
+Mezi nestandarní průběh jsou počítány tyto situace:
+</p>
+<ul>
+<li>Pozdní odevzdání tématu semestrální práce</li>
+<li>Pozdní odevzdání semestrální práce</li>
+<li>Větší než povolená absence (včetně například odjezdu na Erasmus apod.)</li>
+<li>Uznání docházky a úkolů z minulého roku (pro studenty, kteří předmět opakují)</li>
+</ul>
+<p>
+Zadán může být jeden z následujících úkolů:
+</p>
+<ul>
+<li>Odevzdání všech čtyř praktických úkolů ze cvičení (místo standardních tří)</li>
+<li>
+Referát na libovolně zvolené téma probírané v
+<a href="http://www.crosstalkonline.org/">magazínu o softwarovém inženýrství - Crosstalk Online</a>.
+V tomto případě před samotným vypracováním zašlete nejdříve vybrané téma vyučujícímu, 
+aby nedošlo k paralelnímu vypracování stejného tématu. Práci je možné započít až po schválení!
+</li>
+</ul>
+<p>
+Každý případ nestadardního průběhu je řešen samostatně a
+konkrétní zadání závisí na dohodě s vyučujícím.
+</p>
+
+<h4>Důležité principy (co je hodnoceno)</h4>
+<p>
+Práce je zaměřena na procvičení obecných pravidel pro psaní
+technického textu, avšak s motivací vycházející z následného
+praktického použití. Je dobré mít na paměti
+následující konečné důsledky obecných principů:
+</p>
+<ul>
+<li>
+Jednoznačnost: Je potřeba specifikovat funkce tak, aby text neumožňoval
+dvojí výklad a tím možnost napadení výsledného produktu ze strany zákazníka.
+</li>
+<li>
+Úplnost: V dokumentu je potřeba podchytit všechny (i nepřímo)
+implikované skutečnosti a požadavky. Jakákoliv šedá zóna
+opět umožňuje napadení výsledného produktu.
+</li>
+<li>
+Úspornost: Jakýkoli zbytný text nebo literární obraty jsou nežádoucí, protože
+zvyšují pravděpodobnost, že některá ze zainteresovaných
+stran přehlédne informace, které jsou podstatné, nebo se specifikací
+nebude zabývat vůbec.
+</li>
+</ul>
+<h4>Časté problémy</h4>
+<ul>
+<li>
+Používání obecných kvantifikátorů: Ačkoli někdy mají
+obecné kvantifikátory ("všechno", "každý"...) své odůvodnění,
+ve většině případů se jedná o příznak šedé zóny (a lenosti myslet
+konkrétně).
+</li>
+<li>
+Slovní popis místo nákresu: Je nežádoucí používat
+slovní popis pro skutečnosti, které je možné vyjádřit
+diagramem nebo obrázkem. Toto platí hlavně pro
+popis GUI!
+</li>
+<li>
+Použití knižního stylu: V technické dokumentaci
+je dobré používat co nejvíce strukturovaného textu
+(odrážky, kapitoly, tabulky ...). Delší odstavec
+souvislého textu je vždy podezřelý!
+</li>
+</ul>
+
+<h3>Poznámky k hodinám</h3>
+<h4>1. 11. 2010</h4>
+<dl> <dt>Téma</dt> <dd>Architektura, design, konstrukce</dd> <dt>Typ</dt> <dd>Teoretické</dd> </dl>
+<p>Zápis z diskuzí: <a href="2010/architektura-konstrukce-1720.txt">17:20</a>, <a href="2010/architektura-konstrukce-1900.txt">19:00</a>.</p>
+
+<h4>Bude doplněno</h4>
+<ul>
+<li>
+Další hodiny
+</li>
+<li>
+Slidy ze cvičení
+</li>
+</ul>
+</body>
+</html>

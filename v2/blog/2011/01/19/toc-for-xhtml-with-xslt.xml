@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+	<head>
+		<title>TOC for XHTML with XSLT</title>
+	</head>
+	<body><h1 class="title">TOC for XHTML with XSLT</h1>
+<div class="perex">
+<p>
+Creating table of contents of XHTML document during
+XSL transformation is surprisingly difficult task and
+therefore it is often done improperly. There is a
+<a href="http://www.xmlplease.com/tocxhtml">very good analysis of this problem</a>,
+but the proposed solution has many disadvantages, so I
+tried to figure out a better algorithm, which would be
+generaly more suitable for
+pure functional programming languages like XSL.
+</p>
+</div>
+<div class="content">
+<h3>Disadvantages of existing solution</h3>
+<p>
+There is a fairly complex solution of TOC for XHTML in the article
+mentioned above, but it has following disadvantages:
+</p>
+<ul>
+    <li>
+It uses XSLT 2.0 features. Since I'm using browsers
+for doing
+the transformation (XSLT 1.0 is still the only version
+supported by all browsers), this is a showstopper for me.
+    </li>
+    <li>
+It is not generic enough. It is tied to XHTML tag structure (tag names,
+tag hierarchy, number of tags) and therefore it isn't usable elsewhere
+or in not-so-strict hierarchy. It also doesn't have an easy way to
+filter some headings off.
+    </li>
+    <li>
+Although it's size is decent, it's still pretty long.
+    </li>
+</ul>
+<p>
+Because of those drawbacks I decided to investigate the possibility
+of an alternative, more recursive-based, algorithm.
+</p>
+<h3>My solution</h3>
+<p>
+There are two subproblems in creating a TOC: Creating
+an anchor ids and creating the table itself.
+</p>
+<h4>Chapter numbering</h4>
+<p>
+Since properly generated chapter number (e.g. 4.2.5.) is unique
+in the document, I decided to use it as anchor ids (in the same way
+as in the mentioned article). My design of
+recursive algorithm for this is as follows:
+</p>
+<pre class="brush:xml"><![CDATA[
+<xsl:template mode="tocNumber" match="*">
+    <xsl:variable name="currentHeadingNumber" select="number(substring(local-name(), 2))"/>
+    <xsl:variable name="previousLevelNumber" select="number(substring(local-name(preceding::*[number(substring(local-name(), 2)) &lt; $currentHeadingNumber][1]), 2))"/>
+
+	<!--
+	Recursively print the number of higher level chapter
+	-->
+    <xsl:apply-templates mode="tocNumber" select="preceding::*[number(substring(local-name(), 2)) = $previousLevelNumber][1]"/>
+
+	<!-- Print the number of this chapter -->
+    <xsl:value-of select="count(preceding::*[number(substring(local-name(), 2)) = $currentHeadingNumber]) - count(preceding::*[number(substring(local-name(), 2)) = $previousLevelNumber][1]/preceding::*[number(substring(local-name(), 2)) = $currentHeadingNumber]) + 1"/>
+    <xsl:text>.</xsl:text>
+</xsl:template>
+]]></pre>
+<p>Some notes:</p>
+<ul>
+    <li>
+When <code>tocNumber</code> template is applied on a heading tag itself, it produces a (unique)
+chapter number (e.g. "4.2.5.").
+    </li>
+    <li>
+"Levels" of headings are determined in the begining.
+Algorithm works with header "levels", which are numbers and the only
+important fact is relation between them, not absolute heading
+hierarchy.
+    </li>
+    <li>
+Actual levels ("currentHeadingNumber" and "previousLevelNumber")
+are generated directly from tags, using the fact that
+XHTML header tag names contain number. When this is not true,
+levels would be determined by some "dictionary" process.
+Also the fact that no other XHTML tag name contains
+number is used in xpath expressions.
+    </li>
+    <li>
+Number of heading in it's level is computed as:
+(number of all previous current level headings) - (number of
+current level headings before the first higher level heading) 
+    </li>
+</ul>
+<h4>TOC generation</h4>
+<p>
+TOC generation itself builds over the same principles as
+chapter numbering - recursion and heading levels.
+</p>
+<pre class="brush:xml"><![CDATA[
+<xsl:template match="*" mode="printToc">
+    <xsl:variable name="currentHeadingNumber" select="number(substring(local-name(), 2))"/>
+    <xsl:variable name="nextHeadingNumber" select="number(substring(name(following::*[string(number(substring(local-name(), 2))) != 'NaN'][1]), 2))"/>
+    <xsl:variable name="tocNumber"><xsl:apply-templates select="." mode="tocNumber"/></xsl:variable>
+
+    <li>
+    	<!-- Print current heading -->
+        <a href="#h{$tocNumber}">
+            <xsl:value-of select="$tocNumber"/>&#160;
+            <xsl:value-of select="."/>
+        </a>
+        
+        <!-- If the following heading is in the lower
+        level, apply this template on all headings of that level
+        that occurs before the first heading of the same or
+        higher level than current heading -->
+        <xsl:if test="$nextHeadingNumber &gt; $currentHeadingNumber">
+            <ul>
+                <xsl:variable name="nextLevelCount" select="count(following::*[local-name() = concat('h', $currentHeadingNumber)][1]/preceding::*[local-name() = concat('h', $nextHeadingNumber)]) - count(preceding::*[local-name() = concat('h', $nextHeadingNumber)])"/>
+                <xsl:apply-templates mode="printToc" select="following::*[local-name() = concat('h', $nextHeadingNumber)][(position() &lt; ($nextLevelCount + 1)) or ($nextLevelCount &lt; 1)]"/>
+            </ul>
+        </xsl:if>
+    </li>
+</xsl:template>
+]]></pre>
+<p>
+For printing a complete TOC this template has to be applied on all
+top level headings, for example like this:
+</p>
+<pre class="brush:xml"><![CDATA[
+<xsl:template match="h:html" mode="printCompleteToc">
+	<ul>
+		<xsl:apply-templates mode="printToc" select="h:body/h:h1"/>
+	</ul>
+</xsl:template>
+]]></pre>
+<p>Some notes:</p>
+<ul>
+    <li>
+There has to be another (very simple) template that generates
+appropriate id attributes in actual heading tags, so that anchors are
+functional.
+    </li>
+    <li>
+All examples are only a notepad edited versions of a real implementation
+which I'm using on <a href="../../../2010/06/21/permgen-error.xml">some of my pages</a>
+and may not be even syntacticaly correct. They are presented
+only to ilustrate principles.
+    </li>
+</ul>
+<h3>Conclusion</h3>
+<p>
+I created XSL templates for constructing table of contents out of
+headings in XHTML document which doesn't suffer from drawbacks identified
+in existing solution. Although simplicity of templates comes for the
+price of insanely complicated xpath expressions I would prefer this
+solution even for XSLT 2.0 environments for it's flexibility.
+</p>
+</div>
+<dl> <dt>Last update</dt> <dd>201101190000</dd> </dl></body>
+</html>

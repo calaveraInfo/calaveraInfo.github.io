@@ -1,0 +1,21 @@
+- Rozdíl mezi architekturou a designem => definice
+  - Architektura obecnìjší pohled, design vìtší podrobnosti
+- Pøíklady prvkù architektury, designu a konstrukce
+  - Architektura
+    - Multi-tier
+    - Client-server
+  - Design
+    - Design patterns
+    - OOP
+    - Framework
+  - Konstrukce
+    - Code conventions
+    - Kuchaøka
+    
+- Požadavky na architekturu a spol a jejich pøíklady
+  - Rozšiøitelnost
+  - Udržovatelnost
+  - Pøehlednost
+  
+- Možnosti integrace
+  

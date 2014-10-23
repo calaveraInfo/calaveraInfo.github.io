@@ -1,0 +1,26 @@
+body {
+	width: 700px;
+}
+#mainPanel {
+	width: 200px;
+	float: left;
+}
+#mainContent {
+	margin-left: 220px;
+}
+#mainContent p {
+	text-align: justify;
+}
+#mainMenu li:hover{
+	list-style: circle;
+}
+#mainMenu li {
+	list-style: none;
+}
+#mainMenu .selected {
+	background: #CCCCCC;
+	list-style: square;
+}
+img {
+	border: none;
+}

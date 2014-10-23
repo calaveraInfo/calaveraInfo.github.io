@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+<head>
+<title>Caching issues when serving static files with servlet container</title>
+</head>
+<body>
+<h1 class="title">Caching issues when serving static files with servlet container</h1>
+<div class="perex">
+<p>
+I've been working with computers for many years and it still surprises me that
+obvious five minute job can take you several hours to complete.
+</p>
+</div>
+
+<div class="content">
+<p>
+The initial situation was simple. When I changed a static file on my
+webserver (Tomcat 6), this change wasn't reflected in a browser. I thought
+that with all my knowledge of web applications this should have been an
+easy one for me, but it turned out that it takes some time to sort things out.
+</p>
+<h3>Default servlet</h3>
+<p>
+My first suspicion was that Tomcat's default servlet is not checking the modification
+time of the resource. Fortunately, this wasn't the case and I found it out by
+going through it's code. (Doing that I found out the strange fact that
+<code>If-None-Match</code> HTTP header takes precedence over
+<code>Cache-Control</code> and I suspected this is the problem for a while...)
+</p>
+<h3>cachingAllowed attribute</h3>
+<p>
+Next, there's cachingAllowed attribute in the
+<a href="http://tomcat.apache.org/tomcat-6.0-doc/config/context.html">container context</a>
+settings described as
+</p>
+<blockquote>
+<p>
+If the value of this flag is true, the cache for static resources will be used.
+If not specified, the default value of the flag is true.
+</p>
+</blockquote>
+<p>
+My second suspicion was that Tomcat is caching it's static resources
+(and therefore sending back
+<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">304 Not Modified</a> status),
+but it wasn't the case again. Tomcat caching is either checking
+the file modification time (and reloads the cache) or the cache time is too short to be the cause.
+I don't know exactly because I didn't dig deeper - several tests with
+http headers dumper was enough for me and led me to the final solution.
+</p>
+<h3>HTTP caching directives</h3>
+<p>
+The final one to blame is 
+<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9">
+<code>Cache-Control</code> HTTP header.</a>
+Tomcat's default servlet didn't send this header so that caching algorithms
+could be used along the request/response chain, which means even in the browser itself.
+</p>
+<p>
+This results in a situation where browser is not even asking server for
+<em>some of the resources</em>. There's emphasis on those words, because for example
+the caching algorithm behavior in Firefox is unpredictable according
+to my HTTP headers dump
+(Which confused me so much that I didn't think about this possibility earlier).
+I think this caching algorithm is somehow based on number of changes to the resource
+in the past, but again, I don't care.
+</p>
+<h3>Solution</h3>
+<p>
+The abstract solution is simple. Server must send
+<code>Cache-Control: no-cache</code> HTTP header with static resources
+that is changed often. The bad thing is that I haven't found any settings
+concerning this in any configuration documentation. It has to be done manually
+with filters.
+</p>
+<p>
+Although it should be a simple and straightforward filter, it's better
+to use something already done. I found such a
+<a href="http://flavio.tordini.org/http-headers-filter">simple headers filter</a>. It's
+transparent and open-sourced so that you can check it manually and prepare your
+own build (don't you ever dare to put binaries on your server from
+an unknown source). And now my <code>web.xml</code> settings looks like this:
+</p>
+<pre class="brush: xml"><![CDATA[
+<filter>
+  <filter-name>httpHeaders</filter-name>
+  <filter-class>
+    org.ft.servlet.filters.httpheaders.HTTPHeadersFilter
+  </filter-class>
+  <init-param>
+    <param-name>Cache-Control</param-name>
+    <param-value>no-cache</param-value>
+  </init-param>
+  <init-param>
+    <param-name>Pragma</param-name>
+    <param-value>no-cache</param-value>
+  </init-param>
+  <init-param>
+    <param-name>negativeMapping</param-name>
+    <param-value>.*\.xsl|.*\.js|.*\.css</param-value>
+  </init-param>
+</filter>
+
+<filter-mapping>
+  <filter-name>httpHeaders</filter-name>
+  <url-pattern>/v2/*</url-pattern>
+</filter-mapping>
+]]></pre>
+<p>
+Doesn't look like a five minute job any more, heh?
+</p>
+</div>
+<dl>
+	<dt>Last update</dt><dd>201002270000</dd>
+</dl>
+</body>
+</html>

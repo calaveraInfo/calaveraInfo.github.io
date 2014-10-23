@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../xsl/site/simplePage.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Activities</title>
+<meta name="pageDirFromContextPath" content="projects/" />
+<meta name="mainMenuSelected" content="menuItemProjects" />
+</head>
+<body>
+<h1>Profile</h1>
+<h3>Education</h3>
+<ul>
+<li>Master degree in Distributed Systems at University of West Bohemia,
+<a href="http://www.fav.zcu.cz/">Faculty of Applied Sciences</a></li>
+<li>Student fellowship at the
+<a href="http://www.pgpedu.ac.in/pgp-eng-college/index.html">PGP College, Tamil Nadu, India</a></li>
+<li>
+<a href="http://www.cisco.com/web/learning/netacad/course_catalog/CCNAexploration.html">CCNA academic programme</a>
+at Cisco Networking Academy Plzeň</li>
+<li>
+<a href="http://www.britishcouncil.org/cz/czechrepublic-exams-fce.htm">FCE</a>
+</li>
+<li>
+<a href="http://www.horoskola.com/">Mountain Classic Club mountaineering school</a>
+</li>
+</ul>
+<h3>Projects</h3>
+<ul>
+<li>ČS (large Czech retail bank) internet banking technical make-over at <a href="http://www.profinit.eu/">Profinit</a> - architect</li>
+<li>Airport Ruzyně (Prague's main airport) plane check-out and flight planning support system at <a href="http://www.profinit.eu/">Profinit</a> - Java developer, project manager</li>
+<li>CAC leasing (large Czech leasing company) intranet project at <a href="http://ami.cz/">AMI Praha a.s.</a> - Java developer</li>
+<li>Various web presentations at <a href="http://refresh.cz/">Refresh.cz</a> - PHP and HTML developer</li>
+</ul>
+<h3>Activities</h3>
+<ul>
+	<li>
+<a href="mff/index.xml">Tutorials</a> for
+<a href="https://is.cuni.cz/studium/predmety/index.php?do=predmet&amp;kod=NSWI129">Software engineering lecture</a>
+within <a href="http://www.profinit.eu/cz/podpora-univerzit/univerzitni-vyuka/swi129/">Profinit academy connection</a>
+	</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="xsl/site/simplePage.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Contact</title>
+<meta name="mainMenuSelected" content="menuItemContact" />
+</head>
+<body>
+	<h1>Contact</h1>
+	<p>
+Feel free to conact me by using any option listed in the side menu of every page
+(or options listed at the current main page, if you are not using XSLT capable browser).
+	</p>
+<div xml:lang="cs">
+	<h1>Kontakt</h1>
+	<p>
+Neváhejte mě kontaktovat jakoukoli z možností uvedených v bočním menu každé stránky
+(popřípadě těch uvedených na aktuální hlavní stránce, pokud váš prohlížeč nepodporuje technologii XSLT).
+	</p>
+</div>
+</body>
+</html>

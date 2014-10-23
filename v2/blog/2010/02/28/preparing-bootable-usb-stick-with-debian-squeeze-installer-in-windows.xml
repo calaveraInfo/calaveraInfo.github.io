@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+<head>
+<title>Preparing bootable USB stick for Debian Squeeze installer in Windows</title>
+
+</head>
+<body>
+<h1 class="title">Preparing bootable USB stick for Debian Squeeze installer in Windows</h1>
+<div class="perex">
+<p>
+Small how-to for common use case. There are links for 
+<a href="http://www.debian.org/devel/debian-installer/">images of Debian Squeeze installer</a>
+for usb, but it's hard to find manual on how to prepare them.
+And it is IMPOSSIBLE to find manual on how to do that on Windows. What a good work
+in promoting Linux to Windows users.
+</p>
+</div>
+
+<div class="content">
+<ol>
+<li>
+Go to the
+<a href="http://www.debian.org/devel/debian-installer/">list of images</a>.
+</li>
+<li>
+Download iso images you would normaly burn onto CD or DVD (but the size must not
+exceed 256 MB or whatewer the size of usb image downloaded
+in the following steps will be).
+</li>
+<li>
+Follow the link in section "other images (netboot, USB stick, etc)" according to your architecture.
+</li>
+<li>
+Go to the hd-media subfolder.
+</li>
+<li>
+Download <code>boot.img.gz</code>.
+</li>
+<li>
+Unpack it.
+</li>
+<li>
+Download and unzip
+<a href="http://www.chrysocome.net/dd">dd for windows</a>.
+</li>
+<li>
+Insert your usb stick. <b>Note that after following steps it will be
+completely erased.</b>
+</li>
+<li>
+Execute following command: <code>dd --list</code>
+</li>
+<li>
+Find your usb stick's id in the list (It will look something like this:
+\\.\Volume{c18588c0-02e9-11d8-853f-00902758442b})
+</li>
+<li>
+Copy the image to usb with following command:
+<code>dd if=&lt;unpacked img name&gt; of=&lt;usb stick's id&gt; bs=1MB</code>
+</li>
+<li>
+Copy downloaded iso images to the root directory of USB (normal file copy, not dd).
+</li>
+<li>
+Now you have your bootable USB stick with Debian Squeeze installer.
+</li>
+</ol>
+</div>
+<dl>
+	<dt>Last update</dt><dd>201002280000</dd>
+</dl>
+</body>
+</html>

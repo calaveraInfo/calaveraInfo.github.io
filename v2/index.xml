@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="xsl/site/blogArticleList.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="borderlessPage">
+<head>
+<title>Personal blog of František Řezáč</title>
+<meta name="pageDirFromContextPath" content="" />
+<meta name="mainMenuSelected" content="menuItemBlog" />
+<meta http-equiv="cache-control" content="no-cache"/>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="Content-Type" content="application/xml; charset=utf-8"/>
+</head>
+<body>
+<div xml:lang="en">
+<h1>Personal blog of František Řezáč</h1>
+<p>
+Please notice that you need to have XSLT processing enabled browser for
+pages to display properly. If you can read this, your browser is NOT
+XSLT enabled or some plugin/extension/addon (for example
+<a href="http://noscript.net/">NoScript</a>) is blocking the processing.
+Pages are still fully functional but user experience is highly degraded.
+</p>
+</div>
+<div xml:lang="cs">
+<h1>František Řezáč - osobní blog</h1>
+<p>
+Upozorňuji, že tyto stránky vyžadují prohlížeč podporující
+technologii XSLT. Pokud čtete tyto řádky, váš prohlížeč tuto technologii
+NEPODPORUJE, nebo nějaký plugin/rozšíření/addon (jako například
+<a href="http://noscript.net/">NoScript</a>) tuto technologii blokuje.
+Stránky budou plně funkční, ale velmi strohé a uživatelsky nepřívětivé.
+</p>
+</div>
+<ul class="mainMenu">
+<li>
+<a href="index.xml" id="menuItemBlog">Blog</a>
+</li>
+<li>
+<a href="projects/index.xml" id="menuItemProjects" xml:lang="cs">Aktivity</a>
+</li>
+<li>
+<a href="contact.xml" id="menuItemContact" xml:lang="cs">Kontakt</a>
+</li>
+</ul>
+<ul class="sideMenu">
+<li>
+<a href="http://cz.linkedin.com/in/frantisekrezac" id="menuItemLinkedIn">LinkedIn</a>
+</li>
+<li>
+<a href="http://stackoverflow.com/users/263639/calavera-info" id="menuItemStackOverflow">Stack Overflow</a>
+</li>
+<li>
+<a href="http://sourceforge.net/users/calavera-info" id="menuItemSourceForge">Source Forge</a>
+</li>
+<li>
+<a href="http://mailhide.recaptcha.net/d?k=017ubdyCuTIFY0uWuYzgB5Lg==&amp;c=tL3koSGLGVzgp1E0oW5wUo9V_v6mt7YmSrP22LLF28Q=" id="menuItemEmail">E-mail</a>
+</li>
+</ul>
+<ul class="sideMenu2">
+<li>
+<a href="http://www.mawadani.cz/" id="menuItemMawadani">Mawadani</a>
+</li>
+<li>
+<a href="http://www.vno.cz/" id="menuItemVno" xml:lang="cs">HO Vášeň Nadšení Odvaha</a>
+</li>
+<li>
+<a href="http://cs-cz.facebook.com/people/Frantisek-Rezac/565917519" id="menuItemFacebook">Facebook</a>
+</li>
+<li>
+<a href="projects/poker/index.xml" id="menuItemIpk">IPK</a>
+</li>
+<li>
+<a href="projects/smc/index.xml" id="menuItemSmc">SMC</a>
+</li>
+<li>
+<a href="projects/mff/index.xml" id="menuItemNswi129">NSWI129</a>
+</li>
+</ul>
+<ul class="blogMenu">
+<li>
+<a href="archiv-2010.xml" id="archive2010" xml:lang="cs">Archiv 2010</a>
+</li>
+</ul>
+<h1 class="title">Blog</h1>
+<div class="content">
+<ul class="articlesList">
+<li><a href="blog/2011/05/29/napric-skandinavii-2011.xml" xml:lang="cs">Napříč skandinávií</a></li>
+<li><a href="blog/2011/05/22/alternative-approach-to-protection-against-leaving-a-webapp-without-logging-out.xml" xml:lang="en">An alternative approach to protection against leaving a webapp without logging out</a></li>
+<li><a href="blog/2011/01/19/toc-for-xhtml-with-xslt.xml" xml:lang="en">TOC for XHTML with XSLT</a></li>
+<li><a href="blog/2010/11/12/armenie-a-gruzie-2010.xml" xml:lang="cs">Arménie a Gruzie 2010</a></li>
+<li><a href="blog/2010/11/06/oziexplorer-a-kalibrace-map-armenie-a-gruzie.xml" xml:lang="cs">OziExplorer a kalibrace map Arménie a Gruzie</a></li>
+<li><a href="blog/2010/06/30/a-serious-bug-between-java-and-debian.xml" xml:lang="en">A serious bug between Java and Debian</a></li>
+<li><a href="blog/2010/06/21/permgen-error.xml" xml:lang="cs">PermGen error</a></li>
+<li><a href="blog/2010/06/24/how-to-install-ati-proprietary-graphics-driver-fglrx-on-debian.xml" xml:lang="en">How to install ATI proprietary graphics driver (fglrx) on Debian</a></li>
+<li><a href="blog/2010/06/13/browser-like-xsl-transform-servlet-filter.xml" xml:lang="en">Browser like XSL transform servlet filter</a></li>
+<li><a href="blog/2010/05/25/marseille-calanques.xml" xml:lang="cs">Marseille a Calanques</a></li>
+</ul>
+</div>
+</body>
+</html>

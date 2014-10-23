@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" class="article">
+	<head>
+		<title>PermGen error</title>
+		<meta name="showToc" content="true"/>
+	</head>
+	<body><h1 class="title">PermGen error</h1>
+<div class="perex">
+<p>Většina nově vzniklých programovacích jazyků používá k uvolňování 				paměti konceptu <a href="http://www.ibm.com/developerworks/java/library/j-jtp10283/">garbage collectoru</a>. Obecně rozšířený ja názor, že 				tento koncept odstraňuje nebezpečí úniku paměti (memory leak). 				Pravda je však taková, že k únikům paměti může docházet stále a 				například <a href="http://java.sun.com/j2se/reference/whitepapers/memorymanagement_whitepaper.pdf">Java</a> může mít v této oblasti velmi podobné problémy jako 				C++. Navíc má Java několik specifik, jako jsou dynamické načítání 				bytekódu a jiné, které tento problém značně zhoršují. Jedna z 				takových slabých stránek Javy se projevuje výskytem výjimky 				OutOfMemoryError: PermGen space. O co se jedná a jak reagovat?</p>
+</div>
+<div class="content toc">
+<h3>Poznámka na začátek</h3>
+<p>Tento článek vznikl z důvodu zoufalého nedostatku studií, které by se tomuto problému věnovaly komplexně a zároveň stravitelně. Cílem bylo vytvořit článek, který uvede čtenáře do problému ve všech jeho souvislostech a zároveň bude moci sloužit jako jednoduše čitelné how-to pro pro odstranění problému. Bohužel až po napsání textu jsem narazil na podobně zaměřený <a href="http://www.fg.cz/cs/prectete-si/clanky/12.shtml">článek, který obsahuje téměř totožné informace</a>, pouze jinak stylisticky podané. Na jednu stranu by mi jeho přečtení ušetřilo množství času, ale na druhou stranu funguje jako příjemné potvrzení, že mnou nalezené informace jsou víceméně kompletní a věcně správné.</p>
+<h3>Teorie</h3>
+<p><a href="http://stackoverflow.com/questions/858250/java-memory-explained-sun-jvm">Sun Java</a> z důvodu optimalizace práce s pamětí <a href="http://www.ibm.com/developerworks/java/library/j-jtp11253/">dělí heap paměť na 				několik segmentů</a>. Segment, ve kterém se nachází konkrétní alokovaný prostor závisí na tom, jak dlouho je již tento prostor alokován. Proto jsou jednotlivé segmenty nazývány "generace" - "generation".</p>
+<p>Během standardního běhu programu jsou všechny alokace prováděny v 				běžném segmentu a do ostatních segmentů JVM přesouvá objekty až po nějaké 				době, kdy zná charakteristiky běžícího programu. Výjimkou je alokace 				místa pro metainformace o  třídách, která se automaticky provádí v "segmentu stálé generace" (permanent generation - PermGen). U paměti alokované v 				tomto segmentu je předpokládáno, že bude uvolňována velmi málo nebo dokonce nikdy, což se 				pro informace  o třídách zdá jako rozumný předpoklad.</p>
+<p>Na první pohled se tedy může zdát, že PermGen error se objeví 				vždy, když místo pro metainformace o třídách programu je větší než velikost paměťového 				segmentu permanentní generace. Stojí za povšimnutí, že velikosti 				jednotlivých segmentů se nastavují při startu JVM zvlášť a přesun 				volné paměti mezi jednotlivými segmenty není možný. Vzhledem k tomu, 				že se při startu JVM často pamatuje pouze na parametr pro velikost 				standardního segmentu heap, vypadá výjimka OutOfMemoryError velmi 				záhadně, protože i při povrchním pohledu k ní došlo ve chvíly, kdy 				program v paměti zdaleka nezabíral maximální množství místa. Toto je 				způsobeno právě tím, že ačkoli bylo nastaveno velké množství 				standardní heap paměti, velikost permanent generation segmentu byla 				ponechána na výchozí hodnotě JVM, která je řádově menší.</p>
+<p>Pokud tedy dojde k této výjimce v případě příliš objemného programu, je řešení jednoduché - je potřeba nastavit větší 				velikost permanent generation segmentu. Bohužel, toto je velmi 				vzácný případ.</p>
+<p>Daleko rozšířenější je případ způsobený jednou z vlastností Javy - 				programově ovlivnitelným načítáním nebo vytvářením bytekódu tříd. 				Klíčovým slovem tohoto konceptu je "classloader", tedy rozhraní pro dynamické zavádění tříd. Classloader je možné programově nastavovat i 				řídit.</p>
+<p>Nejrozšířenějším případem takového použití je tzv. redeploy 				aplikace v servlet kontejneru. Servlet kontejner je de-facto webový 				server v jehož kontextu (jednom spuštěném JVM) může nezávisle běžet několik webových java 				aplikací. Tyto aplikace není možné jednotlivě restartovat právě proto, že 				všechny běží v rámci jednoho spuštěného JVM. Proto byl vyvinut 				postup, ve kterém jsou třídy jednotlivých aplikací načítány 				oddělenými classloadery. Pokud potom chce kontejner danou aplikaci 				restartovat, jednoduše zahodí její classloader a vytvoří nový. Tento 				postup je většinou součástí procedury nazývané redeploy.</p>
+<p>V ideálním případě je zahozený classloader (a tím i veškerý 				bytekód tříd) uvolněn garbage collectorem. Velmi často se však 				stává, že 				<a href="http://blogs.sun.com/fkieviet/entry/classloader_leaks_the_dreaded_java"> garbage collector nemůže classloader vymazat </a> kvůli nějakým 				zbytkovým referencím a dojde tedy k úniku paměti v segmentu 				permanentní generace, který má v důsledku těsné provázanosti classloaderu a tříd velikost rovnou celkové velikosti všech tříd. Je jasné, že po několika redeployích se celý servlet kontejner 				zhroutí kvůli výjimce OutOfMemoryError: PermGen space.</p>
+<h3>Praxe</h3>
+<p>V předchozí kapitole je podán nejhutnější možný úvod do problému PermGen paměti, proto ještě pro jistotu rekapitulace v bodech:</p>
+<ul>
+<li>K výjimce "OutOfMemoryError: PermGen space" může dojít principiálně ze dvou důvodů       
+<ul>
+<li>Kvůli špatnému nastavení JVM: V takovém případě je řešení jednoduché a tento článek se jím zabývá jen okrajově, pouze z toho důvodu, že stejný postup je možné použít k dočasné úlevě od chyby způsobené druhým případem.</li>
+<li>Kvůli úniku paměti: Řešení je v takovém případě obtížné a  nedeterministické a vyžaduje tedy jistou dávku zkušenosti a intuice.</li>
+</ul>
+</li>
+<li>Únik paměti z PermGen segmentu je v běžném provozu nejčastěji způsoben chybami při práci s classloaderem.</li>
+<li>Velmi častý je výskyt nesprávné manipulace s classloaderem  během redeploye web aplikace v servlet kontejneru. Tento článek se věnuje hlavně těmto případům.</li>
+</ul>
+<p>K předchozím bodům je nyní vhodné doplnit další stručné informace</p>
+<ul>
+<li>Špatné zacházení s classloaderem může způsobit vývojář aniž by si to uvědomoval, např. nesprávným použitím knihoven nebo přímo použitím knihovny, která takový únik způsobuje (i v dnešní době je jich stále dost).</li>
+<li>Je potřeba si uvědomit, že dělení paměti na segmenty je specifické pro Sun  implementaci JVM. Proto je v některých článcích 				doporučováno pro  řešení PermGen error přejít na implementaci 				JRockit. JRockit nemá  paměť dělenou do segmentů, takže PermGen error 				nezná, ale to ještě  nemusí znamenat, že problém, který chybu 				způsoboval, zmizel také,  bude se pouze jinak projevovat!</li>
+</ul>
+<h4>Přidání paměti do segmentu PermGen</h4>
+<p>Jednoduchý postup pro jednoduchý případ. Při jakýchkoli problémech s pamětí je dobré si udělat zevrubnou <a href="http://java.sun.com/docs/hotspot/gc5.0/gc_tuning_5.html">analýzu paměťových nastavení JVM</a>. Základem analýzy je uvědomění si, <a href="http://www.folgmann.de/en/j2ee/gc.html">jaká nastavení JVM se vztahují k jakým segmentům paměti</a>. Pro případ PermGen je vidět, že nastavení, se kterým je potřeba pracovat je "-XX:MaxPermSize". Pokud v aplikaci nedochází k únikům paměti, může toto nastavení pomoci od problémů natrvalo. Pokud dochází k únikům paměti, může toto nastavení snížit četnost výskytu výjimek PermGen.</p>
+<h4>Zjišťování referencí blokujících GC</h4>
+<p>Pokud navýšení PermGen paměti pouze oddálí problém, je jasné, že v aplikaci dochází k únikům paměti a je potřeba najít její příčiny, tedy najít reference, které blokují uvolnění classloaderu</p>
+<h5>Komerční profilery</h5>
+<p>Nejjednodušší postup je použít komerční Java profilery, které mají některé <a href="http://www.yourkit.com/docs/kb/class_loaders.jsp">specializovaná nástroje pro řešení PermGen problému</a>.Odkazovaný YourKit profiler se mně osobně osvědčil, jelikož jeho plně funkční zkušební verze zdarma můžete používat celý měsíc, takže bohatě stačí pro vyřešení jednoho problému s pamětí.</p>
+<h5>Zabudované nástroje Sun Java</h5>
+<p>
+<b>Update 12. 2. 2012:</b> Od doby napsání tohoto článku došlo k významnému
+posunu v debugovacích nástrojích poskytovaných v základní distribuci Javy.
+JHat, JMap i jiné jsou prakticky úplně nahrazeny schopnostmi nástroje
+<a href="http://visualvm.java.net/">VisualVM</a> který umožňuje použít všechny zde
+uvedené praktiky v uživatelsky podstatně příjemnější podobě.
+</p>
+<p>Základní  prostředky pro řešení PermGen problému však poskytuje také přímo Sun distribuce Javy. Postup pro použití je zhruba následující:</p>
+<ol>
+<li>Je vhodné začít s <a href="http://java.sun.com/developer/technicalArticles/J2SE/jconsole.html">pozorováním celkového provozu JVM</a> pomocí nástroje <a href="http://java.sun.com/javase/6/docs/technotes/tools/share/jconsole.html">jconsole</a>.</li>
+<li>Zjistit Java ID procesu servletového kontejneru pomocí nástroje <a href="http://java.sun.com/javase/6/docs/technotes/tools/share/jps.html">jps</a>. Je-li spuštěn bez parametrů, vypíše seznam všech Java procesů s rozumnými popisky a odpovídajícími ID.</li>
+<li>Získat dump paměti JVM ve kterém už došlo k nějakým únikům (typicky tedy po několika redeploy) nástrojem <a href="http://java.sun.com/javase/6/docs/technotes/tools/share/jmap.html">jmap</a>, pomocí příkazu "jmap -dump:format=b,file=leak &lt;javaProcessId&gt;". Pokud k problémům dochází pouze na produkci, je možné použít k získání dumpu paměti parametry JVM "-XX:-HeapDumpOnOutOfMemoryError" a "-XX:HeapDumpPath=/tmp/leak".</li>
+<li>Analyzovat dump paměti a nalézt residuální reference na classloader, který byl zahozen.<br /> 
+<ul>
+<li>Pomocí nástroje <a href="http://java.sun.com/javase/6/docs/technotes/tools/share/jhat.html">jhat</a>. Spuštění (pro v předchozím bodě získaný dump) se provede příkazem "jhat -J-Xmx1024m leak". Aplikace má podobu webové aplikace spuštěné na adrese localhost s portem vypsaným při startu aplikace.</li>
+<li>Pomocí <a href="http://www.eclipse.org/mat/">Eclipse memory analyzer</a>. Tento nástroj jsem příliš nepoužíval, ale údajně je práce s ním rychlejší než s jhat.</li>
+</ul>
+</li>
+<li>Přijít na způsob, jak se residuálních referencí zbavit. Pro několik běžných knihoven jsou známy postupy, jak únikům zamezit konfigurací. Většinou je ale také potřeba vytvořit třídu implementující servlet rozhraní "application lifecycle listener" a zaregistrovat jí ve své webové aplikaci. V této třídě je pak možné při obsluze události "contextDestroyed" zrušit všechny nalezené residuální reference.</li>
+</ol>
+<h4>JHat</h4>
+<p>JHat je velmi mocný nástroj (hlavně díky možnosti <a href="http://blogs.sun.com/sundararajan/entry/querying_java_heap_with_oql">automatizovat některé postupy</a>), ale jeho ovládání je velmi strohé. Pro jednoduchý návod doporučuji <a href="http://blogs.sun.com/fkieviet/entry/how_to_fix_the_dreaded">stránku již jednou citovaného F. Kievieta</a>. Postup, který je na ní popsaný by se dal shrnout následovně:</p>
+<ol>
+<li>Postup předpokládá memory dump z kontejneru ze kterého byla testovaná aplikace "undeploynuta" (první část redeploy).</li>
+<li>Nalézt třídu, která se vyskytuje v aplikaci (tudíž by ve výpisu vůbec neměla být = unikla GC) a kliknout na odkaz k jejímu classloaderu.</li>
+<li>Na stránce classloaderu najít odkaz zjišťující reference z root set (s výjimkou weak referencí - exclude weak refs).</li>
+<li>Tento seznam obsahuje třídy podezřelé z uchovávání residuálních referencí. Nyní už je potřeba použít intuici (s možností lehké dopomoci od <a href="http://blogs.sun.com/sundararajan/entry/jhat_s_javascript_interface">histogramu tříd v referenčním řetězu</a>).</li>
+</ol>
+<h4>Často používané knihovny s úniky paměti</h4>
+<ul>
+<li><a href="http://static.springframework.org/spring/docs/2.5.x/api/org/springframework/web/util/IntrospectorCleanupListener.html">Spring</a></li>
+<li><a href="https://issues.apache.org/jira/browse/IBATIS-376">IBatis</a></li>
+<li><a href="http://www.szegedi.org/articles/memleak.html">Commons logging</a></li>
+</ul>
+<h3>Nedořešené otázky</h3>
+<p>Přestože jsem na toto téma přečetl mnoho materiálů, stále mi není jasných několik podrobností. Pokud o nich víte něco víc, budu vděčný, když se podělíte.</p>
+<ul>
+<li>Alokované prostory se mezi generacemi mohou přesouvat (během gc). To by však znamenalo, že reference na objekty se v průběhu programu mohou měnit. Jak je to řešeno?</li>
+<li>Podle informací, které se mi nepodařilo ověřit, není ve specifikaci Java servletů definována funkce redeploy. To znamená, že neexistuje právní odpovědnost vývojářské společnosti za chyby způsobené používání procedury redeploy místo klasického restartu serveru, pokud toto není explicitně zakotveno ve smlouvě.</li>
+</ul>
+</div>
+<dl> <dt>Last update</dt> <dd>201202120000</dd> </dl></body>
+</html>

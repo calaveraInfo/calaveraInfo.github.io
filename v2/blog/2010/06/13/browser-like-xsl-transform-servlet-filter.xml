@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+<head>
+<title>Browser-like XSL transform servlet filter</title>
+</head>
+<body><h1 class="title">Browser-like XSL transform servlet filter</h1>
+<div class="perex">
+<p>I tried to find such a filter, but I didn't find anythig. So I wrote it myself as usual.</p>
+</div>
+<div class="content">
+<p>The <a href="http://sourceforge.net/projects/xwt-filter/">code</a> is of alpha quality but it may help someone anyway, because it wasn't as easy as it may look.</p>
+</div>
+<dl> <dt>Last update</dt><dd>201006130000</dd> </dl></body>
+</html>

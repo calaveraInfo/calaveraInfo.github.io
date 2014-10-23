@@ -1,0 +1,27 @@
+- Rozdíl mezi architekturou a designem => definice
+  Architektura: high-level, "všechno, co je dùležité"
+- Pøíklady prvkù architektury, designu a konstrukce
+  - Architektura
+    rozdìlení aplikace na vrstvy
+    - ISO/OSI
+    - MVC
+    - Multi-tier
+  - Design
+    - rozdìlení do objektù
+    - návrhové vzory
+      - Singleton
+      - Factory method
+      - (Abstract) Factory
+      - Adapter
+      - Dekorator
+  - Konstrukce
+    - Kuchaøka
+- Požadavky na architekturu a spol a jejich pøíklady
+  - Spolehlivost, bezpeènost
+  - Rozšiøitelnost
+  - Údržba
+  - Testovatelnost
+- Možnosti integrace
+  - messaging
+  - MW
+  - Spoleèná databáze

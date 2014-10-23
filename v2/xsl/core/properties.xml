@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Site properties</title>
+	</head>
+	<body>
+	<ul>
+		<li id="rootFromContextPath">./</li>
+		<li id="siteModuleFromRootPath">xsl/site/</li>
+		<li id="rootFromPageDelimiter">{$siteModuleFromRootPath}</li>
+		<li id="rootFromPagePath">##must be computed##</li>
+		<li id="contextFromRootPath">./</li>
+		<li id="contextFromPagePath">{$rootFromPagePath}{$contextFromRootPath}</li>
+		<li id="coreModuleFromRootPath">xsl/core/</li>
+		<li id="coreModuleFromPagePath">{$rootFromPagePath}{$coreModuleFromRootPath}</li>
+		<li id="rootFromCoreModulePath">../../</li>
+		<li id="rootFromSiteModulePath">../../</li>
+		<li id="contextFromCoreModulePath">{$rootFromCoreModulePath}{$contextFromRootPath}</li>
+		<li id="pageDirFromContextPath">##must be computed##</li>
+		<li id="pageDirFromRootPath">{$contextFromRootPath}{$pageDirFromContextPath}</li>
+		<li id="pageDirFromCoreModulePath">{$contextFromCoreModulePath}{$pageDirFromContextPath}</li>
+		<li id="syntaxHighlighterFromPagePath">{$coreModuleFromPagePath}syntaxhighlighter_2.1.364/</li>
+		<li id="mainMenuSelected">##must be computed##</li>
+		<li id="galleryImagesPerRow">3</li>
+		<li id="showToc">false</li>
+		<li id="showTocNumbers">true</li>
+	</ul>
+	</body>
+</html>

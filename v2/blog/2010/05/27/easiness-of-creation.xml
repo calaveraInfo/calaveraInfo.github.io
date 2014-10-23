@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="article">
+<head>
+<title>Easiness of creation</title>
+</head>
+<body>
+<h1 class="title">Easiness of creation</h1>
+<div class="perex">
+<p>
+There are always two parties interested in a product - users and creators.
+It's utterly important to realize that both parties are real people. 
+Therefore easiness of creating a product is as much important as easiness of using a product.
+There is established practice of usability tests but 
+it seems to me that the difficulties of creating something is generally ignored.
+</p>
+</div>
+
+<div class="content">
+<p>
+Of course difficulties can be projected in the final price of the product,
+but this generally doesn't mean a bigger sallary for a single employer. It
+just means more resources added to the project,
+but, as I said, more resources for unpleasant tasks does not result
+in bigger reward which would compensate the discomfort of creation
+(actually it's the other way 
+round because the creators look incompetent).
+</p>
+
+<p>
+Managers (and users, if present) are often overlooking the problem of easiness of creation mainly in
+favor of other requirements like usability for users
+(Or the worst requirement ever - usability for management), commonly
+resulting in a redundant, superfluous and therefore boring and error prone work.
+Those requirements may be of the same importance as easiness of creating,
+it's hard to tell generally, but it definitely shouldn't be overlooked.
+</p>
+
+<p>
+Product here does not mean a box on the shelves, it can be
+everything that someone creates and other people use.
+For example in IT it's documentation, build scripts,
+application components etc. If you put too many user requirements
+on any of such internal products, you will get crippled
+result, if any.
+</p>
+
+<p>
+Always think twice before sacrificing the joy of easy creation
+in favor of usability. Here's just a few questions
+I faced recently:
+</p>
+
+<ul>
+<li>
+Do you really want whole documentation in a single .doc file in a shared
+folder so that anyone can read it without checkout or build?
+</li>
+<li>
+Do you really need the same chapters being written
+differently in user documentation and in technical documentation? 
+</li>
+<li>
+Does application components really have to be so dumbproof that
+even mentally ill developer can use them?
+</li>
+<li>
+Do we really need domain specific language 
+so complex that the documentation for interpreter creators
+has 300+ pages?
+</li>
+<li>
+Is it really necessary to ask everybody to run a build script after
+any change in a particular folder?
+</li>
+</ul>
+
+</div>
+<dl>
+	<dt>Last update</dt><dd>201005270000</dd>
+</dl>
+</body>
+</html>

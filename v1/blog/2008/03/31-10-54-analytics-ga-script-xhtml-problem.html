@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs">
+<head>
+<meta name="weblibController" content="CalaveraBlogItem" />
+<meta name="weblibAvailableLanguage" content="en" />
+<title>Google analytics xhtml problém: Object cannot be created in this context</title>
+</head>
+<body>
+
+<h1 class="weblibTitle">Google analytics xhtml problém: Object cannot be created in this context</h1>
+<h1 class="weblibTitle" xml:lang="en">Google analytics xhtml problem: Object cannot be created in this context</h1>
+
+<p class="weblibPerex">
+Nový skript (ga.js) služby Google analytics je nefunkční ve Firefoxu (a možná i jiných),
+pokud je stránka podávána jako mime-typ xhtml.
+</p>
+
+<p class="weblibPerex" xml:lang="en">
+New script (ga.js) by Google analytics is not working in Firefox and maybe others, when
+page is served as xhtml mime type.
+</p>
+
+<div class="weblibContents weblibSerializeOnlyContent">
+<p>
+Už dlouho jsem si říkal, proč jsou reporty Google analytics o mojí stránce evidentně špatné.
+Až teď mě napadlo pustit Firebug a viděl jsem chybu "Object cannot be created in this context".
+Když se podíváme na kód, který je potřeba pro GA vložit do stránky, je vidět, že se skládá ze
+dvou skriptů. Přestože se chyba vyskytuje až v tom druhém, příčinna je už v prvním.
+</p>
+<p>
+Jediné, co dělá, je totiž to, že načte skript z adresy upravené podle použitého protokolu
+(zabezpečené ssl/nezabezpečené). Dělá to však pomocí metody document.write() se kterou
+je v xhtml problém (přesněji řečeno tam vůbec <a href="http://ln.hixie.ch/?start=1091626816">není</a>).
+</p>
+<p>
+Řešení je rozhodovat o protokolu
+přímo na serveru (pokud to vůbec potřebujete) a do stránky už místo prvního skriptu přidávat třeba jen:
+</p>
+<pre>
+&amp;lt;script src="http://www.google-analytics.com/ga.js" type="text/javascript"&amp;gt;&amp;lt;/script&amp;gt;.
+</pre>
+</div>
+
+<div class="weblibContents weblibSerializeOnlyContent" xml:lang="en">
+<p>
+I was curious about why my Google analytics reports are wrong for a long time. Recently I
+used Firebug and I was surprised that it's famous
+<a href="http://ln.hixie.ch/?start=1091626816">document.write()</a> xhtml problem.
+</p>
+<p>
+The code consist of two scripts. The first one just includes the full script from url that
+matches used protocol (plain/ssl). And it uses documet.write() for it, which is not
+available in xhtml.
+</p>
+<p>
+The solution is simple. Make the decision (often you don't even have to)
+on the server side and then just include the
+correct tag, for example one can substitute the first script with:
+</p>
+<pre>
+&amp;lt;script src="http://www.google-analytics.com/ga.js" type="text/javascript"&amp;gt;&amp;lt;/script&amp;gt;.
+</pre>
+</div>
+
+</body>
+</html>

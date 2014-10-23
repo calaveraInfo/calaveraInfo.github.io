@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>http://calavera.info/</loc>
+      <lastmod>2010-03-12</lastmod>
+      <changefreq>yearly</changefreq>
+      <priority>0.2</priority>
+   </url>
+   <url>
+      <loc>http://calavera.info/v2/index.xml</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+   </url>
+   <url>
+      <loc>http://calavera.info/v2/projects/index.xml</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+   </url>
+   <url>
+      <loc>http://calavera.info/v2/contact.xml</loc>
+      <changefreq>yearly</changefreq>
+      <priority>0.3</priority>
+   </url>
+</urlset> 

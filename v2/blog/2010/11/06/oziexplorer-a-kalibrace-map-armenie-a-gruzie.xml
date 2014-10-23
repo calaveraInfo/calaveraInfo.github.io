@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../../xsl/site/blog.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" class="article">
+	<head>
+		<title>OziExplorer a kalibrace map Arménie a Gruzie</title>
+	</head>
+	<body><h1 class="title">OziExplorer a kalibrace map Arménie a Gruzie</h1>
+<div class="perex">
+<p>Původně jsem myslel, že po našem kavkazském výletu sem budu moct umístit kompletní a ověřené kalibrace pro <a href="http://mapy.mk.cvut.cz/list">mapy Gruzie a Arménie</a>, ale zákeřná chyba v OziExploreru to překazila a moje několikahodinová příprava byla téměř k ničemu. Ještě, že jsem si toho všimnul včas a přímo na místě opravil několik listů tak, abychom po (de facto válečné) hranici s Azerbajdžánem (<a href="http://cs.wikipedia.org/wiki/Nachi%C4%8Devansk%C3%A1_autonomn%C3%AD_republika">Nachičevanem</a>) nešli bez satelitní navigace. V tomto článku najdete popis této chyby i další postřehy týkající se kalibrace.</p>
+</div>
+<div class="content">
+<p>Popisovat zde kompletní kalibraci map v S-42 již nemá moc smysl, protože <a href="http://www.wmhelp.cz/html/modules.php?name=News&amp;file=article&amp;sid=106">dobrý praktický popis</a> se dá najít jinde a pokud vás zajímá i trochu teoretického pozadí, doporučuji přečít <a href="http://hrus.wordpress.com/2008/12/01/system-s-42-a-gps/">excelentní článek Tomáše Hruse</a>. Rád bych se tu ale zmínil o několika jednotlivostech.</p>
+<h3>Pojechali</h3>
+<p>Dřív, než začnete cokoli kalibrovat, podívejte se na <a href="http://poehali.org/">výborný mapový server poehali.org</a>, kde velmi pravděpodobně najdete mapu, kterou chcete, i s kalibrací. Já jsem tento server našel až ke konci své práce, tak jsem si říkal, že už to dotáhnu sám. Hlavně kvůli tomu, že mapy na Poehali měly ořezané okraje a byly ve formátu gif.</p>
+<h3>User grid vs. spherical coordinates</h3>
+<p>První odkazovaný článek používá pro kalibraci body z user grid (něco jako kilometrová síť), zatímco Tomáš Hrus preferuje přímo souřadnice elipsoidu zapsané v rozích mapy. Já jsem zkoušel oboje a k mému překvapení dávaly obě kalibrace naprosto totožné výsledky při ověření (měl jsem podezření, že nápadně kulaté hodnoty koordinát jsou pouze orientační, ale je to opravdu tak, že okraje mapových listů jsou zarovnány s rovnoběžkami a poledníky kulatých hodnot).</p>
+<p>Jediný významný rozdíl, který vidím při použití obou metod, je ten, že při použití souřadnic elipsoidu máte k dispozici pouze čtyři jasně definované body, zatímco při použití "kilometrové" sítě jich máte kolik chcete. Zvolil jsem proto právě body z user grid.</p>
+<h3>Bug v nastavení pásu transverse mercator</h3>
+<p>Dávejte pozor na to, že OziExplorer (minimálně ve verzi 3.95.5k) obsahuje zásadní chybu v dialogu pro nastavení zobrazení transverse mercator. Pokud v řádku pro nastavení středního poledníku nevyplníte pole s minutami, neuloží se ani nastavení celých stupňů! Do pole s minutami je tedy nutné zapsat explicitně nulu.</p>
+<p><img src="minuty.jpg" alt="" /></p>
+<p>Nejhorší na této chybě je, že se projeví opravdu až při uložení souboru, takže pokud mezi kalibrací a ověřením nezavřete Oziho, nepřijdete na ní. I pokud bude tato chyba opravena, aplikuji příště tento postup na několika testovacích mapách, protože to je příliš draze zaplacená zkušenost na to, aby se ještě někdy opakovala.</p>
+<h3>Ověření kalibrace proti Google maps</h3>
+<p>Nejdelší čas při osvojování si postupu kalibrace zabralo ověřování. Ponechám stranou to, že jsem nepřepnul Oziho z UTM do User grid (viz konec prvního odkazovaného článku) a strávil jsem tak zbytečně několik hodin zjišťováním toho, proč mám sakra  tu kilometrovou mříž o půl centimetru vedle. Největší problém mi totiž dělal asi dvouvteřinový rozdíl mezi polohou významných geografických bodů v mé kalibraci a na google maps.</p>
+<p>Délkově to bylo zhruba 300 metrů, což už je slušná přesnost, ale stejně jsem se s tím nechtěl spokojit a hledal jsem, jaké nastavení mám změnit. Vysvětlení je ale úplně jednoduché.</p>
+<p>OziExplorer totiž udává ve výchozím nastavení souřadnice bodu na elipsoidu nastaveném v kalibraci, takže v případě S42 na Krassovského elipsoidu, zatímco Google maps udávají souřadnice na WGS84 a tyto dva elipsoidy mohou mít proti sobě mírně posunuté poledníky. Změna v kalibraci tedy není nutná, je pouze potřeba porovnávat souřadnice ze stejných elipsoidů tak, že v Ozi provedeme následující nastavení:</p>
+<p><img src="display-datum.jpg" alt="" /></p>
+<h3>Závěrem</h3>
+<p>Nakonec jsme pro nejkritičtější část našeho vandru přeci jen měli k dispozici gps i s mapovými podklady a nutno říct, že nám hodně pomohly. Ale vyrobit si je byl docelal porod a příště se určtitě radši spokojím s mapami z Poehali.</p>
+<p>Přestože už jsem v této oblasti téměř expert, stále mi není jasných několik věcí, takže jestli o následujících bodech něco víte, napiště prosím do diskuze:</p>
+<ul>
+<li>Kdy používat S42 a kdy Pulkovo 1942? Pochopil jsem, že jediná odlišnost Pulkovo je mírná modifikace Krasovského elipsoidu. Ale jak mám z mapy poznat, na jakém elipsoidu byla dělaná? Poučka: "Pro sovětský svaz je lepší Pulkovo." je opravdu hodně vágní.</li>
+<li>Moje kalibrace s odkazovanými mapami se s Google maps liší zhruba o 100 metrů. Přímo v terénu jsem ale zjistil, že je naprosto přesná a liší se maximálně o pár desítek metrů. Je možné, že aktuální Google maps jsou horší, než sovětské mapy z roku 1972?</li>
+</ul>
+</div>
+<dl> <dt>Last update</dt> <dd>201011060000</dd> </dl></body>
+</html>

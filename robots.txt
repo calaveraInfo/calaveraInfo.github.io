@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /v1/
+Disallow: /pepa/
+Disallow: /admin/
+Disallow: /v2/xsl/
+Sitemap: http://calavera.info/sitemap.xml
