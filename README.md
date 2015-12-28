@@ -1,5 +1,4 @@
 ---
-layout: page
 title: History of my web
 permalink: /v3/history.html
 ---
