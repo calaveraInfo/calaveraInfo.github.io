@@ -10,7 +10,6 @@ title: calavera.info
 email: frantisek.rezac@calavera.info
 url: "http://calavera.info" # the base hostname & protocol for your site
 twitter_username: calaverainfo
-github_username:  calaveraInfo
 permalink: /v3/blog/:year/:month/:day/:title.html
 baseurl: "" # the subpath of your site, e.g. /blog
 # Build settings
