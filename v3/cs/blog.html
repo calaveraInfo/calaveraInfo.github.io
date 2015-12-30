@@ -1,11 +1,13 @@
 ---
 title: Blog
-permalink: /
+permalink: /v3/cs/blog
+lang: cs
+id: blog
 ---
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
+  <h1 class="page-heading">Články</h1>
 
   <ul class="post-list">
     {% for post in site.posts %}
@@ -19,6 +21,6 @@ permalink: /
     {% endfor %}
   </ul>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  <p class="rss-subscribe">odebírejte <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a></p>
 
 </div>

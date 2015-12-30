@@ -1,6 +1,6 @@
 ---
 title: History of my web
-permalink: /v3/history.html
+permalink: /v3/history
 ---
 I have recreated my web many times using many different Content Management System. One time I realized that the most important thing about any CMS technology is not how shiny and sophisticated the web is, but if the data in it remains accessible even after the technology is deprecated. Since then I'm using only technologies and addressing scheme that allows me to keep my data online even after I move to another CMS. I have produced 3 generations of such web presentations:
 

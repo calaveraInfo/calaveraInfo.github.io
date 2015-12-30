@@ -27,3 +27,13 @@ defaults:
       type: "pages"
     values:
       layout: "default"
+  -
+    scope:
+      path: "v3/en"
+    values:
+      lang: en
+  -
+    scope:
+      path: "v3/cs"
+    values:
+      lang: cs

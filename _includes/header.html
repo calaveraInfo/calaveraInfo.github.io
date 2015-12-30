@@ -14,9 +14,18 @@
       </a>
 
       <div class="trigger">
-        <a class="page-link" href="/v3/about-me.html">About me</a>
+        {% if page.lang == 'cs' %}
+        <a class="page-link" href="/v3/cs/o-mne">O mně</a>
+        <a class="page-link" href="/v2/index.xml">Předchozí verze</a>
+        {% else %}
+        <a class="page-link" href="/v3/en/about-me">About me</a>
         <a class="page-link" href="/v2/index.xml">Previous version</a>
-        <a class="page-link" href="/v3/history.html">History of my web</a>
+        <a class="page-link" href="/v3/history">History of my web</a>
+        {% endif %}
+        {% assign pages=site.pages | where:"id", page.id | sort: 'path' %}
+        {% for item in pages %}
+          <a href="{{ item.url }}" class="lang {{ item.lang }}">{{ item.lang }}</a>
+        {% endfor %}
       </div>
     </nav>
 
