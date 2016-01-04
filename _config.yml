@@ -17,23 +17,29 @@ markdown: kramdown
 defaults:
   -
     scope:
-      path: ""
+      path: "_posts/en"
       type: "posts"
     values:
       layout: "post"
+      lang: en
   -
     scope:
-      path: ""
-      type: "pages"
+      path: "_posts/cs"
+      type: "posts"
     values:
-      layout: "default"
+      layout: "post"
+      lang: cs
   -
     scope:
       path: "v3/en"
+      type: "pages"
     values:
+      layout: "default"
       lang: en
   -
     scope:
       path: "v3/cs"
+      type: "pages"
     values:
+      layout: "default"
       lang: cs

@@ -1,6 +1,6 @@
 ---
 title: About me
-id: aboutMe
+lid: about-me
 ---
 
 #About me

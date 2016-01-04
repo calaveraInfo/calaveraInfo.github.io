@@ -1,6 +1,6 @@
 ---
 title: O mně
-id: aboutMe
+lid: about-me
 ---
 
 #O mně
