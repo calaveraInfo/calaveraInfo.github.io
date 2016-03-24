@@ -1,0 +1,37 @@
+---
+title:  "Pohovory"
+lid: pohovory
+lang: cs
+layout: post
+---
+
+Už dlouho mě svrbí prsty k napsání článku o zážitcích z hledání práce a technických pracovních pohovorů, ale zatím jsem to nemohl publikovat veřejně. Původně jsem chtěl sepsat několik těch nejzábavnějších historek, ale během poslední doby jsem potkal několik článků, které absurdní situaci na trhu práce popisují seriózněji, takže připojím jen pár ironických komentářů.
+
+Tak za prvé: všichni přijímají jen ty nejlepší a nejtalentovanější. To zní správně. Až na to, že to dělají i všichni ostatní. Takže všichni mají ty nejlepší a nejtalentovanější lidi, daleko víc nejlepší než všichni ostatní. Kdo je dost nejlepší a nejtalentovanější posuzuje Karel, pravděpodobně proto, že je úplně nejvíc nejlepší a nejtalentovanější úplně ve všem. ‎Z logiky věci pak samozřejmě vyplývá, že jsou všechny firmy nejbohatší a nejzajímavější.
+
+[We hire the best, just like everyone else][1]
+
+Za druhé: schopnosti kandidáta (na jakoukoli pozici) se hodnotí podle a) osobního dojmu z hodinového pokecu, b) vypracování todo aplikace, c) testu z temných zákoutí transakční izolace/binárních operací/algoritmické složitosti atd., d) kombinace předchozích.
+
+Číst blog/web kandidáta, jeho kód na GitHubu, odpovědi na StackOverflow, profesní Twitter nebo někdy i LinkedIn zatěžuje víc firmu než kandidáta a to je nefér a navíc kdo má tušit, že má web na stejné doméně jako email. Seznam dodaných projektů a referencí z nich je spíše přitěžující, protože je podezřelý tím víc, čím lépe zní, nedej bože, aby bylo doporučení od interního člověka. K posouzení kandidáta určitě neslouží zkušební doba.
+
+[Technical interview performance is kind of arbitrary][2]
+
+Za třetí: Vývoj softwaru není inženýrská činnost, kde se většina důležitých věcí odehrála před 30 až 40 lety, ale jeden z podoborů marketingu‎, kde se vše důležité odehrálo během posledních pěti let.
+
+[We only hire the trendiest][3]
+
+A nakonec: Práci seženete nejjednodušeji tak, že vypíglované CV odevzdáte na HR oddělení firmy a necháte to na odbornících.
+
+[Job hunting and salary negotiation][4]
+
+Teď ironii stranou, člověku by se to chtělo hodit na HR, manažery a vůbec korporát celkově, ale on je to z velké části bohužel reálný obrázek stavu programování jakožto průmyslového odvětví.
+
+[The last programming language][5]
+(Mohl jsem se p***at smíchy u věty "...and that should scare the hell out of you, because ........ YOU KNOW!"
+
+[1]: http://blog.codinghorror.com/we-hire-the-best-just-like-everyone-else/
+[2]: http://blog.interviewing.io/technical-interview-performance-is-kind-of-arbitrary-heres-the-data/
+[3]: http://danluu.com/programmer-moneyball/
+[4]: https://www.twilio.com/blog/2016/02/patrick-mckenzie-on-salary-negotiation-job-hunting.html
+[5]: http://www.infoq.com/presentations/history-future-programming-languages 
