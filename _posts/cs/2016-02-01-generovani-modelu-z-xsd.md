@@ -21,5 +21,5 @@ Je to právě to, co typovému přístupu (právoplatně) vyčítají zastánci 
 
 Ve skutečnosti tedy web služby založené na XML nejen že mohou být stejně příjemné jako REST+JSON alternativa, ale zároveň mohou vytěžit i vlastnosti silně typových dat, což vynalézači kola jako Apiary nebo Blueprint teprve horko těžko dohání, navíc na komerční úrovni. Vzdáváme se toho výměnou za iluzi, že není třeba opouštět Javu a ono se to nějak zařídí. Stojí to za to?
 
-[1] http://c2.com/cgi/wiki?ApiVsProtocol
-[2] https://issues.apache.org/jira/browse/MDEP-98
+[1]: http://c2.com/cgi/wiki?ApiVsProtocol
+[2]: https://issues.apache.org/jira/browse/MDEP-98
