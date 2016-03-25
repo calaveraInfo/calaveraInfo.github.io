@@ -1,6 +1,5 @@
 ---
 title:  "Generování modelu z XSD"
-lid: generovani-modelu-z-xsd
 lang: cs
 layout: post
 ---
