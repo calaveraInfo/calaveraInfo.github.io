@@ -9,7 +9,7 @@ translationEn: /v3/en/blog/
     {% assign items=site.posts | where:"lang", "cs" %}
     {% for post in items%}
       <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <span class="post-meta">{{ post.date | date: "%-d. %-m. %Y" }}</span>
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
