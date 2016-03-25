@@ -1,6 +1,6 @@
 ---
 title: O mně
-lid: about-me
+translationEn: /v3/en/about-me/
 ---
 
 #O mně

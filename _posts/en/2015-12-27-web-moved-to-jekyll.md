@@ -1,6 +1,6 @@
 ---
 title: "Web moved to Jekyll"
-lid: presun-webu-na-jekyll
+translationCs: /v3/blog/2015/12/27/presun-webu-na-jekyll.html
 lang: en
 layout: post
 ---

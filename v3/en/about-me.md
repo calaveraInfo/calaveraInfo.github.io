@@ -1,6 +1,6 @@
 ---
 title: About me
-lid: about-me
+translationCs: /v3/cs/o-mne/
 ---
 
 #About me
