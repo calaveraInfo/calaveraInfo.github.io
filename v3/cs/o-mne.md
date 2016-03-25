@@ -1,6 +1,6 @@
 ---
 title: O mně
-translationEn: /v3/en/about-me/
+translationEn: /v3/en/about-me.html
 ---
 
 # O mně

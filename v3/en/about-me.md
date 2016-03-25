@@ -1,6 +1,6 @@
 ---
 title: About me
-translationCs: /v3/cs/o-mne/
+translationCs: /v3/cs/o-mne.html
 ---
 
 # About me
