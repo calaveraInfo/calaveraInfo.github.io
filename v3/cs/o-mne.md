@@ -3,7 +3,7 @@ title: O mně
 translationEn: /v3/en/about-me/
 ---
 
-#O mně
+# O mně
 
 * [LinkedIn](https://cz.linkedin.com/in/frantisekrezac)
 * [Twitter](https://twitter.com/calaverainfo)

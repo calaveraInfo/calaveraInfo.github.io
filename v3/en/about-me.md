@@ -3,7 +3,7 @@ title: About me
 translationCs: /v3/cs/o-mne/
 ---
 
-#About me
+# About me
 
 * [LinkedIn](https://cz.linkedin.com/in/frantisekrezac)
 * [Twitter](https://twitter.com/calaverainfo)
