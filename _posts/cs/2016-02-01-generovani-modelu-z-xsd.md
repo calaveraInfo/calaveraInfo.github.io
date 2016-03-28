@@ -12,7 +12,7 @@ Má to ale háček. V normálním případě, kdy je API dodáváno poskytovatel
 
 Ve skutečnosti je jediný efekt vygenerování Java tříd v tom, že pravidla z XSD převedeme do Java kódu, takže je místo XML validátoru kontroluje kompilátor. Kdyby to bylo zadarmo, tak proč ne, ale ono není.
 
-První problém, kterým platíme, je rozdíl ve vyjadřovacích schopnostech rozdílných zápisů, které vedou k diskrepanci tak dobře známé třeba z JPA.‎ Naše datové modely si pro zachování zdravého rozumu budou muset vystačit s minimalistickým‎ průnikem množin vlastností dokumentového a objektového přístupu.
+První problém, kterým platíme, je rozdíl ve vyjadřovacích schopnostech rozdílných zápisů, které vedou k diskrepanci tak dobře známé třeba z JPA vs SQL. Naše datové modely si pro zachování zdravého rozumu budou muset vystačit s minimalistickým‎ průnikem množin vlastností dokumentového (XSD) a objektového (Java) přístupu.
 
 Druhý, a podle mě závažnější problém, není na první pohled vidět. Jelikož soulad s protokolem kontroluje kompilátor jakákoli změna u poskytovatele služby vyžaduje rekompilaci klienta služby i když se ho změna vůbec nemusela dotknout. Místo toho, aby protokol definoval minimální sadu pravidel, která zajistí oboustranou otevřenou kompatibilitu, máme uzavřené API, které musí vždy odpovídat 1:1 s rozhraním služby, protože jinak nejsme schopni garantovat kompatibilitu vůbec.
 
