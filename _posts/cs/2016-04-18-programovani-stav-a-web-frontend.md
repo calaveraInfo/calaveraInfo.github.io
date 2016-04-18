@@ -12,7 +12,7 @@ Server side frameworky, zvlášť ty z objektově orientovaných jazyků, jdou c
 
 Zatím to vypadá jako stejné plané teoretizování, o kterém jsem říkal, že ho nemám rád, takže už radši přejdu k praktické ukázce důsledků. Začnu s typickým lakmusovým papírkem dobré architektury - testy.
 
-## Musí být testování webového frontendu složité?
+## Musí být testování web frontendu složité?
 
 Většina webových frontendových aplikací se musí testovat molochy typu Selenium. Proč?  Jednoduše proto, že view komponenty většinou nedokážou existovat mimo svůj standardní kontext serveru, prohlížeče atd. a zároveň jsou jako držitelé stavu nedílnou součástí byznys logiky.
 
@@ -34,9 +34,18 @@ To je otázka, která není zásadní jen v testech, ale obecně pro celý quali
 
 Dál už to takhle podrobně rozebírat nebudu, ale podobně zásadní dopad má existence modelu stavu view na několik dalších oblastí:
 
-* Debugging/Logging‎: když je stav na jednom místě, je jednoduché jej vypisovat při každé události, výjimce atd. Když je v logu kompletní a normalizovaný (takže čitelný) stav aplikace v každém důležitém okamžiku, je jednoduché hledat chyby i‎ bez přímého přístupu k danému prostředí a/nebo post mortem.
-* Jak jsem nedávno psal: <blockquote class="twitter-tweet" data-lang="cs"><p lang="en" dir="ltr">Every sufficiently large web application contains a poorly-specified, bug-ridden implementation of half of Web Flow <a href="https://t.co/1v6bBKbI4U">https://t.co/1v6bBKbI4U</a></p>&mdash; František Řezáč (@calaverainfo) <a href="https://twitter.com/calaverainfo/status/712981101397016576">24. března 2016</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>. Problém je, že hranice odpovědnosti mezi abstrakcí stavového automatu pro přechod mezi stránkami a komponentového modelu jedné stránky je velmi neurčitá a zároveň je zasahování jedné abstrakce do druhé technicky většinou náročné. Použití modelu stavu view jako neutrálního prostředku spolupráce je elegantní řešení tohoto problému.
+### Debugging/Logging
+
+Když je stav na jednom místě, je jednoduché jej vypisovat při každé události, výjimce atd. Když je v logu kompletní a normalizovaný (takže čitelný) stav aplikace v každém důležitém okamžiku, je jednoduché hledat chyby i‎ bez přímého přístupu k danému prostředí a/nebo post mortem.
+
+### Web Flow
+Jak jsem nedávno psal:
+ 
+<blockquote class="twitter-tweet" data-lang="cs"><p lang="en" dir="ltr">Every sufficiently large web application contains a poorly-specified, bug-ridden implementation of half of Web Flow <a href="https://t.co/1v6bBKbI4U">https://t.co/1v6bBKbI4U</a></p>&mdash; František Řezáč (@calaverainfo) <a href="https://twitter.com/calaverainfo/status/712981101397016576">24. března 2016</a></blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Problém je, že hranice odpovědnosti mezi abstrakcí stavového automatu pro přechod mezi stránkami a komponentového modelu jedné stránky je velmi neurčitá a zároveň je zasahování jedné abstrakce do druhé technicky většinou náročné. Použití modelu stavu view jako neutrálního prostředku spolupráce je elegantní řešení tohoto problému.
 
 ## Závěr
 
