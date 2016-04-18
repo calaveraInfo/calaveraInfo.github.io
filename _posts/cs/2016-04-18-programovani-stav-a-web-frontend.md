@@ -24,13 +24,13 @@ A jestli jste to ještě nevzdali, je tu ten největší problém: co vlastně v
 
 Abych to uzavřel: hodně lidí tomu asi nebude věřit, ale i frontend se dá automaticky testovat i bez Selenia, pokud má dobrou architekturu (opravdu jsem zažil celou web aplikaci naostro spuštěnou jen v JUnit). Jeden z klíčových prvků, který to umožňuje, je klasický příklad [základního architekturního úkonu inverze závislostí][Uncle Bob: Little architecture]: stav view nesmí být závislý na použité view technologii, ale naopak ‎view musí být závislé na byznysovém modelu svého stavu.
 
-##Jak pomůže model stavu?
+## Jak pomůže model stavu?
 
 Na příkladu testů se ukazuje důsledek denormalizovaného stavu v tom, že vlastně není jasné, jak ověřit testovanou skutečnost. Příklad: splnění byznys požadavku "formulář bude za nějakých podmínek read only" musí být kontrolováno tak, že se projdou všechny prvky daného formuláře a ověří se, že jsou ve stavu disabled. Jedna jednoduchá informace se bude složitě ověřovat na mnoha místech. Z těchto míst  ale zároveň žádné nemá autoritativní postavení vůči ostatním. Pokud po nějaké sekvenci událostí jedna z komponent nebude disabled, co to znamená? Že je v programu chyba, nebo že naopak program správně pamatuje na jiný byznys požadavek, který také manipuluje s tímto atributem?
 
 To je otázka, která není zásadní jen v testech, ale obecně pro celý quality assurance proces a údržbovou fázi života software. To, co model stavu dovoluje, je explicitně a deklarativně vyjmenovat skutečnosti ze zadání a vybrat tím z nekonečného stavového prostoru vizuální reprezentace většinou překvapivě malou množinu atomických faktů. To je klíčové pro analytiky, architekty i programátory a komunikaci mezi nimi podobně jako například rozhraní služeb.
 
-##Další důsledky
+## Další důsledky
 
 Dál už to takhle podrobně rozebírat nebudu, ale podobně zásadní dopad má existence modelu stavu view na několik dalších oblastí:
 
