@@ -55,7 +55,7 @@ Reálné projekty z mnoha důvodů nějaké kompromisy dělat musí. Jak ale hod
 
 Pro ty, kdo hledají jednoduché poučky: používejte architekturu MVVM, protože okolo modelu stavu view staví kompletní architekturu a její doslovnost nedovoluje příliš mnoho "kreativních" odchylek.
 
-Pro ty, kdo hledají hlubší pochopení: Nic v článku není nijak objevné. Staří mazáci dobře vědí, že stav je asi jediná opravdu těžká věc na programování a většina inženýrských konstrukcí se nějak týká jeho zkrocení (immutabilita, monády atd.). Centralizovat aplikační stav a všechno ostatní postavit okolo něj je z tohoto pohledu vlastně nejzákladnější opatření pro jakýkoli druh aplikace a je obecně platné napříč architekturami i programovacími paradigmaty (odkaz Elm architektura).
+Pro ty, kdo hledají hlubší pochopení: Nic v článku není nijak objevné. Staří mazáci dobře vědí, že stav je asi jediná opravdu těžká věc na programování a většina inženýrských konstrukcí se nějak týká jeho zkrocení (immutabilita, monády atd.). Centralizovat aplikační stav a všechno ostatní postavit okolo něj je z tohoto pohledu vlastně nejzákladnější opatření pro jakýkoli druh aplikace a je obecně platné [napříč architekturami i programovacími paradigmaty][Evancz: Elm architecture].
 
 [Fowler: Frontend architectures]: http://martinfowler.com/eaaDev/uiArchs.html
 [Fowler: Presentation model]: http://martinfowler.com/eaaDev/PresentationModel.html
@@ -64,3 +64,4 @@ Pro ty, kdo hledají hlubší pochopení: Nic v článku není nijak objevné. S
 [React]: https://facebook.github.io/react/
 [Arquillian]: http://arquillian.org/
 [Uncle Bob: Little architecture]: http://blog.cleancoder.com/uncle-bob/2016/01/04/ALittleArchitecture.html
+[Evancz: Elm architecture]: https://gist.github.com/evancz/2b2ba366cae1887fe621
