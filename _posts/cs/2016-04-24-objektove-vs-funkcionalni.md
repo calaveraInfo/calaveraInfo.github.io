@@ -12,13 +12,16 @@ V poslední době se čím dál tím víc mluví o nástupu funkcionálního pro
 [Boolean as a service][booleans.io] je možná myšlený jako vtip o módě microservice, ale ve své podstatě je esencí OOP. Já osobně si tipuju, že až tohle někomu dojde, "vynalezne" celé OOP v kontextu web platforem znovu.
 
 3. Kritika OOP nemíří často přímo na jeho vlastnosti, ale skrz něj na vlastnosti imperativního programování jako takového. A to je jádro pudla - tyto kategorie nejde hodnotit jako lepší a horší, mají jen rozdílné vlastnosti. Imperativní programování je poplatné tomu, že pomocí něj ovládáme fyzický stroj, zatímco funkcionální je poplatné tomu, že pomocí něj chceme vyjadřovat myšlenku.
-Vývojáři většiny softwaru samozřejmě potřebují hlavně formulovat myšlenky a jak je bude stroj vykonávat je jim jedno, takže logicky preferují FP. Má to však i stinnou stránku. Například nejenže je [nemožné v lambda kalkulu určit teoretickou výpočetní náročnost][SO: lambda calculus], ale i prakticky má FP inherentní výkonostní problém.
-Často se argumentuje, že to je [jen otázka správných algoritmů a datových struktur][HAMT], ale pravda je taková, že [FP z principu porušuje snad všechny předpoklady, které usnadňují hardwaru běh programu][FP is bullshit] a výsledkem jsou řádové (jakože 3 a víc řádů) rozdíly ve výkonnosti.‎ Tyto rozdíly jsou dokonce tak velké, že v mnoha případech nejsou ani teoreticky kompenzovatelné paralelizovatelností, kterou FP umožňuje, protože její přínosy jsou omezené Ahmdalovým zákonem! Tohle hezky ilustruje, že každá vlastnost má pozitivní i negativní význam, záleží jen a pouze na konkrétních úhlech pohledu, proto: 
+
+  Vývojáři většiny softwaru samozřejmě potřebují hlavně formulovat myšlenky a jak je bude stroj vykonávat je jim jedno, takže logicky preferují FP. Má to však i stinnou stránku. Například nejenže je [nemožné v lambda kalkulu určit teoretickou výpočetní náročnost][SO: lambda calculus], ale i prakticky má FP inherentní výkonostní problém.
+
+  Často se argumentuje, že to je [jen otázka správných algoritmů a datových struktur][HAMT], ale pravda je taková, že [FP z principu porušuje snad všechny předpoklady, které usnadňují hardwaru běh programu][FP is bullshit] a výsledkem jsou řádové (jakože 3 a víc řádů) rozdíly ve výkonnosti.‎ Tyto rozdíly jsou dokonce tak velké, že v mnoha případech nejsou ani teoreticky kompenzovatelné paralelizovatelností, kterou FP umožňuje, protože její přínosy jsou omezené Ahmdalovým zákonem! Tohle hezky ilustruje, že každá vlastnost má pozitivní i negativní význam, záleží jen a pouze na konkrétních úhlech pohledu, proto: 
 
 4. Dobrý inženýr musí umět oboje dobře. Přístup chytré horákyně - vzít si z obojího jen to nejlepší - [je stejná blbost, jako vždycky][Strange Loop].
 
 5. I samotná Java, jakkoli mnoha lidem zprzní pohled na OOP, se nestala fackovacím panákem úplně zaslouženě. Technická excelence a masové rozšíření se vzájemně vylučují. Sice jsem četl už mnoho obhajob toho, že lambda kalkulus je vlastně přirozenější způsob zápisu algoritmů, ale i Haskel komunita razí slogan "avoid success at all cost", protože moc dobře vědí, že vybrat si mohou jen jedno.
-Jak udělat technologii, která bude tvořit desítky procent celého průmyslového odvětví? Taková se vyrobit nedá, [musí se nechat vyrůst společně s lidmi, kteří jí používají][Growing a language] a proto bude stejně nedokonalá jako oni, od začátku až do konce (ano, JavaScript je další na řadě).
+
+  Jak udělat technologii, která bude tvořit desítky procent celého průmyslového odvětví? Taková se vyrobit nedá, [musí se nechat vyrůst společně s lidmi, kteří jí používají][Growing a language] a proto bude stejně nedokonalá jako oni, od začátku až do konce (ano, JavaScript je další na řadě).
 
 Nejsem starý morous a myšlenkovou elegancí FP jsem naprosto uchvácen už dlouho, ale mám taky čím dál tím vzácnější schopnost přízemní sebereflexe. Technologický evangelismus může být stejně destruktivní, jako ten náboženský.
 
