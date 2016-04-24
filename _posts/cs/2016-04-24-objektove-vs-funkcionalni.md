@@ -1,3 +1,9 @@
+---
+title:  "Objektové vs. funkcionální programování"
+lang: cs
+layout: post
+---
+
 V poslední době se čím dál tím víc mluví o nástupu funkcionálního programování a jeho nadřazenosti nad objektovým. Že to slyším od testosteronem nadopovaných mladíků hledajících způsob vyjádření dominance je naprosto v pořádku, byl jsem jedním z nich, ale že to začínám slýchat i od [vyspělých inženýrů][Mature engineer] mě trošku děsí. ‎Proto bych chtěl k téhle debatě přidat pár střízlivých faktů.
 
 1. Funkcionální (FP) a objektové (OOP) programování nejsou vzájemně soupeřící koncepty, ale naopak z větší části úplně mimoběžné. Centrální myšlenka objektového programování není ani tak dědičnost a další pilíře z kurzů "Naučte se OOP za 21 dní", ale [messaging][Kay: Messaging]. Většina lidí si na to dělá bohužel názor skrze Javu a spol., kde messaging zdegeneroval do podoby volání metod, o tom ale později.
