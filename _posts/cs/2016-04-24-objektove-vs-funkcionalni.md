@@ -20,7 +20,7 @@ V poslední době se čím dál tím víc mluví o nástupu funkcionálního pro
 
 4. Dobrý inženýr musí umět oboje dobře. Přístup chytré horákyně - vzít si z obojího jen to nejlepší - [je stejná blbost, jako vždycky][Strange Loop].
 
-5. I samotná Java, jakkoli mnoha lidem zprzní pohled na OOP, se nestala fackovacím panákem úplně zaslouženě. Technická excelence a masové rozšíření se vzájemně vylučují. Sice jsem četl už mnoho obhajob toho, že lambda kalkulus je vlastně přirozenější způsob zápisu algoritmů, ale i Haskel komunita razí slogan "avoid success at all cost", protože moc dobře vědí, že vybrat si mohou jen jedno.
+5. I samotná Java, jakkoli mnoha lidem zprzní pohled na OOP, se nestala fackovacím panákem úplně zaslouženě. Technická excelence a masové rozšíření se vzájemně vylučují. Sice jsem četl už mnoho obhajob toho, že lambda kalkulus je vlastně přirozenější způsob zápisu algoritmů, ale ruku na srdce - zkuste si představit, jak vysvětlujete [Yoneda lemmu][Yoneda lemma] průměrnému kodérovi. I Haskel komunita razí slogan "avoid success at all cost", protože moc dobře ví, že z těchto dvou kvalit si může vybrat jen jednu.
 
     Java (stejně jako dnes JavaScript) cílí na masové rozšíření, chce se stát stabilním základem významné části celého průmyslu. Taková technologie se vyrobit nedá, [musí se nechat vyrůst společně s lidmi, kteří jí používají][Growing a language] a proto bude stejně nedokonalá jako oni, od začátku až do konce. Porovnávat to s ideálním stavem je stejně nesmyslné jako třeba v politice.
 
@@ -36,3 +36,4 @@ Nejsem starý morous a myšlenkovou elegancí FP jsem naprosto uchvácen už dlo
 [FP is bullshit]: http://funkcionalne.cz/2015/09/grim-hardware-realities-of-functional-programming/
 [Strange Loop]: https://www.youtube.com/watch?v=449j7oKQVkc
 [Growing a language]: https://www.youtube.com/watch?v=_ahvzDzKdB0
+[Yoneda lemma]: https://en.wikipedia.org/wiki/Yoneda_lemma
