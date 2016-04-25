@@ -4,7 +4,7 @@ lang: cs
 layout: post
 ---
 
-V poslední době se čím dál tím víc mluví o nástupu funkcionálního programování a jeho nadřazenosti nad objektovým. Že to slyším od testosteronem nadopovaných mladíků hledajících způsob vyjádření dominance je naprosto v pořádku, byl jsem jedním z nich, ale že to začínám slýchat i od [vyspělých inženýrů][Mature engineer] mě trošku děsí. ‎Proto bych chtěl k téhle debatě přidat pár střízlivých faktů.
+V poslední době se čím dál tím víc mluví o nástupu funkcionálního programování a jeho nadřazenosti nad objektovým. Že to slyším od testosteronem nadopovaných mladíků hledajících způsob vyjádření dominance je naprosto v pořádku, byl jsem jedním z nich, ale že to začínám slýchat i od [seniorních][Mature engineer] inženýrů mě trošku děsí. ‎Proto bych chtěl k téhle debatě přidat pár střízlivých faktů.
 
 1. Funkcionální (FP) a objektové (OOP) programování nejsou vzájemně soupeřící koncepty, ale naopak z větší části úplně mimoběžné. Centrální myšlenka objektového programování není ani tak dědičnost a další pilíře z kurzů "Naučte se OOP za 21 dní", ale [messaging][Kay: Messaging]. Většina lidí si na to dělá bohužel názor skrze Javu a spol., kde messaging zdegeneroval do podoby volání metod, o tom ale později.
 
@@ -16,13 +16,13 @@ V poslední době se čím dál tím víc mluví o nástupu funkcionálního pro
 
     Vývojáři většiny softwaru samozřejmě potřebují hlavně formulovat myšlenky a jak je bude stroj vykonávat je jim jedno, takže logicky preferují FP. Má to však i stinnou stránku. Například nejenže je [nemožné v lambda kalkulu určit teoretickou výpočetní náročnost][SO: lambda calculus], ale i prakticky má FP inherentní výkonostní problém.
 
-    Často se argumentuje, že to je [jen otázka správných algoritmů a datových struktur][HAMT], ale pravda je taková, že [FP z principu porušuje snad všechny předpoklady, které usnadňují hardwaru běh programu][FP is bullshit] a výsledkem jsou řádové (jakože 3 a víc řádů) rozdíly ve výkonnosti.‎ Tyto rozdíly jsou dokonce tak velké, že v mnoha případech nejsou ani teoreticky kompenzovatelné paralelizovatelností, kterou FP umožňuje, protože její přínosy jsou omezené Ahmdalovým zákonem! Tohle hezky ilustruje, že každá vlastnost má pozitivní i negativní význam, záleží jen a pouze na konkrétních úhlech pohledu, proto: 
+    Často se argumentuje, že to je [jen otázka správných algoritmů a datových struktur][HAMT], ale pravda je taková, že [FP z principu porušuje snad všechny předpoklady, které usnadňují hardwaru běh programu][FP is bullshit] a výsledkem jsou řádové (jakože 3 a víc řádů) rozdíly ve výkonnosti.‎ Tyto rozdíly jsou dokonce tak velké, že v mnoha případech nejsou ani teoreticky kompenzovatelné paralelizovatelností, kterou FP umožňuje, protože její přínosy jsou omezené Ahmdalovým zákonem! Tohle hezky ilustruje, že každá vlastnost má pozitivní i negativní význam, záleží jen a pouze na konkrétních podmínkách a cílech, proto: 
 
 4. Dobrý inženýr musí umět oboje dobře. Přístup chytré horákyně - vzít si z obojího jen to nejlepší - [je stejná blbost, jako vždycky][Strange Loop].
 
 5. I samotná Java, jakkoli mnoha lidem zprzní pohled na OOP, se nestala fackovacím panákem úplně zaslouženě. Technická excelence a masové rozšíření se vzájemně vylučují. Sice jsem četl už mnoho obhajob toho, že lambda kalkulus je vlastně přirozenější způsob zápisu algoritmů, ale i Haskel komunita razí slogan "avoid success at all cost", protože moc dobře vědí, že vybrat si mohou jen jedno.
 
-    Jak udělat technologii, která bude tvořit desítky procent celého průmyslového odvětví? Taková se vyrobit nedá, [musí se nechat vyrůst společně s lidmi, kteří jí používají][Growing a language] a proto bude stejně nedokonalá jako oni, od začátku až do konce (ano, JavaScript je další na řadě).
+    Java (stejně jako dnes JavaScript) cílí na masové rozšíření, chce se stát stabilním základem významné části celého průmyslu. Taková technologie se vyrobit nedá, [musí se nechat vyrůst společně s lidmi, kteří jí používají][Growing a language] a proto bude stejně nedokonalá jako oni, od začátku až do konce. Porovnávat to s ideálním stavem je stejně nesmyslné jako třeba v politice.
 
 Nejsem starý morous a myšlenkovou elegancí FP jsem naprosto uchvácen už dlouho, ale mám taky čím dál tím vzácnější schopnost přízemní sebereflexe. Technologický evangelismus může být stejně destruktivní, jako ten náboženský.
 
