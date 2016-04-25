@@ -10,7 +10,7 @@ V poslední době se čím dál tím víc mluví o nástupu funkcionálního pro
 
 2. Messaging a spol. neměl ulehčit práci programátorům v psaní algoritmů, ale [architektům v designu systémů][Uncle Bob: Little architecture]. Mimo jiné tím, že v kódu katalyzuje principy high cohesion a loose coupling, což vyústí v [komoditizaci jednotlivých částí software, to bude srážet cenu vývoje o celé řády a způsobí tím revoluci v softwaru][Brooks: Silver bullet]. Jestli vám to nepřipomíná Javu, ale problematiku dnešních web API a různých PaaS, chápete správně. Dnes to vypadá, jak kdyby FP přišlo vyřešit nedostatky zastaralého OOP, ale před 40 lety to bylo jaksi naopak.
 
-    [Boolean as a service][booleans.io] je možná myšlený jako vtip o módě microservice, ale ve své podstatě je esencí OOP. Já osobně si tipuju, že až tohle někomu dojde, "vynalezne" celé OOP v kontextu web platforem znovu.
+    [Boolean as a service][booleans.io] je možná myšlený jako vtip o módě microservice (který se šeredně vymknul kontrole a místo vtipu se stal módou), ale ve své podstatě je esencí OOP. Já osobně si tipuju, že až tohle někomu dojde, "vynalezne" celé OOP v kontextu web platforem znovu.
 
 3. Kritika OOP nemíří často přímo na jeho vlastnosti, ale skrz něj na vlastnosti imperativního programování jako takového. A to je jádro pudla - tyto kategorie nejde hodnotit jako lepší a horší, mají jen rozdílné vlastnosti. Imperativní programování je poplatné tomu, že pomocí něj ovládáme fyzický stroj, zatímco funkcionální je poplatné tomu, že pomocí něj chceme vyjadřovat myšlenku.
 
