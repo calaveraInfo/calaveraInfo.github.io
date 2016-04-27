@@ -10,8 +10,7 @@ translationEn: /v3/en/about-me.html
 <img src="http://stackoverflow.com/users/flair/263639.png" width="208" height="58" alt="profile for calavera.info at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for calavera.info at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
 </a>
 
-<div class="github-card" data-github="calaveraInfo" data-width="400" data-height="" data-theme="default"></div>
-<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+* [GitHub](https://github.com/calaveraInfo)
 
 <a class="twitter-follow-button" href="https://twitter.com/calaverainfo">Twitter: @calaverainfo</a>
 <a class="twitter-timeline" href="https://twitter.com/calaverainfo" data-widget-id="725303788559568897">Tweety od uživatele @calaverainfo</a>
