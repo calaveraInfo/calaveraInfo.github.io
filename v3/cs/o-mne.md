@@ -4,6 +4,7 @@ translationEn: /v3/en/about-me.html
 ---
 
 <a class="twitter-follow-button" href="https://twitter.com/calaverainfo">Twitter: @calaverainfo</a>
+<a class="twitter-timeline" href="https://twitter.com/calaverainfo" data-widget-id="725303788559568897">Tweety od uživatele @calaverainfo</a>
 
 # O mně
 
@@ -11,19 +12,4 @@ translationEn: /v3/en/about-me.html
 * [GitHub](https://github.com/calaveraInfo)
 * [StackOverflow](http://stackoverflow.com/users/263639/calavera-info)
 
-<script>window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
- 
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
- 
-  return t;
-}(document, "script", "twitter-wjs"));</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
