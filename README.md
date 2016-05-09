@@ -14,4 +14,4 @@ I have recreated my web many times using many different Content Management Syste
 [Second generation](/v2/index.xml) used client side XSL transformation directly in browser so it is completely static and fully usable even after I moved from my own server to GitHub hosting.
 
 # v3
-Third generation is the current one and it is build on the [Jekkyl](http://jekyllrb.com/) support on GitHub.
+Third generation is the current one and it is based on the [Jekkyl](http://jekyllrb.com/) support on GitHub (and [google drive](https://googledrive.com/host/0B1pxZj5GslL_flF5azBYZUotMjAzSjBQSnZDb3RLblN5ZmdOLTJtS0ptd21kZ01CQi1jNFE) for some static assets).
