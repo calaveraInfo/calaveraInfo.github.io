@@ -18,7 +18,7 @@ Druhý, a podle mě závažnější problém, není na první pohled vidět. Jel
 
 Je to právě to, co typovému přístupu (právoplatně) vyčítají zastánci hippie přístupu s REST a JSON. Přitom je to vlastnost, kterou jsme si k webovým službám přidali sami, původní přístup je jednoduchý: místo generování kódu používat vlastní doménový model, mapování dodat ručně pomocí anotací (nebo složitějším nástrojem), ‎a soulad s protokolem kontrolovat na reálných příkladech v rámci testů. Nejen že se závislost na rozhraní služby přesune z kompilační fáze do testovací (čímž se mimo jiné zbavíme problému [MDEP-187][2]), ale hlavně nám nepodstatné změny nebudou zasahovat do kódu.
 
-Ve skutečnosti tedy web služby založené na XML nejen že mohou být stejně příjemné jako REST+JSON alternativa, ale zároveň mohou vytěžit i vlastnosti silně typových dat, což vynalézači kola jako Apiary nebo Blueprint teprve horko těžko dohání, navíc na komerční úrovni. Vzdáváme se toho výměnou za iluzi, že není třeba opouštět Javu a ono se to nějak zařídí. Stojí to za to?
+Ve skutečnosti tedy web služby založené na XML nejen že mohou být stejně flexibilní jako REST+JSON alternativa, ale zároveň mohou vytěžit i vlastnosti silně typových dat, což vynalézači kola jako Apiary nebo Blueprint teprve horko těžko dohání, navíc na komerční úrovni. Vzdáváme se toho výměnou za iluzi, že není třeba opouštět Javu a ono se to nějak zařídí. Stojí to za to?
 
 [1]: http://c2.com/cgi/wiki?ApiVsProtocol
 [2]: https://issues.apache.org/jira/browse/MDEP-187
