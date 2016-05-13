@@ -24,7 +24,9 @@ V poslední době se čím dál tím víc mluví o nástupu funkcionálního pro
 
     Java (stejně jako dnes JavaScript) cílí na masové rozšíření, chce se stát stabilním základem významné části celého průmyslu. Taková technologie se vyrobit nedá, [musí se nechat vyrůst společně s lidmi, kteří jí používají][Growing a language] a proto bude stejně nedokonalá jako oni, od začátku až do konce. Porovnávat to s ideálním stavem je stejně nesmyslné jako třeba v politice.
 
-Nejsem starý morous a myšlenkovou elegancí FP jsem naprosto uchvácen už dlouho, ale mám taky čím dál tím vzácnější schopnost přízemní sebereflexe. Technologický evangelismus může být stejně destruktivní, jako ten náboženský.
+Nejsem starý morous a myšlenkovou elegancí FP jsem naprosto uchvácen už dlouho, ale mám taky čím dál tím vzácnější schopnost přízemní sebereflexe. Technologický evangelismus může být stejně destruktivní a iracionální, jako ten náboženský:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3wyd6J3yjcs" frameborder="0" allowfullscreen></iframe>
 
 [Mature engineer]: http://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/
 [Kay: Messaging]: http://c2.com/cgi/wiki?AlanKayOnMessaging
