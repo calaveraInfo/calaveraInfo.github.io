@@ -1,7 +1,5 @@
 ---
 title:  "Generování modelu z XSD"
-lang: cs
-layout: post
 ---
 
 Nedávné řešení problémů s m2e (adaptace Mavenu pro Eclipse) mě přivedlo k tématu, které je v profesionální Javě prakticky dogmatické a už se o něm ani moc nepřemýšlí - generování Java tříd z XSD. Termín "contract first" už prakticky splynul s tímto úkonem a nikoho už nenapadne, že by to mohlo být i‎ úplně jinak.

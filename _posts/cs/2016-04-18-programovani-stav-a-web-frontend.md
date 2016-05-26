@@ -1,7 +1,5 @@
 ---
 title:  "Programování, stav a web frontend"
-lang: cs
-layout: post
 ---
 
 Už mě nebaví diskuze o [frontendových architekturách][Fowler: Frontend architectures]. I od základního MVC existuje nekonečné množství variant a specializací, které se liší nuancemi v tom, odkud kam vedou jakým stylem malované šipky. Diskuze o tom končí na argumentech typu kam co "patří", kde je co "přehlednější", v čem je "nejmíň duplicity" a dalších subjektivních pocitech jejichž reálný dopad je přinejmenším diskutabilní.

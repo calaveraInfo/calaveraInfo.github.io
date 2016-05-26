@@ -1,7 +1,5 @@
 ---
 title:  "Objektové vs. funkcionální programování"
-lang: cs
-layout: post
 ---
 
 V poslední době se čím dál tím víc mluví o nástupu funkcionálního programování a jeho nadřazenosti nad objektovým. Že to slyším od testosteronem nadopovaných mladíků hledajících způsob vyjádření dominance je naprosto v pořádku, byl jsem jedním z nich, ale že to začínám slýchat i od [seniorních][Mature engineer] inženýrů mě trošku děsí. ‎Proto bych chtěl k téhle debatě přidat pár střízlivých faktů.
