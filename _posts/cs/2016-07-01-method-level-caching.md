@@ -58,13 +58,13 @@ Proti výše popsaným šílenostem jsou moje další poznámky vlastně drobnos
 ## Uf...
 Nechápejte mě špatně, rozumně použitá cache je velmi užitečný nástroj. Pro jednorázově nastavené/neměnné hodnoty, jako např. konfigurace aplikace nebo číselníky je její použití skutečně jednoduché a bezpečné. Chtěl jsem ale ukázat, jak obrovská chyba by bylo považovat jí za bezpracnou silver bullet pro performance, jak se to často děje.
 
-[cap][https://en.wikipedia.org/wiki/CAP_theorem]
-[ehcache:synchro][http://www.ehcache.org/documentation/2.8/replication/jgroups-replicated-caching.html#example-configuration-using-udp-multicast]
-[Pinos:cache][http://tom2ee.blogspot.cz/2015/11/jak-se-vyplati-kesovani.html]
-[Java String][https://en.wikipedia.org/wiki/Java_hashCode%28%29]
-[funkcionalne.cz:hash][http://funkcionalne.cz/2016/02/kolize-hashu-pro-mirne-pokrocile/]
-[Spring:default][https://github.com/spring-projects/spring-framework/blob/master/spring-context/src/main/java/org/springframework/cache/interceptor/DefaultKeyGenerator.java]
-[Spring:cache][http://docs.spring.io/spring/docs/current/spring-framework-reference/html/cache.html]
-[ehcache-annotations][https://code.google.com/archive/p/ehcache-spring-annotations/]
-[calavera.info:funkcionalni][http://calavera.info/v3/blog/2016/04/24/objektove-vs-funkcionalni.html]
-[jsr-107][https://jcp.org/en/jsr/detail?id=107]
+[cap]: https://en.wikipedia.org/wiki/CAP_theorem]
+[ehcache:synchro]: http://www.ehcache.org/documentation/2.8/replication/jgroups-replicated-caching.html#example-configuration-using-udp-multicast
+[Pinos:cache]: http://tom2ee.blogspot.cz/2015/11/jak-se-vyplati-kesovani.html
+[Java String]: https://en.wikipedia.org/wiki/Java_hashCode%28%29
+[funkcionalne.cz:hash]: http://funkcionalne.cz/2016/02/kolize-hashu-pro-mirne-pokrocile/
+[Spring:default]: https://github.com/spring-projects/spring-framework/blob/master/spring-context/src/main/java/org/springframework/cache/interceptor/DefaultKeyGenerator.java
+[Spring:cache]: http://docs.spring.io/spring/docs/current/spring-framework-reference/html/cache.html
+[ehcache-annotations]: https://code.google.com/archive/p/ehcache-spring-annotations/
+[calavera.info:funkcionalni]: http://calavera.info/v3/blog/2016/04/24/objektove-vs-funkcionalni.html
+[jsr-107]: https://jcp.org/en/jsr/detail?id=107
