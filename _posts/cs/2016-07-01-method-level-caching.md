@@ -18,7 +18,7 @@ Navíc ve většině velkých firem mají vztahy vývoje a provozu k DevOps idyl
 
 Ohledně přínosů tedy stačí trochu podcenit složitost celého procesu a mohou být směšně malé. Teď se podívejme na druhou stranu - jaké problémy může cachování přinést? Ty hlavní se všechny točí okolo jednoho tématu: generování klíčů pro cachované položky.
 
-Selský rozum se spokojí s vysvětlením, že klíče se počítají z parametrů cachované metody zhruba podobně, jako hash do hash mapy. Zkušenější si možná ještě ověří, že se do hashe započítává i jméno metody, jinak by se vracel stejný výsledek z jakékoli cachované metody se stejnou signaturou. Ano, toto absurdní chování je stále ještě [výchozí chování][ehcache-anotations] některých frameworků.
+Selský rozum se spokojí s vysvětlením, že klíče se počítají z parametrů cachované metody zhruba podobně, jako hash do hash mapy. Zkušenější si možná ještě ověří, že se do hashe započítává i jméno metody, jinak by se vracel stejný výsledek z jakékoli cachované metody se stejnou signaturou. Ano, toto absurdní chování je stále ještě [výchozí chování][ehcache-annotations] některých frameworků.
 
 Samozřejmě ani jméno metody není zdaleka neprůstřelný způsob zajištění unikátnosti klíče, viz typická jména metod DAO pro různé entity jako například getById(long id) apod. Nestačí tedy defaultně přidávat k hashi i jméno třídy? To už není výchozí chování v žádném frameworku, ale ani to nemusí stačit - co když je metoda na abstraktním generickém předkovi (což je typické třeba pro DAO implementované pomocí JPA)?
 
