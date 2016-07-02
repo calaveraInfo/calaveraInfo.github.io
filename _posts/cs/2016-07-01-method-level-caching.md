@@ -12,7 +12,7 @@ Na první pohled je to jednoduché: máte problém s performance? Hoďte na pár
 
 Co se týče přínosů, tak zásadní věc je, že aby cache vůbec k něčemu byla, musí se dobře nastavit, což je dlouhodobá a týmová práce mezi vývojáři a provozáky. Ti první rozhodují jaká data do jakých cachí se budou dávat a jak se s nimi bude pracovat, ti druzí pak nastavují parametry dodaných cachí podle hardwaru, profilů zátěže, systémové konfigurace a hlavně monitoringu reálného chování. Dohromady to je trochu [černá magie][Pinos:cache] kde jedna činnost závisí na druhé v kruhu, ale většinou se to nijak neřeší ani v technickém designu, ani manažersky (protože stačí tam dát @Cacheable, že jo).
 
-Navíc ve většině velkých firem mají vztahy vývoje a provozu k DevOps idylce velmi daleko a oddělení spolu vedou spíše zákopovou válku, takže reálně aplikace často skončí v produkci s defaultními parametry nastřelenými naslepo přímo od vývojáře, a ops se toho nedotknou ani dvoumetrovou holí, protože to není jejich věc. Když říkám, že výsledky takového cachování jsou katastrofické, nemyslím tím plus mínus pár procent předpokládané úspory, ale to, že výsledný výkonnostní efekt může být záporný! O tom, proč runtime náklady cache nemusí být zrovna malé, ‎za chvíli.
+Navíc ve většině velkých firem mají vztahy vývoje a provozu k DevOps idylce velmi daleko a oddělení spolu vedou spíše zákopovou válku. Reálně tak aplikace často skončí v produkci s defaultními parametry nastřelenými naslepo přímo od vývojáře, a operations se toho nedotknou ani dvoumetrovou holí, protože to berou jako aplikační nastavení, což není jejich věc. Když říkám, že výsledky takového cachování jsou katastrofické, nemyslím tím plus mínus pár procent předpokládané úspory, ale to, že výsledný výkonnostní efekt může být záporný! O tom, proč runtime náklady cache nemusí být zrovna malé, za chvíli.
 
 ## Klíče, klíče, klíče
 
@@ -34,7 +34,7 @@ Ačkoli je hash mapa vůči kolizím klíčů na první pohled odolná, přesto 
 
 Bez matematického génia v týmu je tak asi lepší strategie ověřovat v code review, že do klíče se započítává jen nezbytně nutné množství dat z parametrů a žádné z nich nejsou ovlivnitelné uživatelem. Dobrá pojistka proti úniku uživatelských dat je také vytvoření vlastního rozšíření generátoru klíčů, který je bude prefixovat identifikátorem přihlášeného uživatele tak, aby z principu nebylo možné dosáhnout kolize pro cache dat dvou různých uživatelů.
 
-Takže si to shrňme: použitím method level cache může libovolný programátor v libovolném místě programu obejít všechny programátorské pojistky od kompilátoru až po bezpečnostní audit. Může to být v důsledku nesprávného použití, špatného nastavení, náhodné konstelace dat nebo cíleného útoku. V lepším případě pak dojde *jen* k fatální chybě, v horším případě bude aplikace potichu rozdávat data. Když se to takhle podá, snad už je jasné, proč by se mělo s takovým cachováním zacházet jako s odjištěným granátem. A to jsem popsal jen špičku ledovce.
+Takže si to shrňme: použitím method level cache může libovolný programátor v libovolném místě programu obejít všechny programátorské pojistky od kompilátoru až po bezpečnostní audit. Může to být v důsledku nesprávného použití, špatného nastavení, náhodné konstelace dat nebo cíleného útoku. V lepším případě pak dojde *jen* k fatální chybě, v horším případě bude aplikace potichu rozdávat data. Když se to takhle podá, snad už je jasné, proč by se mělo cachování prezentovat jako odjištěný granát mezi dětskými hračkami. A to jsem popsal jen špičku ledovce.
 
 ## Stav
 Teď na chvíli odložím svou paranoiu a napíšu ještě něco málo o softwarově inženýrském hledisku cache. Stejně jako na balíčkách cigeret by mělo na unpure jazycích stát varování podbarvené explicitními obrázky sebevražd vyhořelých programátorů: "Stav způsobuje závislosti, závislosti způsobují komplexitu, komplexita zabíjí." Z tohoto moudra plyne skoro podmíněný reflex zkušených programátorů eliminovat jakýkoli zbytný stav (který často přešvihne až do podoby [obsese funkcionálním programováním][calavera.info:funkcionalni]). Cache jde ale naopak přímo opačným směrem - zavádí implicitní stav tam, kde nebyl.
@@ -45,19 +45,21 @@ Tohle je problém známý a zřejmý, takže stejně jako v případě klíčů 
 
 Logickým krokem je v takovém případě použití implementace cache se synchronizací. Návod vypadá jako volební program ANO - [prostě povolte UDP multicast mezi nody a stav jejich cache se prostě bude  synchronizovat][ehcache:synchro]. Ve všech cache bude to samé, takže všichni budou mít stejná data. Jednoduché.
 
-Realita je ale taková, že jsme právě nepopsali nic menšího než jeden z nejobtížnějších problémů počítačové vědy vůbec - konzistence distribuovaného systému. Ten [podle většinového názoru nejde vyřešit bez kompromisů][cap] a pokud nevíte, jaké kompromisy vybraná implementace cache dělá, můžete se šeredně spálit. I toto je odvrácená tvář nově zavedeného stavu.
+Realita je ale taková, že jsme právě nepopsali nic menšího než jeden z nejobtížnějších problémů počítačové vědy vůbec - konzistence distribuovaného systému. Ten [podle většinového názoru nejde vyřešit bez kompromisů][cap], proto je ostatně většinou i v srdci větších systémů jedna monolitická databáze. Pokud opravdu existují na systém striktní regulatorní požadavky, je potřeba vědět, jaké kompromisy vybraná implementace cache dělá, jinak se s jakýmikoli garancemi můžete šeredně spálit. I toto je odvrácená tvář nově zavedeného stavu.
 
 ## Drobnosti
 Proti výše popsaným šílenostem jsou moje další poznámky vlastně drobnosti, takže jen telegraficky:
 
 - při použití standardního hashCode pro generování klíčů často mezi parametry proklouzne třída, která jej neoverriduje, čímž efektivně cachování vypne (hashCode je pro každou instanci jiná).
 - podobně se dá neúmyslně vypnout cachování když se mezi parametry vloudí objekt typu java.util.Date, u kterého se do hashCode započítává potencionálně bezvýznamná položka, jako je počet milisekund, což málokdo při vytvoření resetuje na nějakou defaultní hodnotu.
+- vzhledem k množství problémů s použitím hashCode mají některé frameworky svůj defaultní generátor klíčů založený na reflexi. To s sebou ale nese vlastní specifickou sadu problémů.
 - umístit anotaci Cacheable na třídu je velmi nebezpečné, protože může vést ke cachování metod, u kterých to autor nezamýšlel
-- pokud je na metodě více anotací, je důležité vědět, v jakém pořadí vůči cache se vytvoří příslušné proxy. Už jsem zmiňoval třeba security, ale zajímavá je taky Transactional, která může zahájit výkonostně velmi drahou transakci, přestože se nakonec vrátí cachovaná hodnota.
+- pokud je na metodě více anotací, je důležité vědět, v jakém pořadí vůči cache se vytvoří příslušné proxy. Už jsem zmiňoval například security důsledky pokud je autorizace kontrolována až za cache, ale zajímavá je třeba taky Transactional, která může zahájit výkonostně velmi drahou transakci, přestože se nakonec vrátí cachovaná hodnota.
 
 ## Uf...
-Nechápejte mě špatně, rozumně použitá cache je velmi užitečný nástroj. Pro jednorázově nastavené/neměnné hodnoty, jako např. konfigurace aplikace nebo číselníky je její použití skutečně jednoduché a bezpečné. Chtěl jsem ale ukázat, jak obrovská chyba by bylo považovat jí za bezpracnou silver bullet pro performance, jak se to často děje.
+Nechápejte mě špatně, rozumně použitá cache je velmi užitečný nástroj, proto se také [standardizuje][jsr-107]. Pro jednorázově nastavené/neměnné hodnoty, jako např. konfigurace aplikace nebo číselníky je její použití skutečně jednoduché a bezpečné. Chtěl jsem ale ukázat, jak obrovská chyba by bylo považovat jí za bezpracnou silver bullet pro performance, jak se to často děje.
 
+[jsr-107]: https://jcp.org/en/jsr/detail?id=107
 [cap]: https://en.wikipedia.org/wiki/CAP_theorem]
 [ehcache:synchro]: http://www.ehcache.org/documentation/2.8/replication/jgroups-replicated-caching.html#example-configuration-using-udp-multicast
 [Pinos:cache]: http://tom2ee.blogspot.cz/2015/11/jak-se-vyplati-kesovani.html
