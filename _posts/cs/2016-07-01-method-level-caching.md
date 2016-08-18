@@ -60,7 +60,7 @@ Proti výše popsaným šílenostem jsou moje další poznámky vlastně drobnos
 Nechápejte mě špatně, rozumně použitá cache je velmi užitečný nástroj, proto se také [standardizuje][jsr-107]. Pro jednorázově nastavené/neměnné hodnoty, jako např. konfigurace aplikace nebo číselníky je její použití skutečně jednoduché a bezpečné. Chtěl jsem ale ukázat, jak obrovská chyba by bylo považovat jí za bezpracnou silver bullet pro performance, jak se to často děje.
 
 [jsr-107]: https://jcp.org/en/jsr/detail?id=107
-[cap]: https://en.wikipedia.org/wiki/CAP_theorem]
+[cap]: https://en.wikipedia.org/wiki/CAP_theorem
 [ehcache:synchro]: http://www.ehcache.org/documentation/2.8/replication/jgroups-replicated-caching.html#example-configuration-using-udp-multicast
 [Pinos:cache]: http://tom2ee.blogspot.cz/2015/11/jak-se-vyplati-kesovani.html
 [Java String]: https://en.wikipedia.org/wiki/Java_hashCode%28%29
