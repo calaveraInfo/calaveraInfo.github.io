@@ -51,10 +51,10 @@ Realita je ale taková, že jsme právě nepopsali nic menšího než jeden z ne
 Proti výše popsaným šílenostem jsou moje další poznámky vlastně drobnosti, takže jen telegraficky:
 
 - při použití standardního hashCode pro generování klíčů často mezi parametry proklouzne třída, která jej neoverriduje, čímž efektivně cachování vypne (hashCode je pro každou instanci jiná).
-- podobně se dá neúmyslně vypnout cachování když se mezi parametry vloudí objekt typu java.util.Date, u kterého se do hashCode započítává potencionálně bezvýznamná položka, jako je počet milisekund, což málokdo při vytvoření resetuje na nějakou defaultní hodnotu.
+- podobně se dá neúmyslně vypnout cachování když se mezi parametry vloudí objekt typu java.util.Date, u kterého se do hashCode započítává potenciálně bezvýznamná položka, jako je počet milisekund. To se často nevědomky inicializuje na náhodnou aktuální hodnotu a málokdo to po nastavení těch významových položek resetuje.
 - vzhledem k množství problémů s použitím hashCode mají některé frameworky svůj defaultní generátor klíčů založený na reflexi. To s sebou ale nese vlastní specifickou sadu problémů.
 - umístit anotaci Cacheable na třídu je velmi nebezpečné, protože může vést ke cachování metod, u kterých to autor nezamýšlel
-- pokud je na metodě více anotací, je důležité vědět, v jakém pořadí vůči cache se vytvoří příslušné proxy. Už jsem zmiňoval například security důsledky pokud je autorizace kontrolována až za cache, ale zajímavá je třeba taky Transactional, která může zahájit výkonostně velmi drahou transakci, přestože se nakonec vrátí cachovaná hodnota.
+- pokud je na metodě více anotací, je důležité vědět, v jakém pořadí vůči cache se vytvoří příslušné proxy. Už jsem zmiňoval například security důsledky pokud je autorizace kontrolována až za cache, ale zajímavá je třeba taky Transactional, která může zahájit transakci, přestože se nakonec vrátí cachovaná hodnota a tím prakticky zruší jakýkoli přínos cache.
 
 ## Uf...
 Nechápejte mě špatně, rozumně použitá cache je velmi užitečný nástroj, proto se také [standardizuje][jsr-107]. Pro jednorázově nastavené/neměnné hodnoty, jako např. konfigurace aplikace nebo číselníky je její použití skutečně jednoduché a bezpečné. Chtěl jsem ale ukázat, jak obrovská chyba by bylo považovat jí za bezpracnou silver bullet pro performance, jak se to často děje.
