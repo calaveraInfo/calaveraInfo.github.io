@@ -1,12 +1,14 @@
 ---
 title: Skrytý půvab standupu
+excerpt: Jak sbalit holku a vést vývojářský standup.
 ---
 
 Zajímalo by mě, kolik programátorů nemá partnerku pouze kvůli faktu, že oslovit cizí dívku na party je akt vrcholné nelogičnosti a orgie neefektivity. Považte:
 
 1. Dívky přístupné seznámení nejsou nijak označeny.
 2. I kdyby se dívka chtěla seznamovat, nelze jednoduše zjistit její kvalifikační kritéria.
-3. Bez jakýchkoli informací také není možné zvolit relevantní téma k hovoru.‎ A tak dále...
+3. Bez informací o dívce není možné zvolit relevantní téma k hovoru. Bez hovoru nelze zjistit o dívce žádné informace.
+4. ...
 
 Je jasné, že tenhle bordel se musí protivit každému pořádnému inženýrovi hodnému svého titulu, ale nedá se nic dělat a je potřeba přiznat si, že tento neutěšený chaos je výchozím stavem světa. Osvědčené řešení je pak ožrat se jak prase a přenechat řízení svého osudu částem mozku nezatíženým logikou zděděným ještě po opicích.
 
