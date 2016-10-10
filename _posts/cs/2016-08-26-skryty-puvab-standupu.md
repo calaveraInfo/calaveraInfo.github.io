@@ -1,6 +1,7 @@
 ---
 title: Skrytý půvab standupu
 excerpt: Jak sbalit holku a vést vývojářský standup.
+translationEn: /v3/blog/2016/08/26/the-hidden-allure-of-a-standup-meeting.html
 ---
 
 Zajímalo by mě, kolik programátorů nemá partnerku pouze kvůli faktu, že oslovit cizí dívku na party je akt vrcholné nelogičnosti a orgie neefektivity. Považte:
