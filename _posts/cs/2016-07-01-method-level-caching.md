@@ -1,5 +1,6 @@
 ---
 title: Method level caching
+translationEn: /v3/blog/2016/07/01/method-level-caching-en.html
 ---
 
 Mám rád slovo "kurvítko". Je takové hezky české a přes zdánlivou lidovost má pro mě exaktní význam, který bych jinak musel vyjadřovat poměrně nudným opisem. Je to součástka, která má v nějakém větším celku objektivně malý nebo diskutabilní význam, ale která ho zároveň dokáže solidně rozjebat. Svět samozřejmě není černobílý, takže je u součástek lepší mluvit o "kurvítko indexu", který vyjadřuje poměr mezi zmíněnými vlastnostmi.  Ze zkušenosti mám u různých vývojářských praktik ‎přiřazený svůj interní kurvítko index, který hodně ovlivňuje moje architektonická rozhodnutí. Pro zajímavost, víte co má u mě nejvyšší kurvítko index? Suverénně Caching a High availability.
