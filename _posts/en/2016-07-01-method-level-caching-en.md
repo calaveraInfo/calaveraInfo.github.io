@@ -1,10 +1,13 @@
 ---
 title: Method level caching
 translationCs: /v3/blog/2016/07/01/method-level-caching.html
+excerpt_separator: <!--excerpt end-->
 ---
 
 There is a funny word in my native Czech language which I like a lot - "kurvítko" (kur-veet-ko; loose translation: "screwed-up component"). Although colloquial and a bit vulgar, to me it has the same meaning as what would otherwise take me a long time to explain. It is a component that is rather insignificant within the greater whole but that can, at the same time, actually mess up such a greater whole in a major way. The world is not black and white and so when talking about components, it is better to use the term "kurvítko index", which expresses the ratio between the mentioned properties. I have assigned my own internal "kurvítko index" to various development practices and this index influences my architectonic decisions to a great extent. Do you know what to me has the biggest "kurvítko index"? Without any doubt, it is Caching and High Availability.
- 
+
+<!--excerpt end-->
+
 There is nothing wrong with caching as such. As long as it was applied in software to a clearly defined domain, such as the caching of entire HTML pages, it was OK. However, caching tools have gradually become more generalized and [tools applying caching in the form of meta information on the level of individual functions/methods have even appeared in the mainstream][Spring:cache]. Greater generality and granularity of caching have not fundamentally changed anything but there are many downsides of caching that become much more apparent and are much harder to deal with than in domain-specific caching. I will thus speak specifically about caching on the method level because it is easier to explain although it also concerns caching in general to a certain extent.
  
 ## There is no such thing as a free lunch
