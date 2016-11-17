@@ -6,7 +6,7 @@ Už mě nebaví diskuze o [frontendových architekturách][Fowler: Frontend arch
 
 V některých architekturách se ale vyskytuje jeden aspekt o kterém bych tady chtěl psát, protože z mé zkušenosti praktický význam má a to zásadní. Je to možnost definovat [model stavu view][Fowler: Presentation model] nezávisle na view frameworku tak, aby byl [normalizovaný][Database normalization] podle analytické abstrakce dané stránky. Celé view pak může být jen pure funkcí takového stavu, což ve světě JavaScriptu skvěle zpopularizoval [React][React], ale do server side frameworků [tento trend][Fowler: Passive view] moc nepronikl.
 
-Server side frameworky, zvlášť ty z objektově orientovaných jazyků, jdou cestou s úplně opačným výsledkem.  Jsou většinou založeny na konceptu stavových komponent. To svádí k tomu, že celkový stav stránky je rozdrobený mezi jednotlivé komponenty a strukturou kopíruje vzhled UI místo analytické abstrakce stránky nebo use case. Navíc je takhle strukturovaný stav většinou hodně denormalizovaný.
+Server side frameworky, zvlášť ty z objektově orientovaných jazyků, jdou cestou s úplně opačným výsledkem.  Jsou většinou založeny na konceptu stavových zapouzdřených komponent. To svádí k tomu, že celkový stav stránky je rozdrobený mezi jednotlivé komponenty a strukturou kopíruje vzhled UI místo analytické abstrakce stránky nebo use case. Navíc je takhle strukturovaný stav většinou hodně denormalizovaný.
 
 Zatím to vypadá jako stejné plané teoretizování, o kterém jsem říkal, že ho nemám rád, takže už radši přejdu k praktické ukázce důsledků. Začnu s typickým lakmusovým papírkem dobré architektury - testy.
 
@@ -16,11 +16,11 @@ Většina webových frontendových aplikací se musí testovat molochy typu Sele
 
 I když se povede pomocí nějaké černé magie typu [Arquillian][Arquillian] provozovat komponenty v rámci unit testovacího frameworku, je potřeba se ke stavu komponent většinou dostat hledáním v komponentovém stromu, což je každou chvíli rozbité, protože to většinou závisí na vizuální podobě a/nebo textových identifikátorech.
 
-A jestli jste to ještě nevzdali, je tu ten největší problém: co vlastně v testech assertovat? I základní komponenta má několik stavových atributů (visible, enabled, value...) a typická stránka má mnoho základních komponent. Stavový prostor takového view je prakticky nekonečný a integritu v něm neuhlídá ani pánbůh.
+A jestli jste to ještě nevzdali, je tu ten největší problém: co vlastně v testech assertovat? I základní komponenta má několik stavových atributů (visible, enabled, value...) a typická stránka má mnoho základních komponent. Stavový prostor takového view je kombinatoricky prakticky nekonečný a integritu v něm neuhlídá ani pánbůh.
 
 Často si architekti tento problém nepřipouští, protože si představují, že stránka se "jen" skládá z komplexních komponent, které představují hermeticky uzavřený celek testovatelný samostatně. To je v praxi utopie přímo z definice - komponenta jakékoli velikosti musí být otevřená mnoha různým scénářům použití, jinak by reálně nebyla přepoužitelná, což vynucuje kontrolu vnitřního stavu komponenty v každém konkrétním scénáři zvlášť. Stránka složená z komponent je vždy mnohem víc, než pouhý součet svých částí!
 
-Abych to uzavřel: hodně lidí tomu asi nebude věřit, ale i frontend se dá automaticky testovat i bez Selenia, pokud má dobrou architekturu (opravdu jsem zažil celou web aplikaci naostro spuštěnou jen v JUnit). Jeden z klíčových prvků, který to umožňuje, je klasický příklad [základního architekturního úkonu inverze závislostí][Uncle Bob: Little architecture]: stav view nesmí být závislý na použité view technologii, ale naopak ‎view musí být závislé na byznysovém modelu svého stavu.
+Abych to uzavřel: hodně lidí tomu asi nebude věřit, ale i frontend se dá automaticky testovat i bez Selenia, pokud má dobrou architekturu (opravdu jsem zažil celou web aplikaci naostro spuštěnou jen v JUnit). Jeden z klíčových prvků, který to umožňuje, je klasický příklad [základního architekturního úkonu inverze závislostí][Uncle Bob: Little architecture]: stav view nesmí být závislý na použité view technologii, ale naopak view musí být závislé na byznysovém modelu svého stavu.
 
 ## Jak pomůže model stavu?
 
@@ -34,7 +34,7 @@ Dál už to takhle podrobně rozebírat nebudu, ale podobně zásadní dopad má
 
 ### Debugging/Logging
 
-Když je stav na jednom místě, je jednoduché jej vypisovat při každé události, výjimce atd. Když je v logu kompletní a normalizovaný (takže čitelný) stav aplikace v každém důležitém okamžiku, je jednoduché hledat chyby i‎ bez přímého přístupu k danému prostředí a/nebo post mortem.
+Když je stav na jednom místě, je jednoduché jej vypisovat při každé události, výjimce atd. Když je v logu kompletní a normalizovaný (takže čitelný) stav aplikace v každém důležitém okamžiku, je jednoduché hledat chyby i bez přímého přístupu k danému prostředí a/nebo post mortem.
 
 ### Web Flow
 Jak jsem nedávno psal:
@@ -47,7 +47,7 @@ Problém je, že hranice odpovědnosti mezi abstrakcí stavového automatu pro p
 
 ## Závěr
 
-Model stavu view není sám o sobě kompletní předpis architektury, ale spíše obecný aspekt, který je možné realizovat napříč různými kombinacemi architektur a technologií. Problém ale je, že všechny ty abstraktní myšlenky nakonec znamenají v kódu pro každého něco úplně jiného. Tak jsem třeba zažil to, že stavem aplikace se myslela jen data, která zadal uživatel. ‎Nebo se udělá pár výjimek z technických důvodů, např. data v dynamických grafech se načítají přímo ze služby místo z modelu. ‎Někdy jde o pár drobností, jindy to vypadá jako dort od Čapkova pejska a kočičky.
+Model stavu view není sám o sobě kompletní předpis architektury, ale spíše obecný aspekt, který je možné realizovat napříč různými kombinacemi architektur a technologií. Problém ale je, že všechny ty abstraktní myšlenky nakonec znamenají v kódu pro každého něco úplně jiného. Tak jsem třeba zažil to, že stavem aplikace se myslela jen data, která zadal uživatel. Nebo se udělá pár výjimek z technických důvodů, např. data v dynamických grafech se načítají přímo ze služby místo z modelu. Někdy jde o pár drobností, jindy to vypadá jako dort od Čapkova pejska a kočičky.
 
 Reálné projekty z mnoha důvodů nějaké kompromisy dělat musí. Jak ale hodnotit kompromisy v tak abstraktní věci, jako je architektura a nezapadnout do svatých válek? Právě kvůli tomu je potřeba mít jasně definované praktické důsledky, které od volby architektury a technologie očekáváme. Ty nejdůležitější jsem zde vypsal.
 
