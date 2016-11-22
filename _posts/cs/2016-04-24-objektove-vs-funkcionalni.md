@@ -32,7 +32,7 @@ Nejsem starý morous a myšlenkovou elegancí FP jsem naprosto uchvácen už dlo
 [Brooks: Silver bullet]: http://worrydream.com/refs/Brooks-NoSilverBullet.pdf
 [booleans.io]: https://booleans.io/
 [SO: lambda calculus]: http://cstheory.stackexchange.com/questions/23798/p-and-np-classes-explanation-through-lambda-calculus
-[HAMT]: https://blog.acolyer.org/2015/11/27/hamt/
+[HAMT]: http://www.cambridge.org/cz/academic/subjects/computer-science/programming-languages-and-applied-logic/purely-functional-data-structures
 [FP is bullshit]: http://funkcionalne.cz/2015/09/grim-hardware-realities-of-functional-programming/
 [Strange Loop]: https://www.youtube.com/watch?v=449j7oKQVkc
 [Growing a language]: https://www.youtube.com/watch?v=_ahvzDzKdB0
