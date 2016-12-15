@@ -40,7 +40,7 @@ Bez matematického génia v týmu je tak asi lepší strategie ověřovat v code
 Takže si to shrňme: použitím method level cache může libovolný programátor v libovolném místě programu obejít všechny programátorské pojistky od kompilátoru až po bezpečnostní audit. Může to být v důsledku nesprávného použití, špatného nastavení, náhodné konstelace dat nebo cíleného útoku. V lepším případě pak dojde *jen* k fatální chybě, v horším případě bude aplikace potichu rozdávat data. Když se to takhle podá, snad už je jasné, proč by se mělo cachování prezentovat jako odjištěný granát mezi dětskými hračkami. A to jsem popsal jen špičku ledovce.
 
 ## Stav
-Teď na chvíli odložím svou paranoiu a napíšu ještě něco málo o softwarově inženýrském hledisku cache. Stejně jako na balíčkách cigeret by mělo na unpure jazycích stát varování podbarvené explicitními obrázky sebevražd vyhořelých programátorů: "Stav způsobuje závislosti, závislosti způsobují komplexitu, komplexita zabíjí." Z tohoto moudra plyne skoro podmíněný reflex zkušených programátorů eliminovat jakýkoli zbytný stav (který často přešvihne až do podoby [obsese funkcionálním programováním][calavera.info:funkcionalni]). Cache jde ale naopak přímo opačným směrem - zavádí implicitní stav tam, kde nebyl.
+Teď na chvíli odložím svou paranoiu a napíšu ještě něco málo o softwarově inženýrském hledisku cache. Stejně jako na balíčkách cigeret by mělo na unpure jazycích stát varování podbarvené explicitními obrázky sebevražd vyhořelých programátorů: ["Stav způsobuje závislosti, závislosti způsobují komplexitu, komplexita zabíjí."][state] Z tohoto moudra plyne skoro podmíněný reflex zkušených programátorů eliminovat jakýkoli zbytný stav (který často přešvihne až do podoby [obsese funkcionálním programováním][calavera.info:funkcionalni]). Cache jde ale naopak přímo opačným směrem - zavádí implicitní stav tam, kde nebyl.
 
 Závislost pak spočívá v tom, že při jakékoli manipulaci s daty je potřeba kromě primárního úložiště přemýšlet nad tím, kde kterou cache je potřeba ještě vyčistit od zastaralých záznamů. Čím víc dat je v cache, tím víc míst bude nějakou takovou závislost mít. Čím složitější data se v cache uchovávají, tím složitější bude poznat, že taková závislost vůbec existuje a nezapomenout na ní.
 
@@ -62,6 +62,7 @@ Proti výše popsaným šílenostem jsou moje další poznámky vlastně drobnos
 ## Uf...
 Nechápejte mě špatně, rozumně použitá cache je velmi užitečný nástroj, proto se také [standardizuje][jsr-107]. Pro jednorázově nastavené/neměnné hodnoty, jako např. konfigurace aplikace nebo číselníky je její použití skutečně jednoduché a bezpečné. Chtěl jsem ale ukázat, jak obrovská chyba by bylo považovat jí za bezpracnou silver bullet pro performance, jak se to často děje.
 
+[state]: https://blog.acolyer.org/2015/03/20/out-of-the-tar-pit/
 [fowler:two]: http://martinfowler.com/bliki/TwoHardThings.html
 [jsr-107]: https://jcp.org/en/jsr/detail?id=107
 [cap]: https://en.wikipedia.org/wiki/CAP_theorem
