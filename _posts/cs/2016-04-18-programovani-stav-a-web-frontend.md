@@ -4,7 +4,7 @@ title:  "Programování, stav a web frontend"
 
 Už mě nebaví diskuze o [frontendových architekturách][Fowler: Frontend architectures]. I od základního MVC existuje nekonečné množství variant a specializací, které se liší nuancemi v tom, odkud kam vedou jakým stylem malované šipky. Diskuze o tom končí na argumentech typu kam co "patří", kde je co "přehlednější", v čem je "nejmíň duplicity" a dalších subjektivních pocitech jejichž reálný dopad je přinejmenším diskutabilní.
 
-V některých architekturách se ale vyskytuje jeden aspekt o kterém bych tady chtěl psát, protože z mé zkušenosti praktický význam má a to zásadní. Je to možnost definovat [model stavu view][Fowler: Presentation model] nezávisle na view frameworku tak, aby byl [normalizovaný][Database normalization] podle analytické abstrakce dané stránky. Celé view pak může být jen pure funkcí takového stavu, což ve světě JavaScriptu skvěle zpopularizoval [React][React], ale do server side frameworků [tento trend][Fowler: Passive view] moc nepronikl.
+V některých architekturách se ale vyskytuje jeden aspekt o kterém bych tady chtěl psát, protože z mé zkušenosti praktický význam má a to zásadní. Je to možnost definovat [model stavu view][Fowler: Presentation model] nezávisle na view frameworku tak, aby byl [normalizovaný][Database normalization] podle analytické abstrakce dané stránky. Celé view pak může být jen pure funkcí takového stavu, což ve světě JavaScriptu skvěle zpopularizoval [React][React] a [Redux][Redux], ale do server side frameworků [tento trend][Fowler: Passive view] moc nepronikl.
 
 Server side frameworky, zvlášť ty z objektově orientovaných jazyků, jdou cestou s úplně opačným výsledkem.  Jsou většinou založeny na konceptu stavových zapouzdřených komponent. To svádí k tomu, že celkový stav stránky je rozdrobený mezi jednotlivé komponenty a strukturou kopíruje vzhled UI místo analytické abstrakce stránky nebo use case. Navíc je takhle strukturovaný stav většinou hodně denormalizovaný.
 
@@ -55,6 +55,7 @@ Pro ty, kdo hledají jednoduché poučky: používejte architekturu MVVM, proto�
 
 Pro ty, kdo hledají hlubší pochopení: Nic v článku není nijak objevné. Staří mazáci dobře vědí, že stav je asi jediná opravdu těžká věc na programování a většina inženýrských konstrukcí se nějak týká jeho zkrocení (immutabilita, monády atd.). Centralizovat aplikační stav a všechno ostatní postavit okolo něj je z tohoto pohledu vlastně nejzákladnější opatření pro jakýkoli druh aplikace a je obecně platné [napříč architekturami i programovacími paradigmaty][Evancz: Elm architecture].
 
+[Redux]: http://redux.js.org/
 [Fowler: Frontend architectures]: http://martinfowler.com/eaaDev/uiArchs.html
 [Fowler: Presentation model]: http://martinfowler.com/eaaDev/PresentationModel.html
 [Fowler: Passive view]: http://martinfowler.com/eaaDev/PassiveScreen.html
