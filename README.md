@@ -7,6 +7,7 @@ layout: default
 
 I have recreated my web many times using many different Content Management System. One time I realized that the most important thing about any CMS technology is not how shiny and sophisticated the web is, but if the data in it remains accessible even after the technology is deprecated. Since then I'm using only technologies and addressing scheme that allows me to keep my data online even after I move to another CMS. I have produced 3 generations of such web presentations:
 
+
 # v1
 [First generation](/v1/index.html) was build on my home grown PHP app that generated the web from the static files dynamicaly on the server. When I moved away from PHP, the web is not very usable without the navigation and other generated part, but all the articles are still available on their original addresses.
 
@@ -15,3 +16,8 @@ I have recreated my web many times using many different Content Management Syste
 
 # v3
 Third generation is the current one and it is based on the [Jekkyl](http://jekyllrb.com/) support on GitHub (and [google drive](https://googledrive.com/host/0B1pxZj5GslL_flF5azBYZUotMjAzSjBQSnZDb3RLblN5ZmdOLTJtS0ptd21kZ01CQi1jNFE) for some static assets).
+
+-------------------------------
+
+# v0
+I've decided to publish one more generation for archeological purposes. [Generation zero](/v0/index.html) is rather embarrassing because those were my first experiments with HTML. In 2000! Have fun! (Tip: the lights in the picture are links. Very cool, much mystery, wow)
