@@ -27,4 +27,4 @@ Jakkoli to tedy zní strašidelně, možná by stálo za to zkusit cíleně naj�
 [datalog]: https://www.youtube.com/watch?v=R2Aa4PivG0g
 [spec]: https://www.youtube.com/watch?v=oyLBGkS5ICk
 [conway]: https://en.wikipedia.org/wiki/Conway's_law
-[composability]: http://neugierig.org/software/blog/2011/10/why-not-haskell.html
+[composability]: https://pchiusano.github.io/2017-01-20/why-not-haskell.html
