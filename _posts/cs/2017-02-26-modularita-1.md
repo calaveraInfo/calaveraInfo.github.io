@@ -16,12 +16,12 @@ OOP a tooling okolo něj pak začne dávat trochu smysl. Napodobování komunika
 
 Že to má velký význam nevědomky ilustruje třeba [přednáška Riche Hickeyho o tomto tématu v souvislosti se Spec][spec]. Všimněte si na ní, že definice slov Accretion a Breakage, na kterých všechny jeho úvahy stojí, vychází z implicitního představy kontraktu na straně dodavatele. V opačném scénáři, kontrakt definovaný odběratelem, by však tyto slova měli přesně opačný význam a veškerá jednoduchost by byla rázem v tahu. Tohle ale nemůže být výčitka, protože takový scénář nemá žádnou oporu v základním výpočetním modelu, díky kterému je jinak Clojure tak skvělý jazyk.
 
-Zcela chápu právoplatné rozhořčení nad myšlenkou, že by se kvůli zatažení "ekonomické politiky" do vývoje měly obětovat plody matematiky za poslední půlstoletí, ale‎ právě tady vstupuje do hry modularita, protože:
+Zcela chápu právoplatné rozhořčení nad myšlenkou, že by se kvůli zatažení "ekonomické politiky" do vývoje měly obětovat plody matematiky za poslední půlstoletí, ale právě tady vstupuje do hry modularita, protože:
 
-1. [Composability is destroyed at the IO boundaries][composability]. Čím více oddělených modulů, tím více IO boundaries kde se bude projevovat Conwayův zákon a vůbec nezáleží na tom, jestli jsou ty hranice modulů externí nebo interní. Čistě matematický přístup se pak umonáduje a ztrácí smysl.
+1. [Composability is destroyed at the IO boundaries in any language][composability]. Čím více oddělených modulů, tím více IO boundaries kde se bude projevovat Conwayův zákon a vůbec nezáleží na tom, jestli jsou ty hranice modulů externí nebo interní. Čistě matematický přístup se pak umonáduje a ztrácí smysl.
 2. Teorie kontraktů není žádné šarlatánství. Minulý rok byla právě za ní udělena Nobelova cena za ekonomii, je to rigidní věda jako každá jiná, včetně matematických modelů a podobných atributů. Jenom si na rozdíl od lambda kalkulu nemůže zjednodušit práci immutabilitou a podobně, protože lidské vztahy prostě immutabilní nejsou.
 
-Jakkoli to tedy zní strašidelně, možná by stálo za to zkusit cíleně najít hlubší paralely mezi programováním a ekonomií a zjistit, jestli si z toho oboru nemůžeme vzít víc, než těch pár mlhavých představ rozepsaných výše. A tak začalo moje hledání svatého grálu modularity. ‎Do příštího dílu nebudu napínat: žádný není. Ale cesta za ním je, jako v pohádce, důležitější než existence samotná.
+Jakkoli to tedy zní strašidelně, možná by stálo za to zkusit cíleně najít hlubší paralely mezi programováním a ekonomií a zjistit, jestli si z toho oboru nemůžeme vzít víc, než těch pár mlhavých představ rozepsaných výše. A tak začalo moje hledání svatého grálu modularity. Do příštího dílu nebudu napínat: žádný není. Ale cesta za ním je, jako v pohádce, důležitější než existence samotná.
 
 [inversion]: https://en.wikipedia.org/wiki/Dependency_inversion_principle
 [datalog]: https://www.youtube.com/watch?v=R2Aa4PivG0g
