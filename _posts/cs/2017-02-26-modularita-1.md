@@ -19,7 +19,7 @@ OOP a tooling okolo něj pak začne dávat trochu smysl. Napodobování komunika
 Zcela chápu právoplatné rozhořčení nad myšlenkou, že by se kvůli zatažení "ekonomické politiky" do vývoje měly obětovat plody matematiky za poslední půlstoletí, ale právě tady vstupuje do hry modularita, protože:
 
 1. [Composability is destroyed at the IO boundaries in any language][composability]. Čím více oddělených modulů, tím více IO boundaries kde se bude projevovat Conwayův zákon a vůbec nezáleží na tom, jestli jsou ty hranice modulů externí nebo interní. Čistě matematický přístup se pak umonáduje a ztrácí dost ze svého smyslu.
-2. Teorie kontraktů není žádné šarlatánství. Minulý rok byla právě za ní udělena Nobelova cena za ekonomii, je to rigidní věda jako každá jiná, včetně matematických modelů a podobných atributů. Jenom si na rozdíl od lambda kalkulu nemůže zjednodušit práci immutabilitou a podobně, protože lidské vztahy prostě immutabilní nejsou.
+2. Teorie kontraktů je matematická disciplína jako každá jiná - modely, důkazy a tak, dokonce nobelova cena za ekonomii byla udělena minulý rok právě za ní. Jenom si na rozdíl od lambda kalkulu nemůže zjednodušit práci immutabilitou a podobně, protože lidské vztahy prostě immutabilní nejsou.
 
 Jakkoli to tedy zní strašidelně, možná by stálo za to zkusit cíleně najít hlubší paralely mezi programováním a ekonomií a zjistit, jestli si z toho oboru nemůžeme vzít víc, než těch pár mlhavých představ rozepsaných výše. A tak začalo moje hledání svatého grálu modularity. Do příštího dílu nebudu napínat: žádný není. Ale cesta za ním je, jako v pohádce, důležitější než existence samotná.
 
