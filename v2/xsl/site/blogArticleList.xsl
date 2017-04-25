@@ -14,33 +14,7 @@
 </xsl:template>
 
 <xsl:template match="h:div[@id='sideMenu4']" mode="pageTemplate">
-	<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
-	<script type="text/javascript"><![CDATA[
-	new TWTR.Widget({
-	  version: 2,
-	  type: 'profile',
-	  rpp: 5,
-	  interval: 30000,
-	  width: 'auto',
-	  height: 500,
-	  theme: {
-	    shell: {
-	      background: '#ffffff',
-	      color: '#555555'
-	    },
-	    tweets: {
-	      background: '#ffffff',
-	      color: '#555555',
-	      links: '#000000'
-	    }
-	  },
-	  features: {
-	    scrollbar: false,
-	    loop: false,
-	    live: false,
-	    behavior: 'all'
-	  }
-	}).render().setUser('calaverainfo').start();
-	]]></script>
+	<a class="twitter-timeline" href="https://twitter.com/calaverainfo">Moje tvíty</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </xsl:template>
 </xsl:stylesheet>
