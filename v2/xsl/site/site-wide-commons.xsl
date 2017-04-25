@@ -12,17 +12,9 @@
 </xsl:template>
 
 <xsl:template match="h:div[contains(@class, 'asyncJs')]" mode="pageTemplate">
-<script type="text/javascript"><![CDATA[
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-3393582-3']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
-  })();
-]]></script>
+<!--
+Google analytics was removed.
+-->
 </xsl:template>
 
 <xsl:template match="h:link[@href='feed.xml']" mode="pageTemplate">
