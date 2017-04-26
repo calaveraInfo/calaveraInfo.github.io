@@ -2,23 +2,34 @@
 title: Blog
 permalink: /v3/en/blog/
 translationCs: /
+layout: default
 ---
 
-<div class="home">
-  <p>
-  	I don't have English blog at the moment. However some posts of my Czech blog are translated and listed here.
-  </p>
-
-  <ul class="post-list">
-    {% assign items=site.posts | where:"lang", "en" %}
-    {% for post in items%}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-        {{ post.excerpt }}
-      </li>
-    {% endfor %}
-  </ul>
-</div>
+<main class="container" aria-label="Home page">
+  <div class="row">
+    <section class="blog col-md-6 col-sm-12" aria-label="Blog">
+      <p>
+        I don't have English blog at the moment. However some posts of my Czech blog are translated and listed here.
+      </p>
+      <ol>
+{% assign items=site.posts | where:"lang", "en" %}
+{% for post in items%}
+  <li>
+  <!--
+    <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+  -->
+    <h3>
+      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    </h3>
+    {{ post.excerpt }}
+  </li>
+{% endfor %}
+      </ol>
+    </section>
+{% include cv.html %}
+    <section class="col-md-3 col-sm-6 twitter" aria-label="Twitter">
+      <a class="twitter-timeline" href="https://twitter.com/calaverainfo">My tweets</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </section>
+  </div>
+</main>

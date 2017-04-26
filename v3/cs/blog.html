@@ -2,22 +2,31 @@
 title: Blog
 permalink: /
 translationEn: /v3/en/blog/
+layout: default
 ---
 
-<div class="home">
-  <ul class="post-list">
-    {% assign items=site.posts | where:"lang", "cs" %}
-    {% for post in items%}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%-d. %-m. %Y" }}</span>
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-        {{ post.excerpt }}
-      </li>
-    {% endfor %}
-  </ul>
-  <p class="rss-subscribe">
-    Odebírejte <a href="{{ "/v3/rss.xml" | prepend: site.baseurl }}">RSS</a>
-  </p>
-</div>
+<main class="container" aria-label="Hlavní stránka webu">
+  <div class="row">
+    <section class="blog col-md-6 col-sm-12" aria-label="Blog">
+      <ol>
+{% assign items=site.posts | where:"lang", "cs" %}
+{% for post in items%}
+  <li>
+  <!--
+    <span>{{ post.date | date: "%-d. %-m. %Y" }}</span>
+  -->
+    <h3>
+      <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    </h3>
+    {{ post.excerpt }}
+  </li>
+{% endfor %}
+      </ol>
+    </section>
+{% include cv.html %}
+    <section class="col-md-3 col-sm-6 twitter" aria-label="Twitter">
+      <a class="twitter-timeline" href="https://twitter.com/calaverainfo">Moje tvíty</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </section>
+  </div>
+</main>

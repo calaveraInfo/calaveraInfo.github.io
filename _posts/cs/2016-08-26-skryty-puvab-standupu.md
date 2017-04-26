@@ -1,6 +1,6 @@
 ---
 title: Skrytý půvab standupu
-excerpt: Jak sbalit holku a vést vývojářský standup.
+excerpt: <p>Jak sbalit holku a vést vývojářský standup.</p>
 translationEn: /v3/blog/2016/08/26/the-hidden-allure-of-a-standup-meeting.html
 ---
 

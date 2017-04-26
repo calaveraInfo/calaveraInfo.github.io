@@ -1,0 +1,297 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+body {
+	margin-top: 4em;
+	margin-bottom: 10em;
+	background: none;
+}
+
+.blog h3 a {
+	background: #333333;
+	color: white;
+	padding-left: 0.1em;
+	padding-right: 0.1em;
+	font-size: xx-large;
+}
+
+.blog h3 a:hover {
+	background: #000000;
+	text-decoration: none;
+}
+
+.blog p {
+	background: white;
+	color: black;
+	padding: 2em;
+	margin-bottom: 1.5em;
+}
+
+.blog ol {
+	padding: 0;
+	list-style-type: none;
+}
+
+.profiles li {
+	display: inline;
+}
+
+.profiles a {
+	color: white;
+	font-family: FontAwesome;
+	font-size: x-large;
+	text-decoration: none;
+}
+
+.profiles a:hover {
+	color: white;
+}
+
+.profiles {
+	padding: 0.2em;
+	display: flex;
+	justify-content: space-between;
+	background: rgba(51,51,51,1);
+	border-radius: 5px;
+	margin: 0;
+}
+
+.timeline {
+	padding: 0;
+	margin: 0;
+	background-image: linear-gradient(to right, rgba(51,51,51,0) 0%,rgba(51,51,51,0) 31%,rgba(51,51,51,1) 31.5%,rgba(51,51,51,1) 32.5%,rgba(51,51,51,0) 33%,rgba(51,51,51,0) 100%);
+}
+
+.timeline li {
+	list-style-type: none;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.timeline .icon:before {
+	position: absolute;
+	color: white;
+	top: 22%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	font-family: FontAwesome;
+	font-size: 0.7em;
+	width: 1.28571429em;
+}
+
+.timeline .icon.linux:before {
+	content: "\f17c";
+}
+
+.timeline .icon.microchip:before {
+	content: "\f2db";
+}
+
+.timeline .icon.github:before {
+	content: "\f09b";
+}
+
+.timeline .icon.calendar:before {
+	content: "\f073";
+}
+
+.timeline .icon.code:before {
+	content: "\f121";
+}
+
+.timeline .icon.child:before {
+	content: "\f1ae";
+}
+
+.timeline .icon.communism:before {
+	content: "\262d";
+}
+
+.timeline .icon.radiation:before {
+	content: "\2622";
+}
+
+.timeline .icon.graduation:before {
+	content: "\f19d";
+}
+
+.timeline li:hover .icon.expandable:before {
+	content: "\f067";
+	top: 24%;
+}
+
+.timeline li:hover, .timeline li:hover .icon {
+	color: black;
+}
+
+.timeline li.expanded:hover .icon.expandable:before {
+	content: "\f068";
+	top: 24%;
+}
+
+.timeline .article a.external:after {
+	content: "\f08e";
+	font-family: FontAwesome;
+}
+
+.timeline li.loading .icon.expandable:before {
+	content: "\f013";
+	animation: fa-spin 2s infinite linear;
+	top: 21%;
+}
+
+.timeline .article .list-group {
+	margin-bottom: 0;
+}
+
+.article article {
+	background: white;
+	padding: 2em;
+	font-size: 1.2em;
+}
+
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+.popover {
+	max-width: 400px;
+    width: 400px;
+}
+
+.timeline .icon {
+	color: #333333;
+	font-size: xx-large;
+	text-align: center;
+	position: relative;
+	align-self: center;
+	width: 20%;
+	flex-grow: 0;
+	flex-shrink: 0;
+}
+
+.timeline li > time {
+	align-self: center;
+	flex-grow: 0;
+	flex-shrink: 0;
+	background: rgba(255, 255, 255, 0.8);
+	border-radius: 5px;
+	padding: 0.1em;
+	width: 22%;
+}
+
+.timeline li > h3 {
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: 10%;
+	font-size: medium;
+	font-weight: bold;
+	background: rgba(255, 255, 255, 0.7);
+	border-radius: 5px;
+	padding: 0.1em;
+}
+
+.timeline li > h3 a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.timeline li > div.article {
+	background: rgba(255, 255, 255, 0.8);
+	padding: 0.1em;
+	border-radius: 5px;
+	flex: 1 0 90%;
+	display: none;
+}
+
+.tagline {
+	font-family: serif;
+	font-style: italic;
+}
+
+.fancybox-slide--html .readme {
+	max-width: 60%;
+}
+
+.en:lang(en), .cs:lang(cs) {
+	color: white;
+	font-weight: bold;
+}
+
+.full {
+  background: url(/v3/cesta.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.highlight { background: #fff; }
+.highlighter-rouge .highlight { background: #eef; }
+.highlight .c { color: #998; font-style: italic; }
+.highlight .err { color: #a61717; background-color: #e3d2d2; }
+.highlight .k { font-weight: bold; }
+.highlight .o { font-weight: bold; }
+.highlight .cm { color: #998; font-style: italic; }
+.highlight .cp { color: #999; font-weight: bold; }
+.highlight .c1 { color: #998; font-style: italic; }
+.highlight .cs { color: #999; font-weight: bold; font-style: italic; }
+.highlight .gd { color: #000; background-color: #fdd; }
+.highlight .gd .x { color: #000; background-color: #faa; }
+.highlight .ge { font-style: italic; }
+.highlight .gr { color: #a00; }
+.highlight .gh { color: #999; }
+.highlight .gi { color: #000; background-color: #dfd; }
+.highlight .gi .x { color: #000; background-color: #afa; }
+.highlight .go { color: #888; }
+.highlight .gp { color: #555; }
+.highlight .gs { font-weight: bold; }
+.highlight .gu { color: #aaa; }
+.highlight .gt { color: #a00; }
+.highlight .kc { font-weight: bold; }
+.highlight .kd { font-weight: bold; }
+.highlight .kp { font-weight: bold; }
+.highlight .kr { font-weight: bold; }
+.highlight .kt { color: #458; font-weight: bold; }
+.highlight .m { color: #099; }
+.highlight .s { color: #d14; }
+.highlight .na { color: #008080; }
+.highlight .nb { color: #0086B3; }
+.highlight .nc { color: #458; font-weight: bold; }
+.highlight .no { color: #008080; }
+.highlight .ni { color: #800080; }
+.highlight .ne { color: #900; font-weight: bold; }
+.highlight .nf { color: #900; font-weight: bold; }
+.highlight .nn { color: #555; }
+.highlight .nt { color: #000080; }
+.highlight .nv { color: #008080; }
+.highlight .ow { font-weight: bold; }
+.highlight .w { color: #bbb; }
+.highlight .mf { color: #099; }
+.highlight .mh { color: #099; }
+.highlight .mi { color: #099; }
+.highlight .mo { color: #099; }
+.highlight .sb { color: #d14; }
+.highlight .sc { color: #d14; }
+.highlight .sd { color: #d14; }
+.highlight .s2 { color: #d14; }
+.highlight .se { color: #d14; }
+.highlight .sh { color: #d14; }
+.highlight .si { color: #d14; }
+.highlight .sx { color: #d14; }
+.highlight .sr { color: #009926; }
+.highlight .s1 { color: #d14; }
+.highlight .ss { color: #990073; }
+.highlight .bp { color: #999; }
+.highlight .vc { color: #008080; }
+.highlight .vg { color: #008080; }
+.highlight .vi { color: #008080; }
+.highlight .il { color: #099; }

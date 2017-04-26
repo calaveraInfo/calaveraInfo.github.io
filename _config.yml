@@ -4,12 +4,8 @@
 # which you are expected to set up once and rarely need to edit after that.
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
 title: calavera.info
-email: frantisek.rezac@calavera.info
 url: "http://calavera.info" # the base hostname & protocol for your site
-twitter_username: calaverainfo
 permalink: /v3/blog/:year/:month/:day/:title.html
 baseurl: "" # the subpath of your site, e.g. /blog
 # Build settings
@@ -34,12 +30,12 @@ defaults:
       path: "v3/en"
       type: "pages"
     values:
-      layout: "default"
+      layout: "page"
       lang: en
   -
     scope:
       path: "v3/cs"
       type: "pages"
     values:
-      layout: "default"
+      layout: "page"
       lang: cs
