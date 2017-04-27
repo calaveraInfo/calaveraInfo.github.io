@@ -13,7 +13,7 @@ layout: default
       <p>
         I don't have English blog at the moment. However some posts of my Czech blog are translated and listed here.
       </p>
-      <ol>
+      <ol  aria-label="List of blog articles">
 {% assign items=site.posts | where:"lang", "en" %}
 {% for post in items%}
   <li>
@@ -30,7 +30,7 @@ layout: default
     </section>
     <section class="col-md-3 col-sm-6 about" aria-describedby="about-me-title">
       <h2 class="assistive" id="about-me-title">About me</h2>
-      <ul class="profiles" aria-label="My profiles at different social webs">
+      <ul class="profiles" aria-label="My profiles at different social and professional networks">
         <li><a href="https://frantisek-rezac.mojeid.cz/" title="My MojeID profile (Czech validated digital identity provider)">&#xf2c2;</a></li>
         <li><a href="https://www.linkedin.com/in/frantisekrezac" title="My LinkedIn profile">&#xf08c;</a></li>
         <li><a href="https://github.com/calaveraInfo" title="My GitHub profile">&#xf09b;</a></li>

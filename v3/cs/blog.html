@@ -10,7 +10,7 @@ layout: default
   <div class="row">
     <section class="blog col-md-6 col-sm-12" aria-describedby="blog-title">
       <h2 class="assistive" id="blog-title">Blog</h2>
-      <ol>
+      <ol aria-label="Seznam článků blogu">
 {% assign items=site.posts | where:"lang", "cs" %}
 {% for post in items%}
   <li>
@@ -27,7 +27,7 @@ layout: default
     </section>
     <section class="col-md-3 col-sm-6 about" aria-describedby="about-me-title">
       <h2 class="assistive" id="about-me-title">O mně</h2>
-      <ul class="profiles" aria-label="My profiles at different social webs">
+      <ul class="profiles" aria-label="Moje profily na sociálních a profesních sítích">
         <li><a href="https://frantisek-rezac.mojeid.cz/" title="Můj profil na MojeID (český poskytovatel ověřené digitální identity)">&#xf2c2;</a></li>
         <li><a href="https://www.linkedin.com/in/frantisekrezac" title="Můj LinkedIn profil">&#xf08c;</a></li>
         <li><a href="https://github.com/calaveraInfo" title="Můj Github profil">&#xf09b;</a></li>
