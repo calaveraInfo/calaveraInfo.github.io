@@ -5,9 +5,11 @@ translationEn: /v3/en/blog/
 layout: default
 ---
 
-<main class="container" aria-label="Hlavní stránka webu">
+<main class="container" aria-describedby="main-title">
+  <h1 class="assistive" id="main-title">Hlavní stránka webu</h1>
   <div class="row">
-    <section class="blog col-md-6 col-sm-12" aria-label="Blog">
+    <section class="blog col-md-6 col-sm-12" aria-describedby="blog-title">
+      <h2 class="assistive" id="blog-title">Blog</h2>
       <ol>
 {% assign items=site.posts | where:"lang", "cs" %}
 {% for post in items%}
@@ -23,8 +25,20 @@ layout: default
 {% endfor %}
       </ol>
     </section>
+    <section class="col-md-3 col-sm-6 about" aria-describedby="about-me-title">
+      <h2 class="assistive" id="about-me-title">O mně</h2>
+      <ul class="profiles" aria-label="My profiles at different social webs">
+        <li><a href="https://frantisek-rezac.mojeid.cz/" title="Můj profil na MojeID (český poskytovatel ověřené digitální identity)">&#xf2c2;</a></li>
+        <li><a href="https://www.linkedin.com/in/frantisekrezac" title="Můj LinkedIn profil">&#xf08c;</a></li>
+        <li><a href="https://github.com/calaveraInfo" title="Můj Github profil">&#xf09b;</a></li>
+        <li><a href="http://stackoverflow.com/users/263639/calavera-info" title="Můj StackOverflow profil">&#xf16c;</a></li>
+        <li><a href="https://twitter.com/calaverainfo" title="Můj Twitter profil">&#xf099;</a></li>
+        <li><a href="/v3/rss.xml" title="RSS tohoto blogu">&#xf09e;</a></li>
+      </ul>
+    </section>
 {% include cv.html %}
-    <section class="col-md-3 col-sm-6 twitter" aria-label="Twitter">
+    <section class="col-md-3 col-sm-6 twitter" aria-describedby="twitter-title">
+      <h2 class="assistive" id="twitter-title">Twitter</h2>
       <a class="twitter-timeline" href="https://twitter.com/calaverainfo">Moje tvíty</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     </section>
