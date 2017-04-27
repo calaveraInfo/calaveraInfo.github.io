@@ -99,9 +99,7 @@ V Debian Jessie je pro YubiKey 4 potřeba [updatovat seznam známých zařízen�
 >     CCC:    No data available
 >     PIN tries left: 3
 
-## U2F
-
-[Setup U2F v linuxu](https://www.yubico.com/support/knowledge-base/categories/articles/can-set-linux-system-use-u2f/)
+## [U2F](https://www.yubico.com/support/knowledge-base/categories/articles/can-set-linux-system-use-u2f/)
 
     sudo vim /etc/udev/rules.d/70-u2f.rules
 
