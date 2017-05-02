@@ -1,4 +1,4 @@
-<header class="navbar navbar-inverse navbar-fixed-top">
+<header class="navbar navbar-inverse navbar-default navbar-static-top">
   <nav class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
@@ -41,9 +41,11 @@
       </p>
       <ul class="nav navbar-nav">
 {% if page.lang == 'cs' %}
+  <li><a class="page-link hidden-md hidden-lg" href="/#about-me">O mně</a></li>
   <li><a class="page-link" href="/v3/en/about.html">O tomto webu (en)</a></li>
   <li><a class="page-link" href="/v2/index.xml">Předchozí verze</a></li>
 {% else %}
+  <li><a class="page-link hidden-md hidden-lg" href="/v3/en/blog/#about-me">About me</a></li>
   <li><a class="page-link" href="/v3/en/about.html">About this web</a></li>
   <li><a class="page-link" href="/v2/index.xml">Previous version (cs)</a></li>
 {% endif %}
