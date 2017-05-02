@@ -225,6 +225,11 @@ body {
 	font-style: italic;
 }
 
+.tagline:hover {
+	text-decoration: none;
+	color: white;
+}
+
 .fancybox-slide--html .readme {
 	max-width: 60%;
 }
