@@ -1,18 +1,18 @@
-$('.event.gist')
+$('.timeline .gist')
 	.click(function() {
 		toggleArticle($(this), function (event, article) {
 			loadGist(event, article, event.find('> h3 a').attr('href'))})});
 
-$('.event.repo')
+$('.timeline .repo')
 	.click(function() {
 		toggleArticle($(this), function (event, article) {
 			loadRepo(event, article, event.find('> h3 a').attr('href'))})});
 
-$('.event.text')
+$('.timeline .text')
 	.click(function() {
 		toggleArticle($(this), function(){})});
 
-$('.timeline li.event.gist > h3 a, .timeline li.event.repo > h3 a')
+$('.timeline .gist > h3 a, .timeline .repo > h3 a')
 	.click(function (e) {
 		e.preventDefault()});
 
