@@ -1,22 +1,69 @@
+var uniqueId = (function() {
+	var id = 0;
+	return function() {
+		return 'timeline' + id++;
+	}
+})();
+
+$('.timeline > :has(> h3 a)')
+	.addClass('expandable')
+	.each(enhanceTimelineLink);
+
+// Register toggling and loading function for linked Gists
 $('.timeline .gist')
 	.click(function() {
 		toggleArticle($(this), function (event, article) {
 			loadGist(event, article, event.find('> h3 a').attr('href'))})});
 
+// Register toggling and loading function for linked Github repositories
 $('.timeline .repo')
 	.click(function() {
 		toggleArticle($(this), function (event, article) {
 			loadRepo(event, article, event.find('> h3 a').attr('href'))})});
 
+// Register toggling function for simple inlined text
 $('.timeline .text')
 	.click(function() {
-		toggleArticle($(this), function(){})});
+		toggleArticle($(this), loadNothing)});
 
-$('.timeline .gist > h3 a, .timeline .repo > h3 a')
-	.click(function (e) {
-		e.preventDefault()});
+// Progresive enhancement of links in the timeline: if javascript
+// is enabled, fetch the linked information and present it inline
+// as hideable details instead of leaving the page after click.
+function enhanceTimelineLink(i, item) {
+	var timelineItem = $(item);
+	var article = timelineItem.find('.article');
+	var id;
+	if (article.length) {
+		id = article.attr('id');
+	} else {
+		id = uniqueId();
+		article = $div('', 'article').attr('id', id);
+		timelineItem.append(article);
+	}
+	article
+		.hide()
+		.attr('aria-live', 'polite');
+
+	// Make the link appear like a button to assistive technologies
+	// by setting the button aria role and emulating button's action keys.
+	// Button role is required for the ability to set aria-expanded state and
+	// aria-controls property so the assistive technology can understand
+	// the meaning of the link as a details visibility switch.
+	// The link is already focusable, no need for setting tabindex.
+	timelineItem.find('> h3 a')
+		.attr('role', 'button')
+		.attr('aria-controls', id)
+		.attr('aria-expanded', 'false')
+		.on("click keydown", function(e) {
+			if (e.type == "click" || e.keyCode === 32 || e.keyCode === 13) {
+				e.preventDefault();
+				e.stopPropagation();
+				$(this).closest('li').click();
+			}});
+}
 
 function loadGist(event, article, url) {
+	article.attr('aria-busy', 'true');
 	event.addClass('loading');
 	githubGet('gists/' + extractGithubId(url))
 		.then(function(data, status, xhr) {
@@ -28,10 +75,15 @@ function loadGist(event, article, url) {
 		.fail(function() {
 			putError(article, url)})
 		.always(function(){
+			article
+				.attr('aria-busy', 'false')
+				.addClass('loaded');
+			event.removeClass('loading');
 			showArticle(event, article)});
 }
 
 function loadRepo(event, article, url) {
+	article.attr('aria-busy', 'true');
 	event.addClass('loading');
 	githubGet('repos/calaveraInfo/' + extractGithubId(url))
 		.then(function(data, status, xhr) {
@@ -41,18 +93,28 @@ function loadRepo(event, article, url) {
 		.fail(function() {
 			putError(article, url)})
 		.always(function(){
+			article
+				.attr('aria-busy', 'false')
+				.addClass('loaded');
+			event.removeClass('loading');
 			showArticle(event, article)});
 }
 
-function toggleArticle(event, creationCallback) {
+function loadNothing(event, article) {
+	article.addClass('loaded');
+	showArticle(event, article);
+}
+
+function toggleArticle(event, loadCallback) {
 	var article = event.find('.article');
-	if (article.length) {
-		article.toggle(1000);
-		event.toggleClass('expanded');
+	if (!article.is('.loaded')) {
+		loadCallback(event, article);
 	} else {
-		article = $div('', 'article').hide();
-		event.append(article);
-		creationCallback(event, article);
+		if (article.is(':visible')) {
+			hideArticle(event, article);
+		} else {
+			showArticle(event, article);
+		}
 	}
 }
 
@@ -96,7 +158,15 @@ function githubArticle(article, response, linkText) {
 function showArticle(event, article) {
 	article.show(1000);
 	event.addClass('expanded');
-	event.removeClass('loading');
+	event.find('[role="button"]')
+		.attr('aria-expanded', 'true');
+}
+
+function hideArticle(event, article) {
+	article.hide(1000);
+	event.removeClass('expanded');
+	event.find('[role="button"]')
+		.attr('aria-expanded', 'false');
 }
 
 function putError(article, url) {

@@ -125,7 +125,7 @@ body {
 	content: "\f19d";
 }
 
-.timeline li:hover .icon.expandable:before {
+.timeline li.expandable:hover .icon:before {
 	content: "\f067";
 	top: 24%;
 }
@@ -134,7 +134,7 @@ body {
 	color: black;
 }
 
-.timeline li.expanded:hover .icon.expandable:before {
+.timeline li.expandable.expanded:hover .icon:before {
 	content: "\f068";
 	top: 24%;
 }
@@ -144,7 +144,7 @@ body {
 	font-family: FontAwesome;
 }
 
-.timeline li.loading .icon.expandable:before {
+.timeline li.expandable.loading .icon:before {
 	content: "\f013";
 	animation: fa-spin 2s infinite linear;
 	top: 21%;
@@ -203,7 +203,9 @@ body {
 	font-weight: bold;
 	background: rgba(255, 255, 255, 0.7);
 	border-radius: 5px;
+	border: none;
 	padding: 0.1em;
+	text-align: left;
 }
 
 .timeline li > h3 a {
@@ -216,7 +218,6 @@ body {
 	padding: 0.1em;
 	border-radius: 5px;
 	flex: 1 0 90%;
-	display: none;
 }
 
 .tagline {
