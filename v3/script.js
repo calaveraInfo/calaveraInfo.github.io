@@ -152,6 +152,7 @@ function githubArticle(article, response, linkText) {
 	article.html([
 		$p(response.description),
 		$div('', 'list-group')
+			.attr('role', 'list')
 			.append($menuItem(response.html_url, linkText, 'external'))]);
 }
 
@@ -183,7 +184,7 @@ function appendReadmeMenuOption(menu, rendered) {
 }
 
 function $menuItem(href, text, classes) {
-	return $('<a href="' + href + '" class="list-group-item text-center ' + (classes ? classes : '') + '">' + text + ' </a>');
+	return $('<a href="' + href + '" role="listitem" class="list-group-item text-center ' + (classes ? classes : '') + '">' + text + ' </a>');
 }
 
 function $p(content, classes) {
