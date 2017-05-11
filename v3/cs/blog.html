@@ -8,19 +8,19 @@ layout: default
 <main class="container" aria-labeledby="main-title">
   <h1 class="assistive" id="main-title">Hlavní stránka webu</h1>
   <div class="row">
-    <section class="blog col-md-6 col-sm-12" aria-labeledby="blog-title">
+    <section class="blog col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1" aria-labeledby="blog-title">
       <h2 class="assistive" id="blog-title">Blog</h2>
       <ol aria-label="Seznam článků blogu">
 {% assign items=site.posts | where:"lang", "cs" %}
 {% for post in items%}
   <li>
-  <!--
-    <span>{{ post.date | date: "%-d. %-m. %Y" }}</span>
-  -->
     <h3>
       <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
     </h3>
-    {{ post.excerpt }}
+    <div class="excerpt">
+      <i>{{ post.date | date: "%-d. %-m. %Y" }}</i>
+      {{ post.excerpt }}
+    </div>
   </li>
 {% endfor %}
       </ol>

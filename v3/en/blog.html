@@ -17,13 +17,13 @@ layout: default
 {% assign items=site.posts | where:"lang", "en" %}
 {% for post in items%}
   <li>
-  <!--
-    <span>{{ post.date | date: "%b %-d, %Y" }}</span>
-  -->
     <h3>
       <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
     </h3>
-    {{ post.excerpt }}
+    <div class="excerpt">
+      <i>{{ post.date | date: "%b %-d, %Y" }}</i>
+      {{ post.excerpt }}
+    </div>
   </li>
 {% endfor %}
       </ol>
