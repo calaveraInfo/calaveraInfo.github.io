@@ -178,7 +178,8 @@ function putError(article, url) {
 function appendReadmeMenuOption(menu, rendered) {
 	menu.append(
 		$menuItem('#', 'Show readme file')
-			.click(function() {
+			.click(function(e) {
+				e.stopPropagation();
 				$.fancybox.open(
 					div(rendered, 'readme'))}));
 }
