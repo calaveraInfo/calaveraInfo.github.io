@@ -172,7 +172,7 @@ function hideArticle(event, article) {
 
 function putError(article, url) {
 	article.html(
-		$p('<i class="fa fa-warning"></i> Data loading error. Please see the <a href="'+url+'">source link</a> yourself.', 'error'));
+		$p('<i class="warning"></i> Data loading error. Please see the <a href="'+url+'">source link</a> yourself.', 'error'));
 }
 
 function appendReadmeMenuOption(menu, rendered) {
