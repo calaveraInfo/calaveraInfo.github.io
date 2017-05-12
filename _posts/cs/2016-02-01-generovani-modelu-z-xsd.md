@@ -22,4 +22,4 @@ Ve skutečnosti tedy web služby založené na XML nejen že mohou být stejně 
 
 [1]: http://c2.com/cgi/wiki?ApiVsProtocol
 [2]: https://issues.apache.org/jira/browse/MDEP-187
-[3]: http://dozer.sourceforge.net/
+[dozer]: http://dozer.sourceforge.net/
