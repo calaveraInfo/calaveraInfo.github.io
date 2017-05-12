@@ -65,7 +65,8 @@ body {
 }
 
 .profiles li {
-	display: inline;
+	display: inline-block;
+	width: 15%;
 }
 
 .profiles a {
@@ -73,6 +74,8 @@ body {
 	font-family: icomoon !important;
 	font-size: x-large;
 	text-decoration: none;
+	display: inline-block;
+	width: 100%;
 
 	letter-spacing: 0;
 	font-feature-settings: "liga";
@@ -85,9 +88,9 @@ body {
 
 .profiles {
 	padding: 0.3em;
-	display: flex;
-	justify-content: space-between;
+	text-align: center;
 	background: rgba(51,51,51,1);
+	list-style-type: none;
 	border-radius: 5px;
 	margin: 0;
 }
