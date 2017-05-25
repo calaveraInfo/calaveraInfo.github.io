@@ -255,7 +255,7 @@ Side efekt zavedení PKCS11 PAM je, že se nemůže automaticky odemkdnout defau
 
 Defaultně je v Debianu instalované GPG 1.x.x, které má omezení na RSA max 3072 bitů. Pro využití RSA 4096, kterého je schopný YubiKey 4, je potřeba instalovat GPG řady 2.
 
-    sudo apt-get install gnupg2 scdaemon rng-tools
+    sudo apt-get install gnupg2 scdaemon
     gpg2 --change-pin # GPG PIN i admin PIN neni ten samy jako u PIV, je potreba jej nastavit zvlast
     gpg2 --card-edit
 
@@ -264,8 +264,9 @@ Defaultně je v Debianu instalované GPG 1.x.x, které má omezení na RSA max 3
 
 ### [Nedostatek entropie](http://fios.sector16.net/hardware-rng-on-raspberry-pi/)
 
-GPG může zůstat "viset", což znamená, že má nedostatek entropie. Dá se to zpravit démonem pro doplňování entropie v kernelu, kterému se dá zadat zdroj entropie. Tím se dá doplňovat entropie z pseudonáhodných čísel, ale u Raspberry jde využít i hardwarový generátor.
+GPG může zůstat "viset", což znamená, že má nedostatek entropie. Dá se to spravit démonem pro doplňování entropie v kernelu, kterému se dá zadat zdroj entropie. Tím se dá doplňovat entropie z pseudonáhodných čísel, ale u Raspberry jde využít i hardwarový generátor.
 
+    sudo apt-get install rng-tools
     # pokud se rngd nespousti automaticky, je mozne spustit rucne
     sudo rngd -r /dev/hwrng # raspberry nebo
     sudo rngd -r /dev/urandom # pseudonahodna cisla
