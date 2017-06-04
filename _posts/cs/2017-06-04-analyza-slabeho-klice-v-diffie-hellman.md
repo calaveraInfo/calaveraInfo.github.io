@@ -64,15 +64,11 @@ Je pak nutné opravovat SSL přímo v [nastavení konektoru aplikačního server
 
     vim /.../jboss/server/default/deploy/jbossweb.sar/server.xml
 
-Nejspolehlivější je [úplně vypustit z povolených šifer DH bez eliptických křivek](https://serverfault.com/questions/721489/how-to-make-jboss-5-1-0-ga-meet-diffie-hellman-standards)(eliptickým křivkám stačí menší klíč).
+Nejspolehlivější je [úplně vypustit z povolených šifer DH bez eliptických křivek](https://serverfault.com/questions/721489/how-to-make-jboss-5-1-0-ga-meet-diffie-hellman-standards) (s EC je dostatečně bezpečný menší klíč).
 Toto může sice pro starší prohlížeče vypnout forward secrecy, ale aplikace bude alespoň fungovat.
 
 >     <Connector protocol="HTTP/1.1" SSLEnabled="true"
 >     port="443" address="${jboss.bind.address}" scheme="https" secure="true" clientAuth="false"
 >     keystoreFile=".../keystore.jks"
 >     keystorePass="..." sslEnabledProtocols="TLSv1,TLSv1.1,TLSv1.2"
->     ciphers="TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,
->     TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_W ITH_AES_256_CBC_SHA384,
->     TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_W ITH_RC4_128_SHA,
->     TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_1 28_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA256,
->     TLS_RSA_WITH_AES_256_CBC_SHA,SSL_RSA_WITH_RC4_128_SHA" />
+>     ciphers="TLS_ECDHE..." />
