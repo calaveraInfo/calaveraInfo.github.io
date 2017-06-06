@@ -39,11 +39,13 @@ public void testApp() {
 	foo.setText("ahoj");
 	Bar bar = new Bar();
 	bar.setText("nazdar");
+	bar.setAnotherText("čau");
 	foo.setBar(bar);
-	assertThat(foo, allOf(
-			attribute(Foo::getBar,
-					attribute(Bar::getText, is("nazdar"))),
-			attribute(Foo::getText, is("ahoj"))));
+    assertThat(foo, allOf(
+    		attribute(Foo::getBar, allOf(
+    				attribute(Bar::getText, is("nazdar")),
+    				attribute(Bar::getAnotherText, is("čau")))),
+    		attribute(Foo::getText, is("ahoj"))));
 }
 
 {% endhighlight %}
