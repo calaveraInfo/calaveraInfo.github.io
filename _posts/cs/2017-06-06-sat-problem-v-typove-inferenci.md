@@ -19,17 +19,17 @@ public class MyMatcher<T, U> extends BaseMatcher<T>{
 		this.matcher = matcher;
 	}
 
- public boolean matches(Object item) {
- 	return matcher.matches(getter.apply((T) item));
- }
+	public boolean matches(Object item) {
+		return matcher.matches(getter.apply((T) item));
+	}
 
- public static <T, U> Matcher<T> attribute(Function<T, U> getter, Matcher<U> matcher) {
- 	return new MyMatcher<T, U>(getter, matcher);
- }
+	public static <T, U> Matcher<T> attribute(Function<T, U> getter, Matcher<U> matcher) {
+		return new MyMatcher<T, U>(getter, matcher);
+	}
 
 {% endhighlight %}
 
-S tímto matcherem šlo ‎validovat košaté a hluboké objektové stromy bez jakýchkoli pomocných proměnných, cyklů nebo nekonečných getter řetězů a nullchecků. Všechny typové informace ze zachovávaly v postupně se zanořujícím kontextu volání mého matcheru, takže refaktoring a jiné výhody typového systému zůstaly zachované i‎ v testech:
+S tímto matcherem šlo ‎validovat košaté a hluboké objektové stromy bez jakýchkoli pomocných proměnných, cyklů nebo nekonečných getter řetězů a nullchecků. Všechny typové informace se zachovávaly v postupně se zanořujícím kontextu volání mého matcheru, takže refaktoring a jiné výhody typového systému zůstaly zachované i‎ v testech:
 
 {% highlight java %}
 
