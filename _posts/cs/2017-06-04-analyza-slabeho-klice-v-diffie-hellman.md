@@ -1,5 +1,5 @@
 ---
-title: Analýza slabého klíče v Diffie Hellman začátku SSL
+title: Analýza slabého klíče v Diffie Hellman
 ---
 
 Pár poznámek z řešení nedávného problému. Používejte jen na vlastní nebezpečí.
