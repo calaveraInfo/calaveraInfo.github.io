@@ -64,7 +64,7 @@ Jojo, [Java nám dospívá][generics] a začíná se potýkat s problémy dospě
 [property matcher]: http://hamcrest.org/JavaHamcrest/javadoc/1.3/org/hamcrest/Matchers.html#hasProperty(java.lang.String, org.hamcrest.Matcher)
 [dot net]: https://blogs.msdn.microsoft.com/ericlippert/2007/03/28/lambda-expressions-vs-anonymous-methods-part-five/
 [bug]: https://bugs.openjdk.java.net/browse/JDK-8046685‎
-[stackoverflow]: https://stackoverflow.com/questions/30707387/troubleshoot-slow-compilation/30736467#30736467
+[stackoverflow]: https://stackoverflow.com/questions/30707387/troubleshoot-slow-compilation
 [pricina]: http://openjdk.java.net/jeps/101
 [generics]: https://arxiv.org/abs/1605.05274
 [turing]: https://www.quora.com/What-does-it-mean-to-say-that-a-type-system-is-Turing-complete
