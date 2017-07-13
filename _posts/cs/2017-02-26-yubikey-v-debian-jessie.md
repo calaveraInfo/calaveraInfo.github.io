@@ -235,23 +235,140 @@ Side efekt zavedení PKCS11 PAM je, že se nemůže automaticky odemkdnout defau
 
 ## [GPG](https://www.yubico.com/support/knowledge-base/categories/articles/use-yubikey-openpgp/)
 
-Defaultně je v Debianu instalované GPG 1.x.x, které má omezení na RSA max 3072 bitů. Pro využití RSA 4096, kterého je schopný YubiKey 4, je potřeba instalovat GPG řady 2.
+Defaultně je v Debianu Jessie instalované GPG 1.x.x, které má omezení na RSA max 3072 bitů. Pro využití RSA 4096, kterého je schopný YubiKey 4, je potřeba instalovat GPG řady 2.
 
-    sudo apt-get install gnupg2 scdaemon
+    sudo apt-get install gnupg2 scdaemon rng-tools
     gpg2 --change-pin # GPG PIN i admin PIN neni ten samy jako u PIV, je potreba jej nastavit zvlast
+
+### Generování klíče
+
+#### Přímo na kartě
+
+Tuto variantu nepoužívat! Při generování se sice nabídne vytvoření off card zálohy, ale to se bude zálohovat jen podklíč pro encryption, ne hlavní certifikační klíč!
+
     gpg2 --card-edit
 
 >     admin
->     generate
+>     generate # souhlasit s off-card zálohou, která vytvoří soubor sk_XXXXXXXXXXXXXXXXX.gpg
+
+    gpg2 --card-status # zjistit key id
+    gpg2 --armor --export <key id> --output pgp-public-key.asc
+    gpg2 --armor --export-secret-keys <key id> --output pgp-secret-key.asc # toto nezalohuje doopravdy privatni klic, jen stub ukazujici na kartu
+    gpg2 --gen-revoke <key id> --output pgp-revocation.asc
+    # publikovat klic na http://keys.gnupg.net/ nebo jinem serveru z sks keyserver pool nebo
+    gpg2 --send-key <key id> # v pgp.conf musi byt nastaveny keyserver (to je defaultne) nebo pridat parametr --keyserver keys.gnupg.net
+
+#### Na air-gapovaném počítači
+
+    gpg2 --gen-key # vytvori hlavni (certifikacni a podepisovaci) klic a podklic pro ecnryption
+    # expiration nedavat, na hlavni klic se sbiraji overovaci podpisy ostatnich o ktere by se po expiration prislo
+    # lepsi je dat expiration na podklice vytvorene pozdeji
+    # bez zadane expiration pri generovani bude sice bez expiration i podklic pro encryption, ale to se da opravit pozdeji
+    gpg2 --expert --edit-key <key id> # expert je potreba aby bylo mozne vytvorit podklic pro authentication
+>     key 1 # vybere encryption podklic pro nasledujici pokyny
+>     expire # nastavit expiration, ktere je z predchoziho kroku nenastavene
+>     key 0 # zrusi vybrani
+>     addkey # pridat podklic pro signing (mozne zvolit primo z nabidky) a authentication (je potreba togglovat rucne)
+>     save
+
+    cp -R ~/.gnupg /mnt/usb/gpg-backup/
+
+    gpg2 --edit-key <key id>
+>     key 1
+>     keytocard # vybrat prislusny slot, udelat pro subklice pro signing, encryption, authentication
+>     save
+
+### Záloha GPG klíče na druhou kartu
+
+#### [Pokud byl klíč generován přímo na kartě][https://readlist.com/lists/gnupg.org/gnupg-users/6/30732.html]
+
+V tomto případě nelze klíč duplikovat celý, jen encryption podklíč, který se při vytváření uložil na disk.
+
+    gpg2 --edit-key <key id>
+>     toggle
+>     bkuptocard sk_XXXXXXXXXXXXXXX.gpg # soubor vytvoreny pri vygenerovani klice
+
+#### Pokud byl klíč generován na airgapovaném počítači
+
+    cp /mnt/usb/gpg-backup/.gnupg ~/alt-gpg-home
+    gpg2 --homedir ~/alt-gpg-home --edit-key <key id>
+    # zopakovat prikaz keytocard jako pri vytvareni primarni karty, je mozne vynechat save
+
+### Inicializace pracovního počítače
+
+    sudo apt-get install pinentry-curses
+    sudo update-alternatives --display pinentry
+    sudo update-alternatives --config pinentry
+
+    # import public klice je mozne provest nekolika zpusoby
+    # bud stazenim z keyserveru s odvozenim key id ze secret klice na karte
+    gpg2 --card-edit
+
+>     fetch
+
+    # nebo importem souboru
+    gpg2 --import gpg-public-key.asc
+
+    # nebo stazenim z keyserveru
+    gpg2 --recv-keys <key id>
+
+    # v gpg se neda odvodit public klic ze secret klice! (neobsahoval by asi uid)
+
+    gpg2 --card-status # jako vedlejsi efekt propoji privatni klic na karte s klicem stazenym pomoci fetch
+    gpg2 --edit-key <key id>
+
+>     trust # zvolit ultimate trust
+
+    vim ~/.gnupg/gpg.conf
+
+>     +default-key <key id>
+>     +default-recipient-self
+
+### Přechod na záložní kartu na pracovním počítači
+
+    gpg2 --delete-secret-keys <key id>
+    gpg2 --card-status # svaze aktualni (nahradni) kartu s puvodnim public klicem (stejne jako pri inicializaci karty primarni)
+
+### Troubleshooting
+
+    gpg2 --list-packets secret-exported-key.gpg # zobrazi jednotlive pakety v klici
+    cat secret-exported-key.gpg > gpgsplit # rozdeli klic do souboru obsahujicich jednotlive pakety
+    cat paket1.sig paket2.uid paket3.sig | gpg2 --import # importuje jen vybranou podmnozinu klicu
+
+### Použití
+
+    gpg2 --clearsign sometext.txt
 
 ### [Nedostatek entropie](http://fios.sector16.net/hardware-rng-on-raspberry-pi/)
 
-GPG může zůstat "viset", což znamená, že má nedostatek entropie. Dá se to spravit démonem pro doplňování entropie v kernelu, kterému se dá zadat zdroj entropie. Tím se dá doplňovat entropie z pseudonáhodných čísel, ale u Raspberry jde využít i hardwarový generátor.
+GPG může zůstat "viset", což znamená, že má nedostatek entropie. Dá se to zpravit démonem pro doplňování entropie v kernelu, kterému se dá zadat zdroj entropie. Tím se dá doplňovat entropie z pseudonáhodných čísel, ale u Raspberry jde využít i hardwarový generátor.
 
-    sudo apt-get install rng-tools
     # pokud se rngd nespousti automaticky, je mozne spustit rucne
     sudo rngd -r /dev/hwrng # raspberry nebo
     sudo rngd -r /dev/urandom # pseudonahodna cisla
+
+Jiná možnost je ještě použít hardwarový generátor přímo z karty pomocí příkazu `scdrand`, ale to jsem netestoval.
+
+### Přechod na nový GPG klíč v pass
+
+Pass init je možné dělat opakovaně i s několika různými key id. Pass zajistí šifrování pro všechny klíče, které si
+uchovává v ~/.password-store/.gpg-id
+
+    pass init <old key id> <new key id>
+
+### GIT ###
+V gitu je možné explicitně podepisovat commity pomocí GPG.
+
+    vim ~/.gitconfig
+
+>     [user]
+>         ...
+>     +    signingkey = <signing key id>
+>     +[gpg]
+>     +    program = gpg2
+
+    git commit -S -am 'signed commit'
+    git log --show-signature -1
 
 ### GIT ###
 V gitu je možné explicitně podepisovat commity pomocí GPG.
