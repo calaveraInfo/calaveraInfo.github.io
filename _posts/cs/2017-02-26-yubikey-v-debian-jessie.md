@@ -265,6 +265,7 @@ Tuto variantu nepoužívat! Při generování se sice nabídne vytvoření off c
     # lepsi je dat expiration na podklice vytvorene pozdeji
     # bez zadane expiration pri generovani bude sice bez expiration i podklic pro encryption, ale to se da opravit pozdeji
     gpg2 --expert --edit-key <key id> # expert je potreba aby bylo mozne vytvorit podklic pro authentication
+
 >     key 1 # vybere encryption podklic pro nasledujici pokyny
 >     expire # nastavit expiration, ktere je z predchoziho kroku nenastavene
 >     key 0 # zrusi vybrani
@@ -274,6 +275,7 @@ Tuto variantu nepoužívat! Při generování se sice nabídne vytvoření off c
     cp -R ~/.gnupg /mnt/usb/gpg-backup/
 
     gpg2 --edit-key <key id>
+
 >     key 1
 >     keytocard # vybrat prislusny slot, udelat pro subklice pro signing, encryption, authentication
 >     save
@@ -285,6 +287,7 @@ Tuto variantu nepoužívat! Při generování se sice nabídne vytvoření off c
 V tomto případě nelze klíč duplikovat celý, jen encryption podklíč, který se při vytváření uložil na disk.
 
     gpg2 --edit-key <key id>
+
 >     toggle
 >     bkuptocard sk_XXXXXXXXXXXXXXX.gpg # soubor vytvoreny pri vygenerovani klice
 
