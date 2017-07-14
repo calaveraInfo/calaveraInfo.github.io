@@ -370,6 +370,15 @@ V tomto případě nelze klíč duplikovat celý, jen encryption podklíč, kter
     cat secret-exported-key.gpg > gpgsplit # rozdeli klic do souboru obsahujicich jednotlive pakety
     cat paket1.sig paket2.uid paket3.sig | gpg2 --import # importuje jen vybranou podmnozinu klicu
 
+#### Chyba při importu klíče na úplně novou kartu
+
+Symptom: přesun klíče z počítače na kartu selže s hláškou, že klíč nemůže být větší než 2048 bitů.
+
+Důvod: import klíče, na rozdíl od generování, nedokáže nastavit parametr délky klíče na kartě.
+Defaultně je tento parametr nastaven na 2048, proto import většího klíče selže.
+
+Workaround: vygenerovat klíč potřebné velikosti na kartě, tím se nastaví příslušný parametr a import pak už projde.
+
 ### Použití
 
     gpg2 --clearsign sometext.txt
