@@ -164,7 +164,11 @@ Currently all functionality are available over both contact and contactless inte
     sudo make install
     sudo ldconfig -v
 
-### Inicializace klíče
+### Vytvoření klíče, resp. certifikátu
+
+#### Přímo na kartě
+
+V této variantě je privátní klíč uložen jen na Yubikey, nedají se tedy vytvořit kopie pro případ ztráty, což celkově není moc použitelné.
 
     yubico-piv-tool -a change-pin # pin i puk nejsou ty same, jako treba pro gpg, je nutne je nastavit samostatne.
     yubico-piv-tool -a change-puk
@@ -183,12 +187,15 @@ Currently all functionality are available over both contact and contactless inte
 
 #### [Alternativní generování klíče pomocí OpenSSL na počítači](https://en.wikibooks.org/wiki/Cryptography/Generate_a_keypair_using_OpenSSL)
 
+V této variantě se ukládá klíč na počítači, takže je možné vyrábět kopie pro případ ztráty.
+Klíč ale nebude na disku nijak chráněný, proto je k tomu nejlépe používat airgapovaný (offline) počítač.
+
     openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
     openssl rsa -pubout -in private_key.pem -out public_key.pem
     yubico-piv-tool -s 9a --touch-policy=always -i private_key.pem -a import-key
     # zbytek stejny jako pri generovani na karte
 
-#### Alternativní generování klíče pomocí piv-tool/OpenSSL na YubiKey (experimentální)
+#### Alternativní generování klíče pomocí piv-tool/OpenSSL na YubiKey (experimentální hybrid předchozích variant)
 
     echo -n  01:02:03:04:05:06:07:08:01:02:03:04:05:06:07:08:01:02:03:04:05:06:07:08 > admin.key
     export PIV_EXT_AUTH_KEY=/home/calavera/admin.key
@@ -202,7 +209,9 @@ Currently all functionality are available over both contact and contactless inte
 
 ### SSH
 
-Buď v `~/.ssh/config`
+Na serveru přidat do `~/.ssh/authorized-keys` klíč vygenerovaný při inicializaci (řádka `pkcs15-tool --read-ssh-key`).
+
+Na klientu buď v `~/.ssh/config`
 
     PKCS11Provider /usr/lib/x86_64-linux-gnu/pkcs11/opensc-pkcs11.so
 
