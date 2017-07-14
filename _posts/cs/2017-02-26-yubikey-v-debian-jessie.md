@@ -57,7 +57,7 @@ V Debian Jessie je pro YubiKey 4 potřeba [updatovat seznam známých zařízen�
 
     sudo service pcscd restart
 
-## Výchozí bod
+## Přehled základních nástrojů (zobrazen stav po vygenerování certifikátu)
 
     opensc-tool --list-readers
 
@@ -98,6 +98,21 @@ V Debian Jessie je pro YubiKey 4 potřeba [updatovat seznam známých zařízen�
 >     CHUID:  No data available
 >     CCC:    No data available
 >     PIN tries left: 3
+
+    pkcs11-tool --module /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so --list-objects
+
+>     Using slot 1 with a present token (0x1)
+>     Public Key Object; RSA 2048 bits
+>       label:      SIGN pubkey
+>       ID:         02
+>       Usage:      encrypt, verify
+>     Certificate Object, type = X.509 cert
+>       label:      Certificate for Digital Signature
+>       ID:         02
+
+    pkcs11-tool --module /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so --read --slot 1 --id 2 --type pubkey
+
+>     Public key binárně...
 
 ## [U2F](https://www.yubico.com/support/knowledge-base/categories/articles/can-set-linux-system-use-u2f/)
 
