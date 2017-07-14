@@ -379,6 +379,13 @@ Defaultně je tento parametr nastaven na 2048, proto import většího klíče s
 
 Workaround: vygenerovat klíč potřebné velikosti na kartě, tím se nastaví příslušný parametr a import pak už projde.
 
+#### Simultánní používání PKCS11/PIV a GPG
+
+PKCS11 a GPG nemohou k Yubikey přistupovat najednou. Proto
+
+- Není možné používat trvale spuštěného GPG agenta (PKCS11 třeba v SSH pak skončí s chybou `Permission denied (publickey).`). Pokud se dělá nějaká batch akce, kde to bez GPG agenta nejde, je možné spustit shell s ním ručně a batch akci provést v něm: `gpg-agent --daemon /bin/bash`.
+- Někdy PKCS11 neuvolní kartu a GPG pak selže s hláškou `PC/SC OPEN failed: sharing violation`. Workaround je prostě vytáhnout a znovu zastrčit kartu.
+
 ### Použití
 
     gpg2 --clearsign sometext.txt
