@@ -319,7 +319,7 @@ V tomto případě nelze klíč duplikovat celý, jen encryption podklíč, kter
 
 #### Pokud byl klíč generován na airgapovaném počítači
 
-    cp /mnt/usb/gpg-backup/.gnupg ~/alt-gpg-home
+    cp -R /mnt/usb/gpg-backup/.gnupg ~/alt-gpg-home
     gpg2 --homedir ~/alt-gpg-home --edit-key <key id>
     # zopakovat prikaz keytocard jako pri vytvareni primarni karty, je mozne vynechat save
 
