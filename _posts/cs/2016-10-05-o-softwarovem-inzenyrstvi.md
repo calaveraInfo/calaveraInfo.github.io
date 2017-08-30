@@ -1,5 +1,6 @@
 ---
 title: O softwarovém inženýrství
+translationEn: /v3/blog/2017/08/15/on-software-engineering.html
 ---
 
 Mám ho! Mám tagline pro svůj blog! Od chvíle kdy jsem na GeoCities umístil v rámci prvních pokusů s HTML svojí sebeprezentaci jsem jej zoufale hledal. Zatímco ostatní používali vtipné slovní hříčky, citáty slavných nebo oduševnělá moudra. Já cítil, že to musí být něco hlubšího. To místo v nadpisu stránky si přece zaslouží něco zásadního, nejlépe obecný destilát smyslu života a osobní  životní misi v jednom. Bohužel najít dnes myšlenku s takovými parametry a ještě k tomu originální je jako kupovat značkové tepláky ve vietnamské tržnici. Přestože mi formuláře profilů na sociálních sítích trýznivě připomínaly neukojenou potřebu sebeurčení, zůstávaly prázdné. Až doteď.
