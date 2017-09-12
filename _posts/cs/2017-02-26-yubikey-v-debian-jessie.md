@@ -6,6 +6,10 @@ YubiKey a U2F jsou jedny z nejlepších věcí, které se staly v počítačové
 
 POZOR!!! Toto jsou opravdu pouze poznámky a rozcestník odkazů. Nejedná se o doslovný návod a v žádném případě jej tak nepoužívejte, pokud zcela nerozumíte popsané problematice. Počítačová bezpečnost na této úrovni je velmi ostrý nástroj se kterým se můžete šeredně pořezat. Tím nemyslím jen potenciální bezpečnostní díry, ale třeba také lock-out z vlastního systému!
 
+EDIT: Až tři čtvrtě roku od napsání článku jsem objevil staršího a bohatšího anglického příbuzného https://github.com/drduh/YubiKey-Guide. Vědět to, tak jsem si ušetřil dost práce.
+
+EDIT2: A další... https://www.jfry.me/articles/2015/gpg-smartcard/
+
 ## Prerekvizity
 
     sudo apt-get install pcscd pcsc-tools opensc
