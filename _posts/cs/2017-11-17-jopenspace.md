@@ -22,10 +22,11 @@ Mých pár tipů se trochu liší od všeobecného hlasování:
 
 K reakci mě vyprovokovaly dvě přednášky:
 
-- Neuralink: protože je to téma, ze kterého už jsem nějaký čas smutný.
+- [Neuralink][neuralink]: protože je to téma, ze kterého už jsem nějaký čas smutný.
 - Proč Dagi není programátor: protože omezit celé bohaté spektrum lidských osudů na "buď budeš diktovat nebo cucat" mi přijde dost demotivující a potřebuju se té vize trochu zbavit.
 
 Protože už ty reakce píšu dlouho, raději to oddělím do samostatných článků a budu je odsud linkovat až budou hotové.
 
 [hodnoceni]: https://docs.google.com/spreadsheets/d/1WM5urJ2xo_f2KZNzJULu70r4TvfhO-oOOejtSoIuCoc/edit
 [jopenspace]: http://www.jopenspace.cz/
+[neuralink]: http://calavera.info/v3/blog/2017/11/17/neuralink.html
