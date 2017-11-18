@@ -1,5 +1,5 @@
 ---
-title: jOpenSpace: Neuralink, umělá inteligence a její hrozby
+title: jOpenSpace - Neuralink, umělá inteligence a její hrozby
 ---
 
 (Pokračování reportu z ne-konference jOpenSpace)
