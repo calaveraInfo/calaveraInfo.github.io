@@ -236,7 +236,7 @@
 <xsl:template match="h:html[@class='article']" mode="titleImage">
 	<xsl:param name="linkBase">./</xsl:param>
 	<xsl:if test="h:body/h:div[@class='titleImage']">
-		<img src="{$linkBase}{h:body/h:div[@class='titleImage']/h:img/@src}"/>
+		<img src="https://files.calavera.info/calavera.info/v2{substring($linkBase, 2)}{h:body/h:div[@class='titleImage']/h:img/@src}"/>
 	</xsl:if>
 </xsl:template>
 
@@ -351,8 +351,13 @@
 	<td>
         <xsl:choose>
             <xsl:when test="$listItem">
+            	<xsl:variable name="thumbnailUrl">
+				    <xsl:call-template name="thumbnail-url">
+				        <xsl:with-param name="url" select="$listItem/h:a/attribute::href"/>
+				     </xsl:call-template>
+				</xsl:variable>
                 <a href="{$listItem/h:a/attribute::href}" rel="gallery-image" class="gallery">
-                    <img src="thumbnails/{$listItem/h:a/attribute::href}" alt="Image {$listItem/h:a/attribute::href}" />
+                    <img src="{$thumbnailUrl}" alt="Image {$listItem/h:a/attribute::href}" />
                 </a>
             </xsl:when>
             <xsl:otherwise>
@@ -548,5 +553,46 @@
 			<xsl:with-param name="path" select="substring-after($path, '/')"/>
 		</xsl:call-template>
 	</xsl:if>
+</xsl:template>
+
+<xsl:template name="thumbnail-url">
+    <xsl:param name="url"/>
+    <xsl:variable name="lastIndex">
+	    <xsl:call-template name="last-index-of">
+	        <xsl:with-param name="txt" select="$url"/>
+	        <xsl:with-param name="delimiter" select="'/'"></xsl:with-param>
+	     </xsl:call-template>
+	</xsl:variable>
+	<xsl:value-of select="concat(substring($url, 0, $lastIndex), '/thumbnails', substring($url, $lastIndex))"/>
+</xsl:template>
+
+<xsl:template name="last-index-of">
+    <xsl:param name="txt"/>
+    <xsl:param name="remainder" select="$txt"/>
+    <xsl:param name="delimiter" select="' '"/>
+
+    <xsl:choose>
+        <xsl:when test="contains($remainder, $delimiter)">
+            <xsl:call-template name="last-index-of">
+                <xsl:with-param name="txt" select="$txt"/>
+                <xsl:with-param name="remainder" select="substring-after($remainder, $delimiter)"/>
+                <xsl:with-param name="delimiter" select="$delimiter"/>
+            </xsl:call-template>      
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:variable name="lastIndex" select="string-length(substring($txt, 1, string-length($txt)-string-length($remainder)))+1"/>
+            <xsl:choose>
+                <xsl:when test="string-length($remainder)=0">
+                    <xsl:value-of select="string-length($txt)"/>
+                </xsl:when>
+                <xsl:when test="$lastIndex>0">
+                    <xsl:value-of select="($lastIndex - string-length($delimiter))"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="0"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 </xsl:stylesheet>
